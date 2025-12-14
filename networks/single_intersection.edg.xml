@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Single Intersection Edge/Road Definition File
+
+    This file defines the roads connecting nodes, simulating a realistic urban intersection:
+
+    Road Configuration:
+    - North-South (main road): 2 lanes each direction, speed limit 50km/h (13.89m/s)
+    - East-West (minor road): 1 lane each direction, speed limit 40km/h (11.11m/s)
+
+    Naming Convention:
+    - Edge ID format: {origin}_to_{destination}
+    - Example: north_to_center means road from north endpoint to center intersection
+
+    Parameter Descriptions:
+    - numLanes: Number of lanes
+    - speed: Maximum allowed speed (m/s)
+    - priority: Priority level (main road has higher priority than minor road)
+-->
+<edges>
+    <!-- ==================== North-South roads (main arterial) ==================== -->
+
+    <!-- North→Center: entering intersection from north -->
+    <edge id="north_to_center" from="north" to="center"
+          numLanes="2" speed="13.89" priority="2"/>
+
+    <!-- Center→North: leaving intersection toward north -->
+    <edge id="center_to_north" from="center" to="north"
+          numLanes="2" speed="13.89" priority="2"/>
+
+    <!-- South→Center: entering intersection from south -->
+    <edge id="south_to_center" from="south" to="center"
+          numLanes="2" speed="13.89" priority="2"/>
+
+    <!-- Center→South: leaving intersection toward south -->
+    <edge id="center_to_south" from="center" to="south"
+          numLanes="2" speed="13.89" priority="2"/>
+
+    <!-- ==================== East-West roads (minor arterial) ==================== -->
+
+    <!-- East→Center: entering intersection from east -->
+    <edge id="east_to_center" from="east" to="center"
+          numLanes="1" speed="11.11" priority="1"/>
+
+    <!-- Center→East: leaving intersection toward east -->
+    <edge id="center_to_east" from="center" to="east"
+          numLanes="1" speed="11.11" priority="1"/>
+
+    <!-- West→Center: entering intersection from west -->
+    <edge id="west_to_center" from="west" to="center"
+          numLanes="1" speed="11.11" priority="1"/>
+
+    <!-- Center→West: leaving intersection toward west -->
+    <edge id="center_to_west" from="center" to="west"
+          numLanes="1" speed="11.11" priority="1"/>
+</edges>

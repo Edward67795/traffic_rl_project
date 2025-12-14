@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Off-Peak Traffic Scenario
+
+    Simulation Period: 10:00 AM - 4:00 PM (daytime off-peak)
+
+    Traffic Characteristics:
+    - Uniform flow distribution across all directions
+    - Low overall traffic pressure
+    - No dominant direction
+
+    This scenario tests the RL agent's performance under low pressure
+    and its ability to avoid unnecessary phase switching.
+
+    Simulation duration: 3600 seconds (1 hour)
+-->
+<routes>
+    <!-- Vehicle Type Definitions -->
+    <vType id="car" 
+           accel="2.6" 
+           decel="4.5" 
+           sigma="0.5" 
+           length="5" 
+           maxSpeed="16.67"/>
+    
+    <!-- ==================== North-South uniform flow ==================== -->
+    
+    <flow id="north_south" type="car"
+          from="north_to_center" to="center_to_south"
+          begin="0" end="3600"
+          vehsPerHour="200"
+          departLane="best"/>
+    
+    <flow id="south_north" type="car"
+          from="south_to_center" to="center_to_north"
+          begin="0" end="3600"
+          vehsPerHour="200"
+          departLane="best"/>
+    
+    <!-- ==================== East-West uniform flow ==================== -->
+    
+    <flow id="east_west" type="car"
+          from="east_to_center" to="center_to_west"
+          begin="0" end="3600"
+          vehsPerHour="150"
+          departLane="best"/>
+    
+    <flow id="west_east" type="car"
+          from="west_to_center" to="center_to_east"
+          begin="0" end="3600"
+          vehsPerHour="150"
+          departLane="best"/>
+    
+    <!-- ==================== Minor turning movements ==================== -->
+    
+    <flow id="north_east" type="car"
+          from="north_to_center" to="center_to_east"
+          begin="0" end="3600"
+          vehsPerHour="50"
+          departLane="best"/>
+    
+    <flow id="south_west" type="car"
+          from="south_to_center" to="center_to_west"
+          begin="0" end="3600"
+          vehsPerHour="50"
+          departLane="best"/>
+</routes>

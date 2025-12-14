@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Morning Rush Hour Scenario
+
+    Simulation Period: 7:30-9:00 AM (commute peak)
+
+    Traffic Characteristics:
+    - South to North (inbound): Heavy flow, ~800 vehicles/hour
+    - North to South (outbound): Light flow, ~200 vehicles/hour
+    - East-West directions: Medium flow, ~300 vehicles/hour each
+    - Buses: Every 5 minutes along main corridor
+
+    This scenario simulates typical unidirectional morning rush patterns.
+    The RL agent should learn to prioritize the main traffic direction.
+
+    Simulation duration: 3600 seconds (1 hour)
+-->
+<routes>
+    <!-- ==================== Vehicle Type Definitions ==================== -->
+    
+    <!-- Passenger car -->
+    <vType id="car" 
+           accel="2.6"           
+           decel="4.5"           
+           sigma="0.5"           
+           length="5"            
+           minGap="2.5"          
+           maxSpeed="16.67"      
+           speedFactor="1.0"     
+           speedDev="0.1"        
+           color="0.8,0.8,0.0"/> 
+    
+    <!-- Bus: slower acceleration, longer body -->
+    <vType id="bus" 
+           accel="1.2" 
+           decel="3.0" 
+           sigma="0.3" 
+           length="12" 
+           minGap="3.0"
+           maxSpeed="11.11"      
+           color="0.0,0.5,0.0"/>
+    
+    <!-- ==================== Morning rush main direction: South to North (heavy flow)==================== -->
+    
+    <!-- Main corridor South to North through traffic: heavy flow -->
+    <flow id="south_north_main" type="car"
+          from="south_to_center" to="center_to_north"
+          begin="0" end="3600"
+          vehsPerHour="800"
+          departLane="best"
+          departSpeed="max"/>
+    
+    <!-- Some vehicles turn right: South to East -->
+    <flow id="south_east_turn" type="car"
+          from="south_to_center" to="center_to_east"
+          begin="0" end="3600"
+          vehsPerHour="100"
+          departLane="best"/>
+    
+    <!-- Some vehicles turn left: South to West -->
+    <flow id="south_west_turn" type="car"
+          from="south_to_center" to="center_to_west"
+          begin="0" end="3600"
+          vehsPerHour="80"
+          departLane="best"/>
+    
+    <!-- ==================== Reverse flow: North→South (light traffic) ==================== -->
+    
+    <flow id="north_south_light" type="car"
+          from="north_to_center" to="center_to_south"
+          begin="0" end="3600"
+          vehsPerHour="200"
+          departLane="best"
+          departSpeed="max"/>
+    
+    <!-- ==================== East-West traffic flow (medium volume) ==================== -->
+    
+    <!-- East→West straight -->
+    <flow id="east_west" type="car"
+          from="east_to_center" to="center_to_west"
+          begin="0" end="3600"
+          vehsPerHour="300"
+          departLane="best"/>
+    
+    <!-- West→East straight -->
+    <flow id="west_east" type="car"
+          from="west_to_center" to="center_to_east"
+          begin="0" end="3600"
+          vehsPerHour="300"
+          departLane="best"/>
+    
+    <!-- East→North left turn -->
+    <flow id="east_north_turn" type="car"
+          from="east_to_center" to="center_to_north"
+          begin="0" end="3600"
+          vehsPerHour="80"
+          departLane="best"/>
+    
+    <!-- West→North right turn -->
+    <flow id="west_north_turn" type="car"
+          from="west_to_center" to="center_to_north"
+          begin="0" end="3600"
+          vehsPerHour="80"
+          departLane="best"/>
+    
+    <!-- ==================== Buses (fixed schedule) ==================== -->
+    
+    <!-- Bus: South→North, every 5 minutes -->
+    <flow id="bus_south_north" type="bus"
+          from="south_to_center" to="center_to_north"
+          begin="0" end="3600"
+          period="300"/>
+    
+    <!-- Bus: North→South, every 5 minutes, offset timing -->
+    <flow id="bus_north_south" type="bus"
+          from="north_to_center" to="center_to_south"
+          begin="150" end="3600"
+          period="300"/>
+</routes>

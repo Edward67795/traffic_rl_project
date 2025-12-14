@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Single Intersection Node Definition
+
+    This file defines a standard four-way intersection with:
+    - Central intersection node (equipped with traffic light)
+    - Four directional endpoint nodes
+
+    Coordinate System:
+    - Origin (0,0) located at intersection center
+    - Each road length: 200 meters
+
+    Usage:
+    Use with edge definition file (.edg.xml) and netconvert to generate network file:
+    netconvert -n single_intersection.nod.xml -e single_intersection.edg.xml -o single_intersection.net.xml --tls.guess
+-->
+<nodes>
+    <!-- Central intersection - equipped with traffic light -->
+    <node id="center" x="0" y="0" type="traffic_light"/>
+    
+    <!-- North endpoint -->
+    <node id="north" x="0" y="200" type="priority"/>
+    
+    <!-- South endpoint -->
+    <node id="south" x="0" y="-200" type="priority"/>
+    
+    <!-- East endpoint -->
+    <node id="east" x="200" y="0" type="priority"/>
+    
+    <!-- West endpoint -->
+    <node id="west" x="-200" y="0" type="priority"/>
+</nodes>
