@@ -1,0 +1,113 @@
+{
+  "kind": "SUMO-library-index-and-protected-conflict-audit",
+  "source_sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+  "mapping": [
+    {
+      "tls": 0,
+      "junction": 0,
+      "incoming": "north_to_center_0",
+      "outgoing": "center_to_west_0"
+    },
+    {
+      "tls": 1,
+      "junction": 1,
+      "incoming": "north_to_center_0",
+      "outgoing": "center_to_south_0"
+    },
+    {
+      "tls": 2,
+      "junction": 2,
+      "incoming": "north_to_center_1",
+      "outgoing": "center_to_south_1"
+    },
+    {
+      "tls": 3,
+      "junction": 3,
+      "incoming": "north_to_center_1",
+      "outgoing": "center_to_east_0"
+    },
+    {
+      "tls": 4,
+      "junction": 4,
+      "incoming": "east_to_center_0",
+      "outgoing": "center_to_north_0"
+    },
+    {
+      "tls": 5,
+      "junction": 5,
+      "incoming": "east_to_center_0",
+      "outgoing": "center_to_west_0"
+    },
+    {
+      "tls": 6,
+      "junction": 6,
+      "incoming": "east_to_center_0",
+      "outgoing": "center_to_south_1"
+    },
+    {
+      "tls": 7,
+      "junction": 7,
+      "incoming": "south_to_center_0",
+      "outgoing": "center_to_east_0"
+    },
+    {
+      "tls": 8,
+      "junction": 8,
+      "incoming": "south_to_center_0",
+      "outgoing": "center_to_north_0"
+    },
+    {
+      "tls": 9,
+      "junction": 9,
+      "incoming": "south_to_center_1",
+      "outgoing": "center_to_north_1"
+    },
+    {
+      "tls": 10,
+      "junction": 10,
+      "incoming": "south_to_center_1",
+      "outgoing": "center_to_west_0"
+    },
+    {
+      "tls": 11,
+      "junction": 11,
+      "incoming": "west_to_center_0",
+      "outgoing": "center_to_south_0"
+    },
+    {
+      "tls": 12,
+      "junction": 12,
+      "incoming": "west_to_center_0",
+      "outgoing": "center_to_east_0"
+    },
+    {
+      "tls": 13,
+      "junction": 13,
+      "incoming": "west_to_center_0",
+      "outgoing": "center_to_north_1"
+    }
+  ],
+  "identity_mapping": true,
+  "phases": [
+    {
+      "state": "GGGgrrrGGGgrrr",
+      "protected_conflicts": []
+    },
+    {
+      "state": "yyyyrrryyyyrrr",
+      "protected_conflicts": []
+    },
+    {
+      "state": "rrrrGGgrrrrGGg",
+      "protected_conflicts": []
+    },
+    {
+      "state": "rrrryyyrrrryyy",
+      "protected_conflicts": []
+    }
+  ],
+  "sources": [
+    "https://sumo.dlr.de/docs/Networks/SUMO_Road_Networks.html",
+    "https://sumo.dlr.de/docs/Simulation/Traffic_Lights.html"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "rows": 72,
+  "verdicts": {
+    "PASS": 46,
+    "FAIL": 26
+  },
+  "finite_witnesses": 21,
+  "cyclic_witnesses": 5,
+  "note": "Audits saved evidence, not an independent rerun or real SUMO proof"
+}

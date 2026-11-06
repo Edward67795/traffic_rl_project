@@ -1,6 +1,6 @@
 # SPIN experimental record and report material
 
-Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0/v1 through S5**.
+Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **S6 technical validation complete; human review pending**.
 This is a chronological research record for the final CSEE E6863 report, not a
 claim that all project stages are finished. Code/documentation remain in English.
 
@@ -823,3 +823,182 @@ S5 completes exact-patch modeling and comparison, not a declaration that every
 v1 input accepted by the patch is safe. Real SUMO replay/conformance, human
 model review, final tool comparison and report packaging remain S6. The original
 controller/ESBMC/shared files are untouched. Stop after this stage and report.
+
+## S6: real source validation, reproducibility and report preparation (2026-11-06)
+
+Technical validation is complete. Human model review and joint-report sign-off
+remain pending. HEAD at stage start was e02f7c2, the user's S5 commit. The
+worktree controller, network, ESBMC and shared contracts were not modified.
+
+### Runtime installation and an unsuccessful attempt
+
+Python3.12 Homebrew installation was attempted to match the teammate's example.
+Its bottle transfer repeatedly stalled/restarted and was cancelled (exit130);
+no Python3.12 run is claimed. Rather than blocking validation, an ignored .venv
+was created with the existing Python3.13.7 and the fixed SUMO1.28.0 packages.
+SUMO wheel downloads and installation succeeded; exact package pins are saved
+in requirements-sumo.txt. This is an explicit difference from the suggested
+Python3.12 setup, not a hidden version substitution.
+
+Tested versions: eclipse-sumo/traci/sumolib1.28.0; sumo-data1.28.0;
+gymnasium1.4.0; NumPy2.5.4; other installed pins in requirements-sumo.txt.
+SUMO binary build metadata is in the full live summary. No PyTorch/training
+packages or ESBMC executable were needed for this SPIN stage.
+
+### Saved-evidence audit and fresh-copy reproduction
+
+```sh
+python3 verification/spin/scripts/audit_results.py \
+  --output verification/spin/results/raw/s6-audit.json
+python3 verification/spin/scripts/reproduce.py \
+  --output verification/spin/results/raw/s6-isolated-reproduction
+```
+
+Both original output paths exist; select new paths for reruns. Audit checked
+all72 CSV rows against raw pan output, source hashes and21 finite/five cyclic
+witnesses. A fresh temporary copy of code/network/reference files ran all72
+formal cases, matching every verdict, depth and CE decision count. Measured
+wall time was64.059141 s including generation/compilation; single-row verifier
+timings were measured again and are not expected identical. The same installed
+SPIN/compiler was used: this is isolated-path/output reproduction, not a second
+machine or clean tool installation. Original results.csv was not overwritten.
+Evidence: [audit](results/raw/s6-audit.json),
+[reproduction](results/raw/s6-isolated-reproduction/summary.json).
+
+### Independent real-source validation
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python verification/spin/scripts/validate_sumo.py \
+  --output verification/spin/results/raw/s6-sumo-full
+```
+
+The script loads full original src/environment.py, rather than extracted core.
+v1 is a temporary full-source copy patched by the unchanged shared patch. It
+observes real TraCI signal/program/time states and uses independent monitors
+that do not import the ESBMC stub/core. Both off_peak and morning_rush routes
+were exercised. Projection compares source/controller time, displayed signal,
+controller phase/projected age and online status; abstract frozen static-cursor
+fields are not asserted to be real source fields after takeover.
+
+Initial smoke: v0 hold and v1 hold traces matched; deliberate v0/L0 control
+mismatched. Full test:38 selected source/model cases matched7,205 projected
+records, including rejected v1 inputs, plus one expected negative control.
+All tested L1 projected traces matched; this supports the chosen abstraction
+but is not a universal source-model equivalence proof. Fixed and six seeded
+input policies per version cover takeover, invalid actions, zero yellow and
+selected timing profiles. Early rejection MATCHs are not normal-run PASSs.
+
+Actual static transitions in the pre-step samples were t43/46/88/91. These
+confirm43 initial samples and subsequent42/3/42/3 behavior for SUMO1.28.0 under
+this convention; do not conflate pre-step sample counts with all possible
+physical-duration/observation conventions. Actual transition metadata includes
+program phase and next-switch time for independent review.
+
+### Original finite witness replay: favorable and unfavorable outcomes
+
+Twenty-one original finite assertion prefixes were replayed directly on source:
+12 reproduced the selected target and9 did not within the original prefix.
+All9 non-reproductions are L0. Model FAIL is retained; non-reproduction is a
+separate evidence category, not a reason to change it to PASS. L0 both omits
+autonomous behavior and admits held-initial-green paths, so it is not generally
+conservative. Main source-backed conclusions use L1 and actual replay.
+
+| Original case | Target reproduced | First live target time_s | Original reference time_s | Evidence |
+|---|---|---|---|---|
+| G2-v0-default-dt7 | False | - | 60 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-dt7.json) |
+| G2-v0-default-max61 | False | - | 61 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-max61.json) |
+| G2-v0-default-dt3max16 | True | 16.0 | 16 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-dt3max16.json) |
+| G2-v0-default-min0dt7 | True | 11.0 | 11 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-min0dt7.json) |
+| G2-v0-default-min12dt1 | True | 16.0 | 16 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-min12dt1.json) |
+| G2-v0-default-delta_gt_max | True | 11.0 | 11 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default-delta_gt_max.json) |
+| G2-v1-default-delta_gt_max | True | 24.0 | 24 | [source trace](results/raw/s6-sumo-full/replay-G2-v1-default-delta_gt_max.json) |
+| T1-v0-y0 | False | - | 90 | [source trace](results/raw/s6-sumo-full/replay-T1-v0-y0.json) |
+| T2-v0-any | True | 93.0 | 189 | [source trace](results/raw/s6-sumo-full/replay-T2-v0-any.json) |
+| T2-v0-L1 | True | 93.0 | 93 | [source trace](results/raw/s6-sumo-full/replay-T2-v0-L1.json) |
+| G1-v0-L1 | True | 145.0 | 145 | [source trace](results/raw/s6-sumo-full/replay-G1-v0-L1.json) |
+| C1-v0-any | True | 45.0 | 181 | [source trace](results/raw/s6-sumo-full/replay-C1-v0-any.json) |
+| C1-v0-L1 | True | 45.0 | 45 | [source trace](results/raw/s6-sumo-full/replay-C1-v0-L1.json) |
+| G2-v0-default | False | - | 60 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-default.json) |
+| G2-v0-y0 | False | - | 60 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-y0.json) |
+| G2-v0-any | False | - | 60 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-any.json) |
+| G2-v0-L1 | True | 75.0 | 75 | [source trace](results/raw/s6-sumo-full/replay-G2-v0-L1.json) |
+| L1-v0-default | False | - | 66 | [source trace](results/raw/s6-sumo-full/replay-L1-v0-default.json) |
+| L1-v0-y0 | False | - | 60 | [source trace](results/raw/s6-sumo-full/replay-L1-v0-y0.json) |
+| L1-v0-any | False | - | 66 | [source trace](results/raw/s6-sumo-full/replay-L1-v0-any.json) |
+| L1-v0-L1 | True | 254.0 | 254 | [source trace](results/raw/s6-sumo-full/replay-L1-v0-L1.json) |
+
+Examples of differing mechanisms/times are retained: T2/any reaches a live
+same-direction return at t93 rather than the L0 reference's t189; C1/any first
+has signal disagreement at t45 and later illegal phase at t181. Target
+reproduction alone is not a claim of an identical counterexample trace.
+The shared script independently reproduced short T1/G2/C1 examples; its exit0
+means a property failure reproduced, not a property PASS. Original shared
+script output is in results/raw/s6-common-replay/.
+
+### Short source-backed examples and model-to-source narrative
+
+| Example | Actual source finding | Input/evidence |
+|---|---|---|
+| y0 | Direct green change at t20, decision3 | [0,0,1] with yellow0 |
+| Overlong green | Observed green61 at t83; controller age65 check at t88 | [0,0,1] then twelve1 inputs |
+| Bounded wait | NS wait67>66 at t86 | [0,0,1] then thirteen1 inputs |
+| G1/static | Displayed EW9 observations is terminated at t145 while controller age135 satisfies its guard | Original G1/L1 witness |
+| v1 residual parameter defect | Observed EW12>11 at t24; controller age12 check at t25 | delta12/min0/max11/yellow3, input0 |
+
+Timestamps are pre-step samples or completed boundaries as labeled; the run
+continues through the actual step. The G1 example directly connects the source
+minimum-green guard, separate model ages, SPIN assertion and real failure.
+Full samples, monitor events, source/patch digests and captured output are
+preserved. No fix to the residual parameter problem was applied.
+
+### Infinite-model claims versus finite loop observations
+
+The five L2 prefixes were additionally expanded for three periods and observed
+on real source. Results below are finite conformance outcomes, never new
+infinite L2 verdicts. The initial three pure0 L0 examples remain in static
+program0; a finite NS-only tail does not establish eventual starvation because
+the autonomous program will switch again. Online takeover changes that reasoning.
+
+| Model witness | Full finite trace matches source | Final program | Last period green codes |
+|---|---|---|---|
+| L2-v0-default-none | False | 0 | [0] |
+| L2-v0-y0-none | False | 0 | [0] |
+| L2-v0-any-none | False | 0 | [0] |
+| L2-v0-any-request | False | online | [0] |
+| L2-v0-L1-none | True | online | [2] |
+
+The static L1 witness matches the full finite source trace and is online in
+the loop. The any/request witness differs during initial L0/static behavior,
+then exhibits an online NS-only period. Its formal infinite conclusion still
+comes from SPIN plus the stated abstraction, not three observed periods. The
+compact fair-input example was also repeated on source, supporting its source
+mechanism. Data: results/raw/s6-l2-finite-expansions/summary.json. Reproducer:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python verification/spin/scripts/validate_l2_sumo.py \
+  --output verification/spin/results/raw/s6-l2-expansion-rerun
+```
+
+### Fixed-network identity check
+
+The official SUMO library getJunctionIndex/getTLLinkIndex APIs were used to
+compare all14 controlled connection indices, not merely their counts. Every
+pair matched, and all four phase states had zero protected G/G foes. This
+strengthens the fixed-network S1 assumption; TLS/junction indices can differ
+in general networks. Data: results/raw/s6-network-audit.json. Official semantics
+are linked in SPIN_REPORT.md; permissive g is not protected G.
+
+### Final artifacts and remaining human work
+
+- SUMO_VALIDATION.md and results/sumo-replay.csv preserve all live outcomes.
+- SPIN_REPORT.md is a reviewable SPIN technical draft for the joint report.
+- REVIEW_CHECKLIST.md is explicitly pending human review, as the proposal requires.
+- requirements-sumo.txt pins the installed live environment; .venv is ignored.
+- Original formal rows/metrics are unchanged; additional checks are supplementary.
+- The teammate's actual ESBMC results.csv is absent in this checkout; no numerical
+  comparison or teammate result was fabricated. Joint integration needs that evidence.
+
+S6 technical work is ready for review. Do not mark human sign-off completed on
+behalf of the user or imply complete-source/infinite SUMO proof. The open v1
+parameter-admission defect and C1/D4 interpretation require explicit final-report
+handling. No automatic commit/push/merge, source patch or network regeneration.

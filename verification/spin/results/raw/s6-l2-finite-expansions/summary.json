@@ -1,0 +1,52 @@
+[
+  {
+    "case": "L2-v0-default-none",
+    "period_repetitions": 3,
+    "exact_finite_trace_match": false,
+    "last_period_green_codes": [
+      0
+    ],
+    "last_program": "0",
+    "limitation": "Finite source observation only; no infinite L2 verdict"
+  },
+  {
+    "case": "L2-v0-y0-none",
+    "period_repetitions": 3,
+    "exact_finite_trace_match": false,
+    "last_period_green_codes": [
+      0
+    ],
+    "last_program": "0",
+    "limitation": "Finite source observation only; no infinite L2 verdict"
+  },
+  {
+    "case": "L2-v0-any-none",
+    "period_repetitions": 3,
+    "exact_finite_trace_match": false,
+    "last_period_green_codes": [
+      0
+    ],
+    "last_program": "0",
+    "limitation": "Finite source observation only; no infinite L2 verdict"
+  },
+  {
+    "case": "L2-v0-any-request",
+    "period_repetitions": 3,
+    "exact_finite_trace_match": false,
+    "last_period_green_codes": [
+      0
+    ],
+    "last_program": "online",
+    "limitation": "Finite source observation only; no infinite L2 verdict"
+  },
+  {
+    "case": "L2-v0-L1-none",
+    "period_repetitions": 3,
+    "exact_finite_trace_match": true,
+    "last_period_green_codes": [
+      2
+    ],
+    "last_program": "online",
+    "limitation": "Finite source observation only; no infinite L2 verdict"
+  }
+]

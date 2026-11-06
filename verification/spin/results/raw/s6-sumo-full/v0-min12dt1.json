@@ -1,0 +1,1463 @@
+{
+  "name": "v0-min12dt1",
+  "version": "v0",
+  "actions": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "parameters": {
+    "delta": 1,
+    "min": 12,
+    "max": 16
+  },
+  "route": "morning_rush",
+  "modeled_static": 1,
+  "matches": true,
+  "expected_match": true,
+  "expectation_met": true,
+  "time_s": 1.1461977080034558,
+  "records": 61,
+  "first_mismatch": null,
+  "actual_at_mismatch": null,
+  "model_at_mismatch": null,
+  "live": {
+    "records": [
+      [
+        "TICK",
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "DONE",
+        0,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "DONE",
+        1,
+        11,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "TICK",
+        11,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "DONE",
+        2,
+        12,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        "TICK",
+        12,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        "DONE",
+        3,
+        13,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "TICK",
+        13,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "DONE",
+        4,
+        14,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        "TICK",
+        14,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        "DONE",
+        5,
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "TICK",
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "DONE",
+        6,
+        16,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        "TICK",
+        16,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        "DONE",
+        7,
+        17,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        "TICK",
+        17,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        "DONE",
+        8,
+        18,
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        "TICK",
+        18,
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        "DONE",
+        9,
+        19,
+        0,
+        0,
+        9,
+        0
+      ],
+      [
+        "TICK",
+        19,
+        0,
+        0,
+        9,
+        0
+      ],
+      [
+        "DONE",
+        10,
+        20,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        "TICK",
+        20,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        "DONE",
+        11,
+        21,
+        0,
+        0,
+        11,
+        0
+      ],
+      [
+        "TICK",
+        21,
+        0,
+        0,
+        11,
+        0
+      ],
+      [
+        "DONE",
+        12,
+        22,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        "TICK",
+        22,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        "DONE",
+        13,
+        23,
+        0,
+        0,
+        13,
+        0
+      ],
+      [
+        "TICK",
+        23,
+        0,
+        0,
+        13,
+        0
+      ],
+      [
+        "DONE",
+        14,
+        24,
+        0,
+        0,
+        14,
+        0
+      ],
+      [
+        "TICK",
+        24,
+        0,
+        0,
+        14,
+        0
+      ],
+      [
+        "DONE",
+        15,
+        25,
+        0,
+        0,
+        15,
+        0
+      ],
+      [
+        "TICK",
+        25,
+        0,
+        0,
+        15,
+        0
+      ],
+      [
+        "DONE",
+        16,
+        26,
+        0,
+        0,
+        16,
+        0
+      ],
+      [
+        "TICK",
+        26,
+        0,
+        0,
+        16,
+        0
+      ],
+      [
+        "DONE",
+        17,
+        27,
+        0,
+        0,
+        17,
+        0
+      ],
+      [
+        "TICK",
+        27,
+        0,
+        0,
+        17,
+        0
+      ],
+      [
+        "DONE",
+        18,
+        28,
+        0,
+        0,
+        18,
+        0
+      ],
+      [
+        "TICK",
+        28,
+        0,
+        0,
+        18,
+        0
+      ],
+      [
+        "DONE",
+        19,
+        29,
+        0,
+        0,
+        19,
+        0
+      ],
+      [
+        "TICK",
+        29,
+        0,
+        0,
+        19,
+        0
+      ],
+      [
+        "DONE",
+        20,
+        30,
+        0,
+        0,
+        20,
+        0
+      ],
+      [
+        "TICK",
+        30,
+        0,
+        0,
+        20,
+        0
+      ],
+      [
+        "DONE",
+        21,
+        31,
+        0,
+        0,
+        21,
+        0
+      ],
+      [
+        "TICK",
+        31,
+        0,
+        0,
+        21,
+        0
+      ],
+      [
+        "DONE",
+        22,
+        32,
+        0,
+        0,
+        22,
+        0
+      ],
+      [
+        "TICK",
+        32,
+        0,
+        0,
+        22,
+        0
+      ],
+      [
+        "DONE",
+        23,
+        33,
+        0,
+        0,
+        23,
+        0
+      ],
+      [
+        "TICK",
+        33,
+        0,
+        0,
+        23,
+        0
+      ],
+      [
+        "DONE",
+        24,
+        34,
+        0,
+        0,
+        24,
+        0
+      ],
+      [
+        "TICK",
+        34,
+        0,
+        0,
+        24,
+        0
+      ],
+      [
+        "DONE",
+        25,
+        35,
+        0,
+        0,
+        25,
+        0
+      ]
+    ],
+    "samples": [
+      {
+        "time_s": 0.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 1.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 2.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 3.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 4.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 5.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 6.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 7.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 8.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 9.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 10.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 11.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 12.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 3
+      },
+      {
+        "time_s": 13.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 4
+      },
+      {
+        "time_s": 14.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 5
+      },
+      {
+        "time_s": 15.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 6
+      },
+      {
+        "time_s": 16.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 7
+      },
+      {
+        "time_s": 17.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 8
+      },
+      {
+        "time_s": 18.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 9
+      },
+      {
+        "time_s": 19.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 10
+      },
+      {
+        "time_s": 20.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 11
+      },
+      {
+        "time_s": 21.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 11,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 12
+      },
+      {
+        "time_s": 22.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 12,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 13
+      },
+      {
+        "time_s": 23.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 13,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 14
+      },
+      {
+        "time_s": 24.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 14,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 15
+      },
+      {
+        "time_s": 25.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 15,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 16
+      },
+      {
+        "time_s": 26.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 16,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 17
+      },
+      {
+        "time_s": 27.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 17,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 18
+      },
+      {
+        "time_s": 28.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 18,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 19
+      },
+      {
+        "time_s": 29.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 19,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 20
+      },
+      {
+        "time_s": 30.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 20,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 21
+      },
+      {
+        "time_s": 31.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 21,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 22
+      },
+      {
+        "time_s": 32.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 22,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 23
+      },
+      {
+        "time_s": 33.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 23,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 24
+      },
+      {
+        "time_s": 34.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 24,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 25
+      }
+    ],
+    "events": [
+      {
+        "property": "G2",
+        "component": "observed_green",
+        "time_s": 16.0,
+        "decision": 7,
+        "message": "Displayed green exceeds max",
+        "green_age": 17
+      },
+      {
+        "property": "L1",
+        "component": "EW_wait",
+        "time_s": 22.0,
+        "decision": 13,
+        "message": "Directional wait exceeds configured bound",
+        "wait": 23,
+        "limit": 22
+      },
+      {
+        "property": "G2",
+        "component": "controller_age",
+        "time_s": 27.0,
+        "decision": 17,
+        "message": "Controller age exceeds max",
+        "controller_age": 17
+      }
+    ],
+    "rejection": null,
+    "source_sha256": "b353fd007190724f8daf0a236c9957d7a6ad99cca6485e2b0181cbdeb2da27ea",
+    "patch_log": "",
+    "stdout": "Detected 6 incoming lanes: ['east_to_center_0', 'north_to_center_0', 'north_to_center_1', 'south_to_center_0', 'south_to_center_1', 'west_to_center_0']\nUsing 2 controllable signal phases\nEnhanced state dimension: 39\n  - Base features (queue/wait/density): 18\n  - Temporal derivatives: 12\n  - Arrival rates: 6\n  - Phase features: 3\n Retrying in 1 seconds\nUsing 2 controllable green light phases\n  phase 0: GGGgrrrGGGgrrr\n  phase 1: rrrrGGgrrrrGGg\n"
+  },
+  "promela": [
+    [
+      "TICK",
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      7,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      9,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "DONE",
+      0,
+      10,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      10,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "DONE",
+      1,
+      11,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      "TICK",
+      11,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      "DONE",
+      2,
+      12,
+      0,
+      0,
+      2,
+      0
+    ],
+    [
+      "TICK",
+      12,
+      0,
+      0,
+      2,
+      0
+    ],
+    [
+      "DONE",
+      3,
+      13,
+      0,
+      0,
+      3,
+      0
+    ],
+    [
+      "TICK",
+      13,
+      0,
+      0,
+      3,
+      0
+    ],
+    [
+      "DONE",
+      4,
+      14,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      "TICK",
+      14,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      "DONE",
+      5,
+      15,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      "TICK",
+      15,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      "DONE",
+      6,
+      16,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      "TICK",
+      16,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      "DONE",
+      7,
+      17,
+      0,
+      0,
+      7,
+      0
+    ],
+    [
+      "TICK",
+      17,
+      0,
+      0,
+      7,
+      0
+    ],
+    [
+      "DONE",
+      8,
+      18,
+      0,
+      0,
+      8,
+      0
+    ],
+    [
+      "TICK",
+      18,
+      0,
+      0,
+      8,
+      0
+    ],
+    [
+      "DONE",
+      9,
+      19,
+      0,
+      0,
+      9,
+      0
+    ],
+    [
+      "TICK",
+      19,
+      0,
+      0,
+      9,
+      0
+    ],
+    [
+      "DONE",
+      10,
+      20,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      "TICK",
+      20,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      "DONE",
+      11,
+      21,
+      0,
+      0,
+      11,
+      0
+    ],
+    [
+      "TICK",
+      21,
+      0,
+      0,
+      11,
+      0
+    ],
+    [
+      "DONE",
+      12,
+      22,
+      0,
+      0,
+      12,
+      0
+    ],
+    [
+      "TICK",
+      22,
+      0,
+      0,
+      12,
+      0
+    ],
+    [
+      "DONE",
+      13,
+      23,
+      0,
+      0,
+      13,
+      0
+    ],
+    [
+      "TICK",
+      23,
+      0,
+      0,
+      13,
+      0
+    ],
+    [
+      "DONE",
+      14,
+      24,
+      0,
+      0,
+      14,
+      0
+    ],
+    [
+      "TICK",
+      24,
+      0,
+      0,
+      14,
+      0
+    ],
+    [
+      "DONE",
+      15,
+      25,
+      0,
+      0,
+      15,
+      0
+    ],
+    [
+      "TICK",
+      25,
+      0,
+      0,
+      15,
+      0
+    ],
+    [
+      "DONE",
+      16,
+      26,
+      0,
+      0,
+      16,
+      0
+    ],
+    [
+      "TICK",
+      26,
+      0,
+      0,
+      16,
+      0
+    ],
+    [
+      "DONE",
+      17,
+      27,
+      0,
+      0,
+      17,
+      0
+    ],
+    [
+      "TICK",
+      27,
+      0,
+      0,
+      17,
+      0
+    ],
+    [
+      "DONE",
+      18,
+      28,
+      0,
+      0,
+      18,
+      0
+    ],
+    [
+      "TICK",
+      28,
+      0,
+      0,
+      18,
+      0
+    ],
+    [
+      "DONE",
+      19,
+      29,
+      0,
+      0,
+      19,
+      0
+    ],
+    [
+      "TICK",
+      29,
+      0,
+      0,
+      19,
+      0
+    ],
+    [
+      "DONE",
+      20,
+      30,
+      0,
+      0,
+      20,
+      0
+    ],
+    [
+      "TICK",
+      30,
+      0,
+      0,
+      20,
+      0
+    ],
+    [
+      "DONE",
+      21,
+      31,
+      0,
+      0,
+      21,
+      0
+    ],
+    [
+      "TICK",
+      31,
+      0,
+      0,
+      21,
+      0
+    ],
+    [
+      "DONE",
+      22,
+      32,
+      0,
+      0,
+      22,
+      0
+    ],
+    [
+      "TICK",
+      32,
+      0,
+      0,
+      22,
+      0
+    ],
+    [
+      "DONE",
+      23,
+      33,
+      0,
+      0,
+      23,
+      0
+    ],
+    [
+      "TICK",
+      33,
+      0,
+      0,
+      23,
+      0
+    ],
+    [
+      "DONE",
+      24,
+      34,
+      0,
+      0,
+      24,
+      0
+    ],
+    [
+      "TICK",
+      34,
+      0,
+      0,
+      24,
+      0
+    ],
+    [
+      "DONE",
+      25,
+      35,
+      0,
+      0,
+      25,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+replaying 3 actions: [0, 0, 1]   (looking for T1)
+  t=20s  T1: NS green -> EW green without yellow
+T1 REPRODUCED in SUMO

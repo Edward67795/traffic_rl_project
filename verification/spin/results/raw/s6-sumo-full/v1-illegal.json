@@ -1,0 +1,652 @@
+{
+  "name": "v1-illegal",
+  "version": "v1",
+  "actions": [
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0
+  ],
+  "parameters": {},
+  "route": "off_peak",
+  "modeled_static": 1,
+  "matches": true,
+  "expected_match": true,
+  "expectation_met": true,
+  "time_s": 1.0962312080082484,
+  "records": 25,
+  "first_mismatch": null,
+  "actual_at_mismatch": null,
+  "model_at_mismatch": null,
+  "live": {
+    "records": [
+      [
+        "TICK",
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        3,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        4,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        5,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        6,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        7,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        8,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        9,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        0,
+        10,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        10,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        11,
+        0,
+        0,
+        11,
+        1
+      ],
+      [
+        "TICK",
+        12,
+        0,
+        0,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        13,
+        0,
+        0,
+        13,
+        1
+      ],
+      [
+        "TICK",
+        14,
+        0,
+        0,
+        14,
+        1
+      ],
+      [
+        "DONE",
+        1,
+        15,
+        0,
+        0,
+        15,
+        1
+      ],
+      [
+        "TICK",
+        15,
+        0,
+        0,
+        15,
+        1
+      ],
+      [
+        "TICK",
+        16,
+        0,
+        0,
+        16,
+        1
+      ],
+      [
+        "TICK",
+        17,
+        0,
+        0,
+        17,
+        1
+      ],
+      [
+        "TICK",
+        18,
+        0,
+        0,
+        18,
+        1
+      ],
+      [
+        "TICK",
+        19,
+        0,
+        0,
+        19,
+        1
+      ],
+      [
+        "DONE",
+        2,
+        20,
+        0,
+        0,
+        20,
+        1
+      ],
+      [
+        "REJECT",
+        4
+      ],
+      [
+        "ABORT",
+        3,
+        20,
+        0,
+        0,
+        20,
+        1
+      ]
+    ],
+    "samples": [
+      {
+        "time_s": 0.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 1.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 2.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 3.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 4.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 5.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 6.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 7.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 8.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 9.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 10.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 11.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 11,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 12.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 13.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 13,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 14.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 14,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 15.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 15,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 16.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 16,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 17.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 17,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 18.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 18,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 19.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 19,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      }
+    ],
+    "events": [],
+    "rejection": {
+      "stage": "action",
+      "message": "action must be 0 or 1, got -1",
+      "decision": 3
+    },
+    "source_sha256": "c1b1a090bf9924765d70304839ade17bc5d1791bb6de5a30746a5eff5e6d00a8",
+    "patch_log": "patching file 'src/environment.py'\n",
+    "stdout": "Detected 6 incoming lanes: ['east_to_center_0', 'north_to_center_0', 'north_to_center_1', 'south_to_center_0', 'south_to_center_1', 'west_to_center_0']\nUsing 2 controllable signal phases\nEnhanced state dimension: 39\n  - Base features (queue/wait/density): 18\n  - Temporal derivatives: 12\n  - Arrival rates: 6\n  - Phase features: 3\n Retrying in 1 seconds\nUsing 2 controllable green light phases\n  phase 0: GGGgrrrGGGgrrr\n  phase 1: rrrrGGgrrrrGGg\n"
+  },
+  "promela": [
+    [
+      "TICK",
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      2,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      3,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      4,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      5,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      6,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      7,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      8,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      9,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      0,
+      10,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      10,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      11,
+      0,
+      0,
+      11,
+      1
+    ],
+    [
+      "TICK",
+      12,
+      0,
+      0,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      13,
+      0,
+      0,
+      13,
+      1
+    ],
+    [
+      "TICK",
+      14,
+      0,
+      0,
+      14,
+      1
+    ],
+    [
+      "DONE",
+      1,
+      15,
+      0,
+      0,
+      15,
+      1
+    ],
+    [
+      "TICK",
+      15,
+      0,
+      0,
+      15,
+      1
+    ],
+    [
+      "TICK",
+      16,
+      0,
+      0,
+      16,
+      1
+    ],
+    [
+      "TICK",
+      17,
+      0,
+      0,
+      17,
+      1
+    ],
+    [
+      "TICK",
+      18,
+      0,
+      0,
+      18,
+      1
+    ],
+    [
+      "TICK",
+      19,
+      0,
+      0,
+      19,
+      1
+    ],
+    [
+      "DONE",
+      2,
+      20,
+      0,
+      0,
+      20,
+      1
+    ],
+    [
+      "REJECT",
+      4
+    ],
+    [
+      "ABORT",
+      3,
+      20,
+      0,
+      0,
+      20,
+      1
+    ]
+  ]
+}

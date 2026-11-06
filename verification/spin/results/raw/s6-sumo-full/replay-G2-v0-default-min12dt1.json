@@ -1,0 +1,415 @@
+{
+  "case": "G2-v0-default-min12dt1",
+  "version": "v0",
+  "target": "G2",
+  "formal_evidence": "results/raw/G2-v0-default-min12dt1-20261106T111959955097Z",
+  "target_reproduced": true,
+  "target_events": [
+    {
+      "property": "G2",
+      "component": "observed_green",
+      "time_s": 16.0,
+      "decision": 7,
+      "message": "Displayed green exceeds max",
+      "green_age": 17
+    }
+  ],
+  "live": {
+    "records": [
+      [
+        "TICK",
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "DONE",
+        0,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "DONE",
+        1,
+        11,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "TICK",
+        11,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "DONE",
+        2,
+        12,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        "TICK",
+        12,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        "DONE",
+        3,
+        13,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "TICK",
+        13,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "DONE",
+        4,
+        14,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        "TICK",
+        14,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        "DONE",
+        5,
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "TICK",
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "DONE",
+        6,
+        16,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        "TICK",
+        16,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        "DONE",
+        7,
+        17,
+        0,
+        0,
+        7,
+        0
+      ]
+    ],
+    "samples": [
+      {
+        "time_s": 0.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 1.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 2.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 3.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 4.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 5.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 6.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 7.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 8.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 9.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 10.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 11.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 12.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 3
+      },
+      {
+        "time_s": 13.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 4
+      },
+      {
+        "time_s": 14.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 5
+      },
+      {
+        "time_s": 15.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 6
+      },
+      {
+        "time_s": 16.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 7
+      }
+    ],
+    "events": [
+      {
+        "property": "G2",
+        "component": "observed_green",
+        "time_s": 16.0,
+        "decision": 7,
+        "message": "Displayed green exceeds max",
+        "green_age": 17
+      }
+    ],
+    "rejection": null,
+    "source_sha256": "b353fd007190724f8daf0a236c9957d7a6ad99cca6485e2b0181cbdeb2da27ea",
+    "patch_log": "",
+    "stdout": "Detected 6 incoming lanes: ['east_to_center_0', 'north_to_center_0', 'north_to_center_1', 'south_to_center_0', 'south_to_center_1', 'west_to_center_0']\nUsing 2 controllable signal phases\nEnhanced state dimension: 39\n  - Base features (queue/wait/density): 18\n  - Temporal derivatives: 12\n  - Arrival rates: 6\n  - Phase features: 3\n Retrying in 1 seconds\nUsing 2 controllable green light phases\n  phase 0: GGGgrrrGGGgrrr\n  phase 1: rrrrGGgrrrrGGg\n"
+  }
+}

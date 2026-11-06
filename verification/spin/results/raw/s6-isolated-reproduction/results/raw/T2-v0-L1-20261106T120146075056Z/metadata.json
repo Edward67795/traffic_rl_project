@@ -1,0 +1,290 @@
+{
+  "case": "T2-v0-L1",
+  "property": "T2",
+  "scenario": "L1",
+  "version": "v0",
+  "parameters": {
+    "delta": 5,
+    "yellow": 3,
+    "min": 10,
+    "max": 60
+  },
+  "versions": {
+    "spin": "Spin Version 6.5.2 -- 6 December 2019",
+    "cc": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.3.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "network": {
+    "sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+    "phase_states": [
+      "GGGgrrrGGGgrrr",
+      "yyyyrrryyyyrrr",
+      "rrrrGGgrrrrGGg",
+      "rrrryyyrrrryyy"
+    ],
+    "durations": [
+      42,
+      3,
+      42,
+      3
+    ],
+    "protected_conflicts_checked": 38,
+    "mapping_assumption": "signal link i corresponds to junction request i",
+    "result": "PASS"
+  },
+  "flags": [
+    "-DCHK_T2",
+    "-DVERSION=0",
+    "-DDELTA_TIME=5",
+    "-DMIN_GREEN=10",
+    "-DMAX_GREEN=60",
+    "-DSTATIC_PROGRAM=1",
+    "-DYELLOW_TIME=3"
+  ],
+  "agent_fairness": null,
+  "process_weak_fairness": false,
+  "limits": {
+    "depth": 100000,
+    "memory_mb": 512,
+    "timeout_s_per_command": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_T2",
+        "-DVERSION=0",
+        "-DDELTA_TIME=5",
+        "-DMIN_GREEN=10",
+        "-DMAX_GREEN=60",
+        "-DSTATIC_PROGRAM=1",
+        "-DYELLOW_TIME=3",
+        "-a",
+        "controller.pml"
+      ],
+      "shell": "spin -DCHK_T2 -DVERSION=0 -DDELTA_TIME=5 -DMIN_GREEN=10 -DMAX_GREEN=60 -DSTATIC_PROGRAM=1 -DYELLOW_TIME=3 -a controller.pml",
+      "exit_code": 0,
+      "time_s": 0.03144933300791308
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "shell": "cc -O2 -DMEMLIM=512 -o pan pan.c",
+      "exit_code": 0,
+      "time_s": 0.3451017089828383
+    },
+    {
+      "argv": [
+        "./pan",
+        "-?"
+      ],
+      "shell": "./pan '-?'",
+      "exit_code": 1,
+      "time_s": 0.38837962501565926
+    },
+    {
+      "argv": [
+        "./pan",
+        "-m100000",
+        "-w18",
+        "-b",
+        "-a"
+      ],
+      "shell": "./pan -m100000 -w18 -b -a",
+      "exit_code": 0,
+      "time_s": 0.012946000002557412
+    },
+    {
+      "argv": [
+        "spin",
+        "-T",
+        "-DCHK_T2",
+        "-DVERSION=0",
+        "-DDELTA_TIME=5",
+        "-DMIN_GREEN=10",
+        "-DMAX_GREEN=60",
+        "-DSTATIC_PROGRAM=1",
+        "-DYELLOW_TIME=3",
+        "-t",
+        "-k",
+        "controller.pml.trail",
+        "controller.pml"
+      ],
+      "shell": "spin -T -DCHK_T2 -DVERSION=0 -DDELTA_TIME=5 -DMIN_GREEN=10 -DMAX_GREEN=60 -DSTATIC_PROGRAM=1 -DYELLOW_TIME=3 -t -k controller.pml.trail controller.pml",
+      "exit_code": 0,
+      "time_s": 0.04329645898542367
+    }
+  ],
+  "model_sha256": {
+    "verification/spin/models/controller.pml": "9009d2fa92fae15ce8ef15b2f78faf6f273167f0e9e825f8133de1c24054e9a0",
+    "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
+    "verification/spin/scripts/run_spin.py": "55ecfbe9482ac5d2d6f02237879e69480bd6ca587c07cdc08f7ec7e5ae816fc6",
+    "verification/spin/scripts/liveness.py": "83ac4d57c21baa4ffe0b31781893da39fd8adb5dd1945181d2d088a806dfb2d4"
+  },
+  "started_utc": "20261106T120146075056Z",
+  "source_snapshot": "models/",
+  "observation_columns": [
+    "signal",
+    "current_phase",
+    "controller_age",
+    "green_age_before_sample",
+    "yellow_age_before_sample"
+  ],
+  "timing_columns": [
+    "observed_green_age",
+    "ns_wait",
+    "ew_wait"
+  ],
+  "timing": "time_s is verifier wall time only; generation/compile recorded separately",
+  "ce_length_convention": "count ACTION events through failing state, including an unfinished decision; not guaranteed shortest",
+  "limitations": [
+    "reference static timing, not real SUMO validation",
+    "C1 decision-boundary interpretation pending D4"
+  ],
+  "reference_sha256": {
+    "verification/esbmc/model/env_core_v1.py": "4a8376213d4e6cbde10a15671478a2c7298ebe2f5d2fefcb98c11bca0a4bc8ca",
+    "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
+    "verification/esbmc/model/env_core_v1_naive.py": "2094fd268013c07e9e4f4265fac61c79e0ae3f6386c276c7987dda8fd5986614",
+    "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff"
+  },
+  "witness": {
+    "actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "observed_seconds": 94,
+    "last_observations": [
+      [
+        2,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        73,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        74,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        75,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        76,
+        0,
+        1
+      ],
+      [
+        3,
+        0,
+        76,
+        0,
+        2
+      ],
+      [
+        3,
+        0,
+        76,
+        0,
+        3
+      ],
+      [
+        3,
+        0,
+        76,
+        0,
+        3
+      ],
+      [
+        2,
+        1,
+        0,
+        0,
+        3
+      ]
+    ],
+    "acceptance_cycle": false,
+    "timing_samples": [],
+    "reference": {
+      "reproduced": true,
+      "message": "T2: yellow not followed by the other direction",
+      "time_s": 93,
+      "decision": 17,
+      "phase": 1,
+      "signal": 2,
+      "controller_age": 0,
+      "observed_green_age": 0,
+      "ns_wait": 50,
+      "ew_wait": 5,
+      "component": "T2"
+    }
+  },
+  "result": {
+    "tool": "spin",
+    "property": "T2",
+    "version": "v0",
+    "config": "L1;fidelity=L1;dt=5;y=3;min=10;max=60",
+    "bound": "depth=1161",
+    "result": "FAIL",
+    "ce_length": "17",
+    "time_s": "0.012946",
+    "memory_mb": "7.536",
+    "notes": "evidence=results/raw/T2-v0-L1-20261106T120146075056Z;model-level only;ce counts started decisions;DFS witness not necessarily shortest"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "fresh-temporary-code-copy-formal-reproduction",
+  "exit_code": 0,
+  "rows": 72,
+  "matched_verdict_depth_ce": true,
+  "differences": [],
+  "wall_time_s": 64.05914116700296,
+  "argv": [
+    "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "verification/spin/scripts/run_spin.py",
+    "--all"
+  ],
+  "limits": [
+    "same installed toolchain, not a fresh Mac",
+    "metrics measured again; timings are not expected identical"
+  ]
+}

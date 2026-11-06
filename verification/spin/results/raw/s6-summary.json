@@ -1,0 +1,40 @@
+{
+  "formal": {
+    "rows": 72,
+    "verdicts": {
+      "PASS": 46,
+      "FAIL": 26
+    },
+    "finite_witnesses": 21,
+    "cyclic_witnesses": 5,
+    "note": "Audits saved evidence, not an independent rerun or real SUMO proof"
+  },
+  "isolated_reproduction": {
+    "kind": "fresh-temporary-code-copy-formal-reproduction",
+    "exit_code": 0,
+    "rows": 72,
+    "matched_verdict_depth_ce": true,
+    "differences": [],
+    "wall_time_s": 64.05914116700296,
+    "argv": [
+      "/opt/homebrew/opt/python@3.13/bin/python3.13",
+      "verification/spin/scripts/run_spin.py",
+      "--all"
+    ],
+    "limits": [
+      "same installed toolchain, not a fresh Mac",
+      "metrics measured again; timings are not expected identical"
+    ]
+  },
+  "real_conformance_cases": 38,
+  "real_conformance_records": 7205,
+  "negative_controls": 1,
+  "finite_prefix_replays": 21,
+  "target_reproduced": 12,
+  "not_reproduced": 9,
+  "source_sha256": "b353fd007190724f8daf0a236c9957d7a6ad99cca6485e2b0181cbdeb2da27ea",
+  "source_matches_v0_commit": true,
+  "human_review": "pending",
+  "teammate_results_csv_present": false,
+  "residual_v1_issue": "delta12/min0/max11 accepted, overlong green reproduced in real SUMO"
+}

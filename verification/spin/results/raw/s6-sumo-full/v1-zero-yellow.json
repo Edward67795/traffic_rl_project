@@ -1,0 +1,47 @@
+{
+  "name": "v1-zero-yellow",
+  "version": "v1",
+  "actions": [
+    0,
+    0,
+    1,
+    0,
+    1
+  ],
+  "parameters": {
+    "yellow": 0
+  },
+  "route": "morning_rush",
+  "modeled_static": 1,
+  "matches": true,
+  "expected_match": true,
+  "expectation_met": true,
+  "time_s": 0.03337308397749439,
+  "records": 1,
+  "first_mismatch": null,
+  "actual_at_mismatch": null,
+  "model_at_mismatch": null,
+  "live": {
+    "records": [
+      [
+        "REJECT",
+        1
+      ]
+    ],
+    "samples": [],
+    "events": [],
+    "rejection": {
+      "stage": "constructor",
+      "message": "yellow_time must be >= 3"
+    },
+    "source_sha256": "c1b1a090bf9924765d70304839ade17bc5d1791bb6de5a30746a5eff5e6d00a8",
+    "patch_log": "patching file 'src/environment.py'\n",
+    "stdout": ""
+  },
+  "promela": [
+    [
+      "REJECT",
+      1
+    ]
+  ]
+}

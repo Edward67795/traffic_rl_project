@@ -1,0 +1,149 @@
+{
+  "case": "L2-v0-y0-request",
+  "property": "L2",
+  "scenario": "y0",
+  "version": "v0",
+  "parameters": {
+    "delta": 5,
+    "yellow": 0,
+    "min": 10,
+    "max": 60
+  },
+  "versions": {
+    "spin": "Spin Version 6.5.2 -- 6 December 2019",
+    "cc": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.3.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "network": {
+    "sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+    "phase_states": [
+      "GGGgrrrGGGgrrr",
+      "yyyyrrryyyyrrr",
+      "rrrrGGgrrrrGGg",
+      "rrrryyyrrrryyy"
+    ],
+    "durations": [
+      42,
+      3,
+      42,
+      3
+    ],
+    "protected_conflicts_checked": 38,
+    "mapping_assumption": "signal link i corresponds to junction request i",
+    "result": "PASS"
+  },
+  "flags": [
+    "-DCHK_L2",
+    "-DVERSION=0",
+    "-DDELTA_TIME=5",
+    "-DMIN_GREEN=10",
+    "-DMAX_GREEN=60",
+    "-DSTATIC_PROGRAM=0",
+    "-DYELLOW_TIME=0",
+    "-DAGENT_FAIRNESS=1"
+  ],
+  "agent_fairness": "request",
+  "process_weak_fairness": false,
+  "limits": {
+    "depth": 100000,
+    "memory_mb": 512,
+    "timeout_s_per_command": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_L2",
+        "-DVERSION=0",
+        "-DDELTA_TIME=5",
+        "-DMIN_GREEN=10",
+        "-DMAX_GREEN=60",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=0",
+        "-DAGENT_FAIRNESS=1",
+        "-a",
+        "controller.pml"
+      ],
+      "shell": "spin -DCHK_L2 -DVERSION=0 -DDELTA_TIME=5 -DMIN_GREEN=10 -DMAX_GREEN=60 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=0 -DAGENT_FAIRNESS=1 -a controller.pml",
+      "exit_code": 0,
+      "time_s": 0.22135224999510683
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "shell": "cc -O2 -DMEMLIM=512 -o pan pan.c",
+      "exit_code": 0,
+      "time_s": 0.5441709590086248
+    },
+    {
+      "argv": [
+        "./pan",
+        "-?"
+      ],
+      "shell": "./pan '-?'",
+      "exit_code": 1,
+      "time_s": 0.43256975000258535
+    },
+    {
+      "argv": [
+        "./pan",
+        "-m100000",
+        "-w18",
+        "-b",
+        "-a"
+      ],
+      "shell": "./pan -m100000 -w18 -b -a",
+      "exit_code": 0,
+      "time_s": 0.0121625000028871
+    }
+  ],
+  "model_sha256": {
+    "verification/spin/models/controller.pml": "9009d2fa92fae15ce8ef15b2f78faf6f273167f0e9e825f8133de1c24054e9a0",
+    "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
+    "verification/spin/scripts/run_spin.py": "55ecfbe9482ac5d2d6f02237879e69480bd6ca587c07cdc08f7ec7e5ae816fc6",
+    "verification/spin/scripts/liveness.py": "83ac4d57c21baa4ffe0b31781893da39fd8adb5dd1945181d2d088a806dfb2d4"
+  },
+  "started_utc": "20261106T120203830163Z",
+  "source_snapshot": "models/",
+  "observation_columns": [
+    "signal",
+    "current_phase",
+    "controller_age",
+    "green_age_before_sample",
+    "yellow_age_before_sample"
+  ],
+  "timing_columns": [
+    "observed_green_age",
+    "ns_wait",
+    "ew_wait"
+  ],
+  "timing": "time_s is verifier wall time only; generation/compile recorded separately",
+  "ce_length_convention": "count ACTION events through failing state, including an unfinished decision; not guaranteed shortest",
+  "limitations": [
+    "reference static timing, not real SUMO validation",
+    "C1 decision-boundary interpretation pending D4"
+  ],
+  "reference_sha256": {
+    "verification/esbmc/model/env_core_v1.py": "4a8376213d4e6cbde10a15671478a2c7298ebe2f5d2fefcb98c11bca0a4bc8ca",
+    "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
+    "verification/esbmc/model/env_core_v1_naive.py": "2094fd268013c07e9e4f4265fac61c79e0ae3f6386c276c7987dda8fd5986614",
+    "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff"
+  },
+  "result": {
+    "tool": "spin",
+    "property": "L2",
+    "version": "v0",
+    "config": "y0;fidelity=L0;dt=5;y=0;min=10;max=60;fairness=request",
+    "bound": "depth=2747",
+    "result": "PASS",
+    "ce_length": "",
+    "time_s": "0.012163",
+    "memory_mb": "7.829",
+    "notes": "evidence=results/raw/L2-v0-y0-request-20261106T120203830163Z;model-level only;ce counts started decisions;DFS witness not necessarily shortest;agent_fairness=request;ongoing positive-time controller;ce=prefix plus one cycle decisions"
+  }
+}

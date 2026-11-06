@@ -212,3 +212,26 @@ Both Promela and the unchanged v1 reference violate G2 at observed age12.
 This is a discovered parameter-contract gap outside the referenced dt1..7 sweep.
 It does not contradict the executed default-parameter PASSs. Do not strengthen
 validation or patch source to make this row pass without owner authorization.
+
+## S6 direct-source validation and environment refinement limits
+
+The actual full-source traces match the projected Promela signal, controller
+phase/age/time and online state in38 selected cases (7,205 records), including
+v1 early errors. The static environment confirms observed transitions at43/46/
+88/91. Abstract static-cursor bookkeeping is not compared as a source controller
+field, especially after online takeover where it is disabled.
+
+L0 is not a conservative source abstraction: it omits autonomous transitions and
+permits indefinite initial displayed green.9 of21 original finite assertion
+prefixes did not reproduce their selected target in SUMO; all9 are L0. Some
+other L0 targets reproduce via a different actual trace/time. These differences
+were not hidden by changing the formal verdict. Source-backed interpretation
+uses L1 and actual independent replay; finite matching does not prove a general
+bisimulation or exhaustive full-source correctness.
+
+A SUMO-library audit directly compared getJunctionIndex/getTLLinkIndex on every
+controlled connection and found identity for all14, with no protected G/G foes
+in any phase. This discharges the fixed-network index assumption empirically
+for this file/library, not arbitrary regenerated networks. Original source/patch/
+network hashes are retained. Human review and C1's D4 interpretation remain
+explicitly pending; code/models were not modified to conceal fidelity gaps.

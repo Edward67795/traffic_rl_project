@@ -1,0 +1,3630 @@
+{
+  "name": "v0-illegal",
+  "version": "v0",
+  "actions": [
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    -1,
+    2,
+    1,
+    0
+  ],
+  "parameters": {},
+  "route": "off_peak",
+  "modeled_static": 1,
+  "matches": true,
+  "expected_match": true,
+  "expectation_met": true,
+  "time_s": 1.1767340000078548,
+  "records": 143,
+  "first_mismatch": null,
+  "actual_at_mismatch": null,
+  "model_at_mismatch": null,
+  "live": {
+    "records": [
+      [
+        "TICK",
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "DONE",
+        0,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        "TICK",
+        11,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "TICK",
+        12,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        "TICK",
+        13,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "TICK",
+        14,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        "DONE",
+        1,
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "TICK",
+        15,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        "TICK",
+        16,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        "TICK",
+        17,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        "TICK",
+        18,
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        "TICK",
+        19,
+        0,
+        0,
+        9,
+        0
+      ],
+      [
+        "DONE",
+        2,
+        20,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        "TICK",
+        20,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        21,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        22,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        23,
+        0,
+        -1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        24,
+        0,
+        -1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        25,
+        0,
+        -1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        26,
+        0,
+        -1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        27,
+        0,
+        -1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        3,
+        28,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        28,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        29,
+        0,
+        -1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        30,
+        0,
+        -1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        31,
+        0,
+        -1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        32,
+        0,
+        -1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        4,
+        33,
+        0,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        33,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        34,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        35,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        36,
+        2,
+        1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        37,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        38,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        39,
+        2,
+        1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        40,
+        2,
+        1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        5,
+        41,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        41,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        42,
+        2,
+        1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        43,
+        2,
+        1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        44,
+        2,
+        1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        45,
+        2,
+        1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        6,
+        46,
+        2,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        46,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        47,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        48,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        49,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        50,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        51,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        52,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        53,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        7,
+        54,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        54,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        55,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        56,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        57,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        58,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        8,
+        59,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        59,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        60,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        61,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        62,
+        0,
+        -1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        63,
+        0,
+        -1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        64,
+        0,
+        -1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        65,
+        0,
+        -1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        66,
+        0,
+        -1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        9,
+        67,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        67,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        68,
+        0,
+        -1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        69,
+        0,
+        -1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        70,
+        0,
+        -1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        71,
+        0,
+        -1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        10,
+        72,
+        0,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        72,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        73,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        74,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        75,
+        2,
+        1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        76,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        77,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        78,
+        2,
+        1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        79,
+        2,
+        1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        11,
+        80,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        80,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        81,
+        2,
+        1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        82,
+        2,
+        1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        83,
+        2,
+        1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        84,
+        2,
+        1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        12,
+        85,
+        2,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        85,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        86,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        87,
+        3,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        88,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        89,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        90,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        91,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        92,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        13,
+        93,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        93,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        94,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        95,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        96,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        97,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        14,
+        98,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        98,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        99,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        100,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        101,
+        0,
+        -1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        102,
+        0,
+        -1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        103,
+        0,
+        -1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        104,
+        0,
+        -1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        105,
+        0,
+        -1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        15,
+        106,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        106,
+        0,
+        -1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        107,
+        0,
+        -1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        108,
+        0,
+        -1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        109,
+        0,
+        -1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        110,
+        0,
+        -1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        16,
+        111,
+        0,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        111,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        112,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        113,
+        1,
+        -1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        114,
+        2,
+        1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        115,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        116,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        117,
+        2,
+        1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        118,
+        2,
+        1,
+        4,
+        1
+      ],
+      [
+        "DONE",
+        17,
+        119,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        119,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        120,
+        2,
+        1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        121,
+        2,
+        1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        122,
+        2,
+        1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        123,
+        2,
+        1,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        18,
+        124,
+        2,
+        1,
+        10,
+        1
+      ]
+    ],
+    "samples": [
+      {
+        "time_s": 0.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 1.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 2.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 3.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 4.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 5.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 6.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 7.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 8.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 9.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 0
+      },
+      {
+        "time_s": 10.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 11.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 12.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 13.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 14.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 1
+      },
+      {
+        "time_s": 15.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 16.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 17.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 18.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 19.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "0",
+        "program_phase": 0,
+        "next_switch": 42.0,
+        "decision": 2
+      },
+      {
+        "time_s": 20.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 21.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 22.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 23.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 24.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 25.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 26.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 27.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 3
+      },
+      {
+        "time_s": 28.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 4
+      },
+      {
+        "time_s": 29.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 4
+      },
+      {
+        "time_s": 30.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 4
+      },
+      {
+        "time_s": 31.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 4
+      },
+      {
+        "time_s": 32.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 4
+      },
+      {
+        "time_s": 33.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 34.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 35.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 36.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 37.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 38.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 39.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 40.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 5
+      },
+      {
+        "time_s": 41.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 6
+      },
+      {
+        "time_s": 42.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 6
+      },
+      {
+        "time_s": 43.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 6
+      },
+      {
+        "time_s": 44.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 6
+      },
+      {
+        "time_s": 45.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 6
+      },
+      {
+        "time_s": 46.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 47.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 48.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 49.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 50.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 51.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 52.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 53.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 7
+      },
+      {
+        "time_s": 54.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 8
+      },
+      {
+        "time_s": 55.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 8
+      },
+      {
+        "time_s": 56.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 8
+      },
+      {
+        "time_s": 57.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 8
+      },
+      {
+        "time_s": 58.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 8
+      },
+      {
+        "time_s": 59.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 60.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 61.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 62.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 63.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 64.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 65.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 66.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 9
+      },
+      {
+        "time_s": 67.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 10
+      },
+      {
+        "time_s": 68.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 10
+      },
+      {
+        "time_s": 69.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 10
+      },
+      {
+        "time_s": 70.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 10
+      },
+      {
+        "time_s": 71.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 10
+      },
+      {
+        "time_s": 72.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 73.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 74.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 75.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 76.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 77.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 78.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 79.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 11
+      },
+      {
+        "time_s": 80.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 12
+      },
+      {
+        "time_s": 81.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 12
+      },
+      {
+        "time_s": 82.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 12
+      },
+      {
+        "time_s": 83.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 12
+      },
+      {
+        "time_s": 84.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 12
+      },
+      {
+        "time_s": 85.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 86.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 87.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 88.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 89.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 90.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 91.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 92.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 13
+      },
+      {
+        "time_s": 93.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 14
+      },
+      {
+        "time_s": 94.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 14
+      },
+      {
+        "time_s": 95.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 14
+      },
+      {
+        "time_s": 96.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 14
+      },
+      {
+        "time_s": 97.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 14
+      },
+      {
+        "time_s": 98.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 99.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 100.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 101.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 102.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 103.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 104.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 105.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 15
+      },
+      {
+        "time_s": 106.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 16
+      },
+      {
+        "time_s": 107.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 16
+      },
+      {
+        "time_s": 108.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 16
+      },
+      {
+        "time_s": 109.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 16
+      },
+      {
+        "time_s": 110.0,
+        "signal": 0,
+        "phase": -1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 16
+      },
+      {
+        "time_s": 111.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 112.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 113.0,
+        "signal": 1,
+        "phase": -1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 114.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 115.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 116.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 117.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 118.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 17
+      },
+      {
+        "time_s": 119.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 18
+      },
+      {
+        "time_s": 120.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 18
+      },
+      {
+        "time_s": 121.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 18
+      },
+      {
+        "time_s": 122.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 18
+      },
+      {
+        "time_s": 123.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86420.0,
+        "decision": 18
+      }
+    ],
+    "events": [
+      {
+        "property": "T2",
+        "component": "yellow_target",
+        "time_s": 23.0,
+        "decision": 3,
+        "message": "Yellow returned to the same green"
+      },
+      {
+        "property": "C1",
+        "component": "phase_range",
+        "time_s": 28.0,
+        "decision": 3,
+        "message": "Controller phase outside0/1",
+        "phase": -1
+      }
+    ],
+    "rejection": null,
+    "source_sha256": "b353fd007190724f8daf0a236c9957d7a6ad99cca6485e2b0181cbdeb2da27ea",
+    "patch_log": "",
+    "stdout": "Detected 6 incoming lanes: ['east_to_center_0', 'north_to_center_0', 'north_to_center_1', 'south_to_center_0', 'south_to_center_1', 'west_to_center_0']\nUsing 2 controllable signal phases\nEnhanced state dimension: 39\n  - Base features (queue/wait/density): 18\n  - Temporal derivatives: 12\n  - Arrival rates: 6\n  - Phase features: 3\n Retrying in 1 seconds\nUsing 2 controllable green light phases\n  phase 0: GGGgrrrGGGgrrr\n  phase 1: rrrrGGgrrrrGGg\nWarning: invalid phase index -1, using phase 0\nWarning: invalid phase index -1, using phase 0\nWarning: invalid phase index -1, using phase 0\n"
+  },
+  "promela": [
+    [
+      "TICK",
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      7,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      9,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "DONE",
+      0,
+      10,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      10,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "TICK",
+      11,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      "TICK",
+      12,
+      0,
+      0,
+      2,
+      0
+    ],
+    [
+      "TICK",
+      13,
+      0,
+      0,
+      3,
+      0
+    ],
+    [
+      "TICK",
+      14,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      "DONE",
+      1,
+      15,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      "TICK",
+      15,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      "TICK",
+      16,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      "TICK",
+      17,
+      0,
+      0,
+      7,
+      0
+    ],
+    [
+      "TICK",
+      18,
+      0,
+      0,
+      8,
+      0
+    ],
+    [
+      "TICK",
+      19,
+      0,
+      0,
+      9,
+      0
+    ],
+    [
+      "DONE",
+      2,
+      20,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      "TICK",
+      20,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      21,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      22,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      23,
+      0,
+      -1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      24,
+      0,
+      -1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      25,
+      0,
+      -1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      26,
+      0,
+      -1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      27,
+      0,
+      -1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      3,
+      28,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      28,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      29,
+      0,
+      -1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      30,
+      0,
+      -1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      31,
+      0,
+      -1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      32,
+      0,
+      -1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      4,
+      33,
+      0,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      33,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      34,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      35,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      36,
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      37,
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      38,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      39,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      40,
+      2,
+      1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      5,
+      41,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      41,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      42,
+      2,
+      1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      43,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      44,
+      2,
+      1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      45,
+      2,
+      1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      6,
+      46,
+      2,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      46,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      47,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      48,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      49,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      50,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      51,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      52,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      53,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      7,
+      54,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      54,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      55,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      56,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      57,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      58,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      8,
+      59,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      59,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      60,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      61,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      62,
+      0,
+      -1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      63,
+      0,
+      -1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      64,
+      0,
+      -1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      65,
+      0,
+      -1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      66,
+      0,
+      -1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      9,
+      67,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      67,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      68,
+      0,
+      -1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      69,
+      0,
+      -1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      70,
+      0,
+      -1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      71,
+      0,
+      -1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      10,
+      72,
+      0,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      72,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      73,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      74,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      75,
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      76,
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      77,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      78,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      79,
+      2,
+      1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      11,
+      80,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      80,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      81,
+      2,
+      1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      82,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      83,
+      2,
+      1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      84,
+      2,
+      1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      12,
+      85,
+      2,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      85,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      86,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      87,
+      3,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      88,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      89,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      90,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      91,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      92,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      13,
+      93,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      93,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      94,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      95,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      96,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      97,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      14,
+      98,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      98,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      99,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      100,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      101,
+      0,
+      -1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      102,
+      0,
+      -1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      103,
+      0,
+      -1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      104,
+      0,
+      -1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      105,
+      0,
+      -1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      15,
+      106,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      106,
+      0,
+      -1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      107,
+      0,
+      -1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      108,
+      0,
+      -1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      109,
+      0,
+      -1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      110,
+      0,
+      -1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      16,
+      111,
+      0,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      111,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      112,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      113,
+      1,
+      -1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      114,
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      115,
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      116,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      117,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      118,
+      2,
+      1,
+      4,
+      1
+    ],
+    [
+      "DONE",
+      17,
+      119,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      119,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      120,
+      2,
+      1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      121,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      122,
+      2,
+      1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      123,
+      2,
+      1,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      18,
+      124,
+      2,
+      1,
+      10,
+      1
+    ]
+  ]
+}

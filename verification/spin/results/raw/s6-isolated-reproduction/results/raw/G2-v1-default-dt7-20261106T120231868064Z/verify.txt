@@ -1,0 +1,38 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 36 byte, depth reached 922, errors: 0
+     1684 states, stored
+       27 states, matched
+     1711 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.103	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.367	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.634	total actual memory usage
+
+
+unreached in init
+	controller.pml:136, state 2, "rejected = 1"
+	controller.pml:136, state 3, "printf('REJECT 1\n')"
+	controller.pml:142, state 10, "rejected = 1"
+	controller.pml:142, state 11, "printf('REJECT 2\n')"
+	controller.pml:147, state 18, "rejected = 1"
+	controller.pml:147, state 19, "printf('REJECT 3\n')"
+	controller.pml:188, state 86, "rejected = 1"
+	controller.pml:188, state 87, "printf('REJECT 4\n')"
+	controller.pml:226, state 207, "-end-"
+	(9 of 207 states)
+
+pan: elapsed time 0 seconds

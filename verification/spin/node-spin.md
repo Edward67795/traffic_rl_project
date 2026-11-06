@@ -289,7 +289,7 @@ depth truncation or incomplete exploration does not. Depth/memory exhaustion is
 UNKNOWN; timeout is TIMEOUT; invocation/build/parser failures are ERROR.
 A real assertion or acceptance-cycle witness is FAIL, subject to model review.
 
-Runner CLI (implemented in S2; --all currently covers 20 v0 S2 cases):
+Runner CLI (extended through S5; --all covers72 v0/v1 cases):
 
 ```sh
 python3 verification/spin/scripts/run_spin.py --list
@@ -350,19 +350,22 @@ feasible. Keep environment files/generated outputs out of version control.
 - Durable context and SPIN scope instructions: created in this change.
 - S0 tool installation/smoke: see execution record below.
 - S1: v0 control flow, source mapping and finite reference conformance check
-  implemented. Real SUMO fidelity remains unconfirmed.
+  implemented; selected full-source conformance is validated in S6, not universally proved.
 - S2: complete for v0 S1/T1/T2/G1/C1 across four scenarios: 20 executed
   checks, 14 PASS and 6 FAIL, with all six finite failures reference-reproduced.
-  Results are model-level; real SUMO validation and human review remain pending.
+  Results are model-level; S6 records selected source replays/non-replays. Human review pending.
 - S3: complete for v0 G2/L1: eight executed FAIL cases, all reference-reproduced.
-  Boundary tests and S2 regression passed. Current matrix: 28 cases, 14 PASS/14 FAIL.
+  Boundary tests and S2 regression passed. S3 checkpoint:28 cases,14 PASS/14 FAIL.
 - S4: complete for v0 L2: 12 cases, 7 conditional PASS/5 FAIL; cycle and
-  fairness-feasibility evidence validated. Combined matrix: 40, 21 PASS/19 FAIL.
+  fairness-feasibility evidence validated. S4 checkpoint:40 cases,21 PASS/19 FAIL.
 - S5: complete: exact FIX-1..4 model,20 default v1 PASSs,12 paired G2 probes
   (v1 five PASS/one residual FAIL),42 matched input-contract cases.
   Current combined dataset:72 cases,46 PASS/26 FAIL.
-- S6: pending (documentation work ongoing); next is final validation/report.
-- The user requested one stage at a time; report S5 completion before proceeding.
+- S6: technical validation/report draft complete. Real SUMO38 cases match;
+  original finite target replays12/21 (all9 non-reproductions L0). Formal72
+  cases reproduced in a fresh code copy. Human review/joint evidence still pending.
+- Do not claim the project fully signed off. Next external steps: human checklist,
+  C1/D4 confirmation and teammate ESBMC evidence for joint report integration.
   Keep README meanings/status current for teammates and append data to report.md.
 
 ## Execution record
@@ -678,3 +681,57 @@ implemented. See the next execution record for actual validation results.
   and status, mapping, FINDINGS and report.md with all metrics/failures/limits.
 - HEAD at start30a3b1f; no Git writes. Real SUMO and human review pending.
   Stop at S5; next S6 is final reproducibility, validation and report delivery.
+
+### 2026-11-06: S6 started
+
+- User authorized final validation. HEAD e02f7c2, user's S5 commit; initial tree clean.
+- Install Python3.12 and pinned eclipse-sumo/traci/sumolib1.28.0 in ignored .venv.
+  Validate real src/environment.py with original network/routes; no network rebuild.
+- v1 uses a temporary full-source copy patched with the existing patch; worktree
+  src and ESBMC remain untouched. Compare pre-second and decision samples directly
+  against Promela, then independently monitor real signals and replay witnesses.
+- Finite SUMO replay is not an infinite L2 proof. Prepare explicit human-review
+  checklist and final report material; do not claim user review completed.
+
+### 2026-11-06: S6 technical validation completed
+
+- Runtime: ignored .venv with Python3.13.7 and pinned SUMO/traci/sumolib1.28.0,
+  gymnasium1.4.0, numpy2.5.4. Python3.12 Homebrew transfer restarted/stalled and
+  was cancelled (exit130); no3.12 validation claimed. requirements-sumo.txt saves
+  exact installed pins. No training/torch/ESBMC install needed.
+- Added independent validate_sumo.py on full src, temporary v1 source patch,
+  source hashes and live signal/time/program samples.38 source/Promela cases
+  match7,205 projected records; L0 negative control mismatches as expected.
+  Static pre-step changes43/46/88/91 confirm the chosen boundary convention.
+-21 original finite assertion prefixes replayed:12 targets reproduce,9 do not;
+  all9 are L0. Never relabel those formal FAILs source PASS or assume L0 is a
+  conservative abstraction. Some reproduced targets use different live traces/
+  first-failure times. Preserve both layers in SUMO_VALIDATION/report/sidecarCSV.
+- Additional source examples: T1/y0 at20, observed G2 at83, wait67 at86,
+  G1/static9-length termination at145 with controller135; v1 wide-delta bug at24.
+  Shared common replay also reproduced selected T1/G2/C1 without modifications.
+- Five L2 original prefixes expanded three periods: static L1 full finite trace
+  matches, four L0 full traces differ; program0 vs online status is retained.
+  No infinite real-SUMO proof claimed. validate_l2_sumo.py is the reproducer.
+- Added network audit using official sumolib junction/TLS indices:14 match,
+  protected G/G conflicts0. Original fixed-network identity is now checked,
+  not inferred solely from equal counts; arbitrary networks remain outside scope.
+- audit_results.py checked72 rows/digests/raw verdicts/witnesses. reproduce.py
+  ran all72 in a fresh temporary code copy; verdict/depth/CE all match,64.059s
+  including compilation. Same installed toolchain, not a second-machine test.
+- Added SPIN_REPORT.md (technical draft), SUMO_VALIDATION.md, REVIEW_CHECKLIST.md
+  (all human decisions pending), updated README live status and report data.
+- Teammate ESBMC results CSV absent; quantitative joint comparison pending actual
+  evidence. C1/D4 remains provisional. Do not sign off human review or silently
+  repair the open v1 admission bug. Worktree source/network/ESBMC unchanged;
+  no Git writes. Technical work ready for user review, not full human approval.
+
+### 2026-11-06: user-requested hold
+
+- User explicitly deferred human review and asked to wait for the teammate's
+  progress before continuing. Technical S6 results are retained; human review
+  and joint-report sign-off remain pending, not waived or completed.
+- Stop project work after this checkpoint. Do not automatically resume, monitor
+  the teammate, create reminders, or perform Git operations. Resume when the
+  user returns with further instructions or teammate evidence.
+- Suggested checkpoint commit: spin: validate models against real SUMO and document S6.

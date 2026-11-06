@@ -1,6 +1,7 @@
 # SPIN findings: v0/v1 through S5
 
-Current checkpoint: v0/v1 through S5,72 cases (46 PASS/26 FAIL).
+Current checkpoint: S6 technical validation complete;72 formal cases (46 PASS/26 FAIL),
+plus separate real-source data. Human review/joint report are pending.
 See the appended S5 results and open parameter finding; prior sections preserve earlier checkpoints.
 The S2 baseline below is retained as historical evidence.
 
@@ -234,3 +235,29 @@ match5,752 records (including rejection events);11 LTL controls and four v1
 fairness-feasibility checks matched expected outcomes. Real SUMO, human review
 and final joint reporting remain S6 work. Stage datasets:
 [S5](results/snapshots/s5-results.csv), [through S5](results/snapshots/through-s5-results.csv).
+
+## S6 real-source checks and reproduction (2026-11-06)
+
+in64.059 s including compilation. The saved evidence audit passed. Neither
+experiment is an installation test on another Mac.
+
+Actual SUMO1.28.0/source validation matched38 projected cases/7,205 records;
+L0 negative control mismatched as expected. The initial43 pre-step samples and
+static phase changes at43/46/88/91 were confirmed. Official-library mapping
+checks found14 matching TLS/request indices and zero protected G/G conflicts.
+
+Only12 of21 original finite assertion prefixes reproduced their target; all9
+non-reproductions are L0 and are explicitly retained in SUMO_VALIDATION.md and
+results/sumo-replay.csv. This qualifies source interpretations of prior model
+FAILs/PASSs; it does not erase or change their formal outcomes. L0 is not
+necessarily conservative. Some reproduced targets occur at different times.
+
+Short actual-source sequences reproduce T1/y0 at t20, overlong green at t83,
+wait67 at t86, and v1's residual accepted-parameter G2 defect at t24. The unchanged
+shared replay utility independently reproduces selected T1/G2/C1 cases. A finite
+L2-pattern repeat supports the behavior but is not an infinite SUMO proof.
+
+SPIN_REPORT.md is the technical report draft; REVIEW_CHECKLIST.md preserves
+pending human review. Teammate ESBMC raw results are absent in this checkout;
+a quantitative joint report must wait for supplied evidence. Technical work is
+ready for review; the residual v1 bug remains open and unmodified.

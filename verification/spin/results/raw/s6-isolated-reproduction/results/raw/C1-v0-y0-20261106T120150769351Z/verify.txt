@@ -1,0 +1,32 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 28 byte, depth reached 1165, errors: 0
+     1453 states, stored
+       37 states, matched
+     1490 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.078	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.274	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.536	total actual memory usage
+
+
+unreached in init
+	controller.pml:65, state 42, "D_STEP65"
+	controller.pml:208, state 43, "remaining = (remaining-1)"
+	controller.pml:226, state 95, "-end-"
+	(3 of 95 states)
+
+pan: elapsed time 0 seconds

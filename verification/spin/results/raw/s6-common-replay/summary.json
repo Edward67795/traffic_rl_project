@@ -1,0 +1,43 @@
+[
+  {
+    "name": "T1-y0",
+    "argv": [
+      ".venv/bin/python",
+      "verification/common/replay_in_sumo.py",
+      "--actions",
+      "0,0,1",
+      "--property",
+      "T1",
+      "--yellow-time",
+      "0"
+    ],
+    "exit_code": 0,
+    "reproduced": true
+  },
+  {
+    "name": "G2-online",
+    "argv": [
+      ".venv/bin/python",
+      "verification/common/replay_in_sumo.py",
+      "--actions",
+      "0,0,1,1,1,1,1,1,1,1,1,1,1,1,1",
+      "--property",
+      "G2"
+    ],
+    "exit_code": 0,
+    "reproduced": true
+  },
+  {
+    "name": "C1-static",
+    "argv": [
+      ".venv/bin/python",
+      "verification/common/replay_in_sumo.py",
+      "--actions",
+      "0,0,0,0,0,0,0",
+      "--property",
+      "C1"
+    ],
+    "exit_code": 0,
+    "reproduced": true
+  }
+]

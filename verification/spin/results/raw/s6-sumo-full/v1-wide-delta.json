@@ -1,0 +1,1983 @@
+{
+  "name": "v1-wide-delta",
+  "version": "v1",
+  "actions": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "parameters": {
+    "delta": 12,
+    "min": 0,
+    "max": 11
+  },
+  "route": "off_peak",
+  "modeled_static": 1,
+  "matches": true,
+  "expected_match": true,
+  "expectation_met": true,
+  "time_s": 1.1201764170255046,
+  "records": 75,
+  "first_mismatch": null,
+  "actual_at_mismatch": null,
+  "model_at_mismatch": null,
+  "live": {
+    "records": [
+      [
+        "TICK",
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        3,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        4,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        5,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        6,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        7,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        8,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        9,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "DONE",
+        0,
+        10,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        10,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        11,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        12,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        13,
+        2,
+        1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        14,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        15,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        16,
+        2,
+        1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        17,
+        2,
+        1,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        18,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        19,
+        2,
+        1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        20,
+        2,
+        1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        21,
+        2,
+        1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        22,
+        2,
+        1,
+        9,
+        1
+      ],
+      [
+        "TICK",
+        23,
+        2,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        24,
+        2,
+        1,
+        11,
+        1
+      ],
+      [
+        "DONE",
+        1,
+        25,
+        2,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        25,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        26,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        27,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        28,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        29,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        30,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        31,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        32,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        33,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        34,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        35,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        36,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        37,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "TICK",
+        38,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        39,
+        0,
+        0,
+        11,
+        1
+      ],
+      [
+        "DONE",
+        2,
+        40,
+        0,
+        0,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        40,
+        1,
+        0,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        41,
+        1,
+        0,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        42,
+        1,
+        0,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        43,
+        2,
+        1,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        44,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        45,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        46,
+        2,
+        1,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        47,
+        2,
+        1,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        48,
+        2,
+        1,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        49,
+        2,
+        1,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        50,
+        2,
+        1,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        51,
+        2,
+        1,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        52,
+        2,
+        1,
+        9,
+        1
+      ],
+      [
+        "TICK",
+        53,
+        2,
+        1,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        54,
+        2,
+        1,
+        11,
+        1
+      ],
+      [
+        "DONE",
+        3,
+        55,
+        2,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        55,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        56,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        57,
+        3,
+        1,
+        12,
+        1
+      ],
+      [
+        "TICK",
+        58,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "TICK",
+        59,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "TICK",
+        60,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "TICK",
+        61,
+        0,
+        0,
+        3,
+        1
+      ],
+      [
+        "TICK",
+        62,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        "TICK",
+        63,
+        0,
+        0,
+        5,
+        1
+      ],
+      [
+        "TICK",
+        64,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        "TICK",
+        65,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        "TICK",
+        66,
+        0,
+        0,
+        8,
+        1
+      ],
+      [
+        "TICK",
+        67,
+        0,
+        0,
+        9,
+        1
+      ],
+      [
+        "TICK",
+        68,
+        0,
+        0,
+        10,
+        1
+      ],
+      [
+        "TICK",
+        69,
+        0,
+        0,
+        11,
+        1
+      ],
+      [
+        "DONE",
+        4,
+        70,
+        0,
+        0,
+        12,
+        1
+      ]
+    ],
+    "samples": [
+      {
+        "time_s": 0.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 1.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 2.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 3.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 4.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 5.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 6.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 7.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 8.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 9.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 0
+      },
+      {
+        "time_s": 10.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 11.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 12.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 13.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 14.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 15.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 16.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 17.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 18.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 19.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 20.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 21.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 22.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 23.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 24.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 11,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 1
+      },
+      {
+        "time_s": 25.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 26.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 27.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 28.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 29.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 30.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 31.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 32.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 33.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 34.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 35.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 36.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 37.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 38.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 39.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 11,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 2
+      },
+      {
+        "time_s": 40.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 41.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 42.0,
+        "signal": 1,
+        "phase": 0,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 43.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 44.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 45.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 46.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 47.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 48.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 49.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 50.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 51.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 52.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 53.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 54.0,
+        "signal": 2,
+        "phase": 1,
+        "controller_age": 11,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 3
+      },
+      {
+        "time_s": 55.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 56.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 57.0,
+        "signal": 3,
+        "phase": 1,
+        "controller_age": 12,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 58.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 0,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 59.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 1,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 60.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 2,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 61.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 3,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 62.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 4,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 63.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 5,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 64.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 6,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 65.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 7,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 66.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 8,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 67.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 9,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 68.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 10,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      },
+      {
+        "time_s": 69.0,
+        "signal": 0,
+        "phase": 0,
+        "controller_age": 11,
+        "program": "online",
+        "program_phase": 0,
+        "next_switch": 86400.0,
+        "decision": 4
+      }
+    ],
+    "events": [
+      {
+        "property": "G2",
+        "component": "observed_green",
+        "time_s": 24.0,
+        "decision": 1,
+        "message": "Displayed green exceeds max",
+        "green_age": 12
+      },
+      {
+        "property": "G2",
+        "component": "controller_age",
+        "time_s": 25.0,
+        "decision": 1,
+        "message": "Controller age exceeds max",
+        "controller_age": 12
+      },
+      {
+        "property": "L1",
+        "component": "NS_wait",
+        "time_s": 27.0,
+        "decision": 2,
+        "message": "Directional wait exceeds configured bound",
+        "wait": 18,
+        "limit": 17
+      },
+      {
+        "property": "L1",
+        "component": "EW_wait",
+        "time_s": 42.0,
+        "decision": 3,
+        "message": "Directional wait exceeds configured bound",
+        "wait": 18,
+        "limit": 17
+      }
+    ],
+    "rejection": null,
+    "source_sha256": "c1b1a090bf9924765d70304839ade17bc5d1791bb6de5a30746a5eff5e6d00a8",
+    "patch_log": "patching file 'src/environment.py'\n",
+    "stdout": "Detected 6 incoming lanes: ['east_to_center_0', 'north_to_center_0', 'north_to_center_1', 'south_to_center_0', 'south_to_center_1', 'west_to_center_0']\nUsing 2 controllable signal phases\nEnhanced state dimension: 39\n  - Base features (queue/wait/density): 18\n  - Temporal derivatives: 12\n  - Arrival rates: 6\n  - Phase features: 3\n Retrying in 1 seconds\nUsing 2 controllable green light phases\n  phase 0: GGGgrrrGGGgrrr\n  phase 1: rrrrGGgrrrrGGg\n"
+  },
+  "promela": [
+    [
+      "TICK",
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      2,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      3,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      4,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      5,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      6,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      7,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      8,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      9,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "DONE",
+      0,
+      10,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      10,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      11,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      12,
+      1,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      13,
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      14,
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      15,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      16,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      17,
+      2,
+      1,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      18,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      19,
+      2,
+      1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      20,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      21,
+      2,
+      1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      22,
+      2,
+      1,
+      9,
+      1
+    ],
+    [
+      "TICK",
+      23,
+      2,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      24,
+      2,
+      1,
+      11,
+      1
+    ],
+    [
+      "DONE",
+      1,
+      25,
+      2,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      25,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      26,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      27,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      28,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      29,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      30,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      31,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      32,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      33,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      34,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      35,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      36,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      37,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "TICK",
+      38,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      39,
+      0,
+      0,
+      11,
+      1
+    ],
+    [
+      "DONE",
+      2,
+      40,
+      0,
+      0,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      40,
+      1,
+      0,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      41,
+      1,
+      0,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      42,
+      1,
+      0,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      43,
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      44,
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      45,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      46,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      47,
+      2,
+      1,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      48,
+      2,
+      1,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      49,
+      2,
+      1,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      50,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      51,
+      2,
+      1,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      52,
+      2,
+      1,
+      9,
+      1
+    ],
+    [
+      "TICK",
+      53,
+      2,
+      1,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      54,
+      2,
+      1,
+      11,
+      1
+    ],
+    [
+      "DONE",
+      3,
+      55,
+      2,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      55,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      56,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      57,
+      3,
+      1,
+      12,
+      1
+    ],
+    [
+      "TICK",
+      58,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "TICK",
+      59,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "TICK",
+      60,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      "TICK",
+      61,
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      "TICK",
+      62,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      "TICK",
+      63,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      "TICK",
+      64,
+      0,
+      0,
+      6,
+      1
+    ],
+    [
+      "TICK",
+      65,
+      0,
+      0,
+      7,
+      1
+    ],
+    [
+      "TICK",
+      66,
+      0,
+      0,
+      8,
+      1
+    ],
+    [
+      "TICK",
+      67,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      "TICK",
+      68,
+      0,
+      0,
+      10,
+      1
+    ],
+    [
+      "TICK",
+      69,
+      0,
+      0,
+      11,
+      1
+    ],
+    [
+      "DONE",
+      4,
+      70,
+      0,
+      0,
+      12,
+      1
+    ]
+  ]
+}
