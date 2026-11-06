@@ -1,7 +1,7 @@
-# SPIN findings: v0 through S4
+# SPIN findings: v0/v1 through S5
 
-Current checkpoint: v0 through S4, 40 cases (21 PASS / 19 FAIL).
-See the appended S4 results; prior sections preserve earlier checkpoints.
+Current checkpoint: v0/v1 through S5,72 cases (46 PASS/26 FAIL).
+See the appended S5 results and open parameter finding; prior sections preserve earlier checkpoints.
 The S2 baseline below is retained as historical evidence.
 
 Run date: 2026-11-06. Tool: SPIN 6.5.2; Apple Clang 21; Python 3.13.7.
@@ -186,3 +186,51 @@ reference trace cases passed. Frozen [S4](results/snapshots/s4-v0-results.csv) a
 
 Next: S5, exact v1 FIX-1..4 modeling and version comparison. Real SUMO validation,
 original-code episode interpretation and human review remain explicit limits.
+
+## S5 results: exact v1 comparison and parameter-contract gap (2026-11-06)
+
+S5 adds 32 actual checks: 25 PASS /7 FAIL. The current combined dataset is
+72 cases,46 PASS/26 FAIL. No UNKNOWN/TIMEOUT/ERROR occurred. Existing 40 v0
+verdicts/depths were unchanged. All20 v1 default-timing/legal-action cases PASS.
+The table uses unconditional L2; conditional variants are also archived.
+
+| Property | v0 default | v1 default | v0 static | v1 static |
+|---|---|---|---|---|
+| S1 | PASS | PASS | PASS | PASS |
+| T1 | PASS | PASS | PASS | PASS |
+| T2 | PASS | PASS | FAIL | PASS |
+| G1 | PASS | PASS | FAIL | PASS |
+| G2 | FAIL | PASS | FAIL | PASS |
+| L1 | FAIL | PASS | FAIL | PASS |
+| C1 | PASS | PASS | FAIL | PASS |
+| L2 | FAIL | PASS | FAIL | PASS |
+
+v1's unconditional L2 PASS is due to enforced switching, not a fair-agent
+assumption. Static/default results agree because FIX-4 takes over before warmup.
+No v1/y0 normal PASS is reported: it is rejected. Invalid actions are rejected
+before state/time advancement. The42 dedicated input-contract traces match
+(16 accepted,26 rejected); those outcomes are auxiliary, not CSV property PASS.
+
+### Selected G2 parameter comparisons
+
+| Parameters (delta,min,max; yellow3) | v0 | v1 |
+|---|---|---|
+| (7, 10, 60) | FAIL | PASS |
+| (5, 10, 61) | FAIL | PASS |
+| (3, 10, 16) | FAIL | PASS |
+| (7, 0, 11) | FAIL | PASS |
+| (1, 12, 16) | FAIL | PASS |
+| (12, 0, 11) | FAIL | FAIL |
+
+The final row is a reproduced residual defect in the unchanged patch. Both
+switch-point checks accept it, yet delta12 exceeds max11 and the new green
+lasts12 intervals. [SPIN/reference witness](results/raw/G2-v1-default-delta_gt_max-20261106T112002334568Z/witness.json):
+first decision, pre-step t24, controller age11, observed green12. It lies outside
+the teammate's dt1..7 scan. Do not extrapolate the default PASS or selected probes
+to universal parameter correctness; no shared patch/spec was changed.
+
+Validation:14 existing tests passed;96 v0 cases match18,898 records;96 v1 cases
+match5,752 records (including rejection events);11 LTL controls and four v1
+fairness-feasibility checks matched expected outcomes. Real SUMO, human review
+and final joint reporting remain S6 work. Stage datasets:
+[S5](results/snapshots/s5-results.csv), [through S5](results/snapshots/through-s5-results.csv).

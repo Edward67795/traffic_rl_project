@@ -1,0 +1,27 @@
+ltl agent_service: (! (1)) || (([] (<> ((observed==0)))) && ([] (<> ((observed==2)))))
+Never claim moves to line 5	[(!(!(1)))]
+Never claim moves to line 19	[(1)]
+REQUEST 0 1
+Never claim moves to line 17	[(!((observed==2)))]
+<<<<<START OF CYCLE>>>>>
+Never claim moves to line 9	[(!((observed==2)))]
+REQUEST 0 1
+spin: trail ends after 26 steps
+#processes: 1
+		signal = 0
+		action = 0
+		phase_duration = 10
+		current_phase = 0
+		observed = 0
+		previous = 0
+		last_green = 0
+		green_age = 0
+		yellow_age = 0
+		ns_wait = 0
+		ew_wait = 0
+		request_event = 0
+		requested_action = 0
+		request_eligible = 1
+ 26:	proc  0 (:init::1) check.pml:6 (state 16)
+ 26:	proc  - (agent_service:1) _spin_nvr.tmp:8 (state 12)
+1 processes created

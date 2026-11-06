@@ -1,0 +1,219 @@
+{
+  "actions": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "observed_seconds": 174,
+  "last_observations": [
+    [
+      2,
+      1,
+      69,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      70,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      71,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      72,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      73,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      74,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      75,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      76,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      76,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      76,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      76,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      76,
+      0,
+      0
+    ]
+  ],
+  "acceptance_cycle": true,
+  "timing_samples": [],
+  "cycle": {
+    "prefix_actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "cycle_actions": [
+      1
+    ],
+    "prefix_decisions": 32,
+    "cycle_decisions": 1,
+    "prefix_samples": 169,
+    "cycle_samples": 5,
+    "cycle_requests": [
+      [
+        1,
+        1
+      ]
+    ],
+    "cycle_service_codes": [
+      2
+    ],
+    "missing_green_directions": [
+      "NS"
+    ],
+    "request_fair": false,
+    "eligible_request_fair": false,
+    "selected_premise_holds": true,
+    "violates_service": true
+  },
+  "reference_lasso": {
+    "kind": "projected-extracted-reference-lasso-closure",
+    "state_before": {
+      "phase": 1,
+      "signal": 2,
+      "controller_age_projected": 76,
+      "online": true,
+      "static_index": 3,
+      "static_left": 1
+    },
+    "state_after": {
+      "phase": 1,
+      "signal": 2,
+      "controller_age_projected": 76,
+      "online": true,
+      "static_index": 3,
+      "static_left": 1
+    },
+    "closed": true,
+    "period_time_s": 5,
+    "period_green_codes": [
+      2
+    ],
+    "period_actions": [
+      1
+    ],
+    "request_fair": false,
+    "eligible_request_fair": false,
+    "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+  },
+  "reference": {
+    "reproduced": null,
+    "message": "Projected reference lasso closes; full-system liveness not tested"
+  }
+}

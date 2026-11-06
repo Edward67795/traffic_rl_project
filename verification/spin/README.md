@@ -8,22 +8,23 @@ performance are outside this verification scope.
 
 ## Current status
 
-**S4 is complete for the v0 model.** All eight assigned SPIN properties now have
-implemented v0 checks. The current matrix has **40 cases: 21 PASS, 19 FAIL**,
-with no UNKNOWN/TIMEOUT/ERROR. S4 adds 12 L2 cases: 7 PASS and 5 FAIL. The prior
-28 S2/S3 cases retain their verdicts after regression.
+**S5 is complete: exact v1 FIX-1..4 modeling and version comparison.** The
+current dataset has **72 cases: 46 PASS / 26 FAIL**, with no UNKNOWN/TIMEOUT/ERROR.
+All 20 v1 default-timing/legal-action cases pass, including unconditional L2.
+Six G2 parameter pairs give v0 six FAILs; v1 five PASS and one reproduced FAIL.
+The latter is an additional accepted-parameter defect, not a modified patch.
 
-The 14 finite assertion witnesses reproduce against the extracted Python
-reference/stub. The five L2 witnesses have acceptance-cycle evidence and
-positive-time, closed reference projections; this is not a full-system liveness
-proof. Fairness premises were separately shown realizable in all eight
-conditional cases. The 96 finite trace cases still match 18,898 observations;
-14 existing test methods and 11 new LTL controls passed their expected checks.
+The previous 40 v0 cases retain their verdicts/depths. Input-contract evidence
+has 42 matched cases: 16 accepted traces and 26 expected rejections. Rejection
+is not counted as normal-operation PASS. The 96 v0 traces (18,898 records) and
+96 v1 traces (5,752 records including rejection events) match the extraction.
+Fourteen test methods and v1 LTL/feasibility controls passed their expected checks.
 
-Real SUMO validation and human model review remain pending. v1 (S5) is not yet
-implemented. See [findings](FINDINGS.md), [current CSV](results/results.csv), and
-[experimental record](report.md). Conditional L2 PASS must always name its input
-fairness premise; it does not mean the controller enforces fairness.
+**Open finding:** v1 accepts delta=12, min=0, max=11 (yellow=3), then shows
+12 green intervals despite max=11. This is outside the teammate's dt1..7 sweep.
+No source/ESBMC/shared-contract fix was applied. Real SUMO validation and human
+review remain pending. Next is S6: final validation, reproducibility and report.
+See [findings](FINDINGS.md), [CSV](results/results.csv) and [record](report.md).
 
 ## Documents and layout
 
@@ -49,7 +50,8 @@ verification/spin/
 │   ├── test_verification.py
 │   ├── liveness.py
 │   ├── check_liveness.py
-│   └── explain_l2_counterexample.py
+│   ├── explain_l2_counterexample.py
+│   └── check_v1.py
 └── results/
     ├── results.csv
     ├── snapshots/              # Frozen stage CSVs and historical source
@@ -85,17 +87,19 @@ python3 verification/spin/scripts/run_spin.py --list
 python3 verification/spin/scripts/run_spin.py --all
 ```
 
-`--all` currently means 40 v0 cases: 28 S2/S3 cases and 12 L2 cases
-(four scenarios times three agent-fairness modes). Select a stage to run its subset:
+`--all` currently means 72 implemented v0/v1 cases. Stage selection is explicit:
 
 ```sh
 python3 verification/spin/scripts/run_spin.py --stage S2
 python3 verification/spin/scripts/run_spin.py --stage S3
 python3 verification/spin/scripts/run_spin.py --stage S4
+python3 verification/spin/scripts/run_spin.py --stage S5
 ```
 
-S2 runs 20 cases; S3 runs eight G2/L1 cases; S4 runs 12 L2 cases.
-Example L2 ID: L2-v0-any-request. v1 is not included.
+S2/S3/S4 retain their original 20/8/12 v0 cases. S5 runs 32 additional cases:
+20 v1 normal-operation checks plus six G2 parameter pairs. v1 normal operation
+uses default/static scenarios and legal actions; y0 and invalid inputs are
+separate rejection checks, not silently omitted PASS rows.
 Run individual cases by ID:
 
 ```sh
@@ -237,11 +241,48 @@ Repeating the rotated action word closes the documented Python-reference state
 projection with positive time; this is supplementary evidence, not a finite
 simulation proof of infinite liveness in real SUMO.
 
+## v1 fixes, input rejection and parameter scope
+
+VERSION=1 mirrors the existing patch; the default VERSION=0 preserves v0.
+
+| Fix | Model behavior |
+|---|---|
+| FIX-1 | If controller age +delta exceeds max, force the opposite action before existing min-green logic |
+| FIX-2 | Reject illegal actions before the forced-switch check; do not advance time |
+| FIX-3 | Preserve parameter and both reachable-switch-point checks exactly |
+| FIX-4 | Set NS online before warmup and include warmup in controller age |
+
+Rejection emits REJECT and ends the abstract execution. ABORT captures unchanged
+control/time state on action rejection. We do not run these terminal error paths
+as normal L2 executions or label them successful traffic control. The v1/y0
+comparison is constructor rejection, not T1 PASS. v1/any rejects invalid requests;
+legal inputs are covered by the normal-operation matrix.
+
+```sh
+python3 verification/spin/scripts/check_traces.py --version v1 \
+  --output verification/spin/results/raw/s5-v1-trace-comparison.json
+python3 verification/spin/scripts/check_v1.py \
+  --output verification/spin/results/raw/s5-v1-contract-rerun.json
+python3 verification/spin/scripts/run_spin.py G2-v1-default-delta_gt_max
+```
+
+Choose a fresh check_v1 output file: prior contract evidence is not overwritten.
+The parameter probe intentionally yields FAIL and returns a valid witness.
+The patch admits delta12/min0/max11 because both computed first switch points
+(10 and 0) are <=11, but a new green still lasts a whole 12-second decision.
+The saved witness reaches green12 at pre-step t24, controller age11. A potential
+remedy is an additional admissibility restriction or redesigned intra-decision
+control, requiring shared-owner review; neither has been applied here.
+
+Five other probes (delta7, max61, delta3/max16, min0/delta7/max11,
+min12/delta1/max16) pass G2 in v1. These selected examples do not constitute a
+universal parameter proof. All raw metrics and aligned v0 rows are retained.
+
 ## Stage guide and live progress
 
-Last updated: 2026-11-06 (Asia/Shanghai). **Current checkpoint: S4 complete.**
-Current v0 matrix: 40 cases, 21 PASS / 19 FAIL. Next stage: S5 (v1 comparison).
-No v1 result is claimed yet.
+Last updated: 2026-11-06 (Asia/Shanghai). **Current checkpoint: S5 complete.**
+Current v0/v1 dataset: 72 cases, 46 PASS / 26 FAIL. Next: S6 final validation.
+The accepted wide-delta v1 failure remains an open finding, not silently repaired.
 Stage names are work labels, not shared property IDs (stage S1 != property S1).
 
 | Stage | Meaning | Deliverables / completion gate | Current status |
@@ -251,7 +292,7 @@ Stage names are work labels, not shared property IDs (stage S1 != property S1).
 | S2: safety/transitions | Check legal signals, yellow transitions, minimum green and phase consistency | S1/T1/T2/G1/C1 matrix; exhaustive runs; reviewed and reference-reproduced finite failures | Complete for v0: 20 cases, 14 PASS / 6 FAIL |
 | S3: timing/waiting | Check maximum green and directional waiting limits | G2 displayed/controller age checks; L1 wait counters; 60/61 and 66/67-second boundaries; evidence and snapshot | Complete for v0: 8 FAIL cases reference-reproduced; boundaries and S2 regression passed |
 | S4: infinite liveness | Determine whether both directions receive green infinitely often | L2 acceptance-cycle runs with/without explicit agent fairness; prefix/cycle explanations | Complete for v0: 12 cases, 7 conditional PASS / 5 FAIL; cycle and feasibility evidence retained |
-| S5: repaired model | Mirror exactly FIX-1..4 and compare v0/v1 | v1 mapping; aligned matrix; rejected-input semantics; non-divisible timing checks | Not started |
+| S5: repaired model | Mirror exactly FIX-1..4 and compare v0/v1 | v1 mapping; aligned matrix; rejected-input semantics; non-divisible timing checks | Complete: 20 v1 default PASS; six parameter pairs (v1 5 PASS/1 FAIL); 42 contract traces match |
 | S6: final delivery | Assemble reproducible evidence and report | Final suite/CSV; SUMO cross-checks; human-review status; joint-tool comparison and report | In progress for documentation only; final validation pending |
 
 Update this table when a stage begins, reaches a validation milestone or ends.

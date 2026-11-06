@@ -1,8 +1,8 @@
-# v0 model mapping (S1-S4 stages)
+# v0/v1 model mapping (S1-S5 stages)
 
-The current model implements v0 control flow and selected shared checks:
+The model implements v0/v1 control flow and shared checks:
 S1, T1, T2, G1, C1, G2, L1 and L2. The runner emits a shared-format results CSV.
-v1 remains pending.
+v1 is selected with VERSION=1; input rejections are separate from normal operation.
 
 | Source / reference | Promela |
 |---|---|
@@ -175,3 +175,40 @@ cycle is positive feasibility evidence, not a shared-property FAIL. Eight full
 model premise checks and 11 synthetic LTL controls are stored separately from
 the 12 main S4 rows. The fixed-policy example only restricts agent inputs to
 produce a compact existential witness; controller transitions are unchanged.
+
+## S5 exact v1 patch mapping
+
+| Patch behavior | Promela | Observation / validation |
+|---|---|---|
+| first_switch_point(start,delta,min) | FIRST_POINT macro with integer ceil calculation and the start>=min branch | Constructor rejects warmup point and restart point separately |
+| FIX-3 base checks | Reject delta<1, yellow<3, invalid min/max; delta0 avoids division | REJECT1; no simulation begins |
+| FIX-2 | Validate chosen action before FIX-1 | REJECT4 + ABORT; no time/phase change |
+| FIX-1 | Force action=1-current_phase if age+delta>max | ACTION/REQUEST retain original input; FORCED records resulting target |
+| FIX-4a | show_green for phase0 before warmup | online=true; autonomous static cursor stays unused |
+| FIX-4b | Increment controller age each warmup second | First green age includes all10 warmup ticks |
+
+VERSION=0 preprocesses these branches away. v0 regression checks preserve
+all previous verdicts and depths. The age cap is max+min+delta+1, above min,
+max and max-delta thresholds for the tested nonnegative parameters, so the
+look-ahead predicate and current controller comparisons remain preserved.
+No counter saturation is used to hide the first bad G2 state.
+
+The main v1 matrix models accepted default parameters with legal input streams,
+including both no-static and static environments. Terminal expected rejections
+are checked separately with finite TRACE data and are not called normal-operation
+PASS or included in infinite L2 claims. Constructor rejection means no reference
+environment object/reset exists; only its rejection reason is compared. Action
+rejection additionally compares the exact unchanged time and control state.
+
+42 dedicated cases compare both static settings: accepted forced-switch traces,
+non-divisible timing, base parameter rejections, warmup/restart switch-point
+rejections and action rejection before forcing. The wider 96-case v1 comparison
+includes many early rejected sequences; its smaller observation count is not
+comparable as execution coverage to 96 v0 trajectories.
+
+The original patch accepts delta12/min0/max11/yellow3. FIRST_POINT(10)=10 and
+FIRST_POINT(0)=0 pass validation, but a forced new green advances for12 seconds.
+Both Promela and the unchanged v1 reference violate G2 at observed age12.
+This is a discovered parameter-contract gap outside the referenced dt1..7 sweep.
+It does not contradict the executed default-parameter PASSs. Do not strengthen
+validation or patch source to make this row pass without owner authorization.

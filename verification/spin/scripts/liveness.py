@@ -45,10 +45,10 @@ def analyze_cycle(replay, fairness):
             'violates_service': services != [0, 2]}
 
 
-def reference_lasso(repo, scenario, cycle):
+def reference_lasso(repo, scenario, cycle, version="v0"):
     """Rotate to decision boundaries and check one repeated projected period."""
     namespace = {}
-    for name in ['traci_stub.py', 'env_core_v0.py']:
+    for name in ['traci_stub.py', f'env_core_{version}.py']:
         path = Path(repo) / 'verification/esbmc/model' / name
         exec(compile(path.read_text(), str(path), 'exec'), namespace)
     namespace['STATIC_PROGRAM'] = scenario == 'L1'

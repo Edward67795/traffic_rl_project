@@ -2,13 +2,14 @@
   "kind": "finite-reference-trace-comparison",
   "warning": "Not exhaustive property verification; not a real SUMO replay",
   "seed": 6863,
+  "version": "v0",
   "spin": "Spin Version 6.5.2 -- 6 December 2019",
   "sha256": {
-    "verification/spin/models/controller.pml": "ca676e8cbec39e4c6e714eb37d5edd021ee17ca6916a7bcc41166b45bd2e3abf",
+    "verification/spin/models/controller.pml": "9009d2fa92fae15ce8ef15b2f78faf6f273167f0e9e825f8133de1c24054e9a0",
     "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
     "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
     "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff",
-    "verification/spin/scripts/check_traces.py": "f320f7ead2c0ca8ba82474ea88023a45289d1f226f4793092b74d7baba5dc020"
+    "verification/spin/scripts/check_traces.py": "1727bc56d536f8f4d0d3efad37b5488f3074235c3c837a432fc4ea45b6ac5fd4"
   },
   "cases": [
     {

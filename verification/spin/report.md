@@ -1,6 +1,6 @@
 # SPIN experimental record and report material
 
-Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0 through S4**.
+Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0/v1 through S5**.
 This is a chronological research record for the final CSEE E6863 report, not a
 claim that all project stages are finished. Code/documentation remain in English.
 
@@ -635,3 +635,191 @@ README now marks S4 complete. Stop at this stage and report; next is S5.
 S4 interpretation note: infinitely frequent requests can have arbitrarily long
 finite gaps. Conditional L2 service therefore does not establish the numeric
 L1 waiting bound; the S3 L1 failures and S4 conditional L2 passes are compatible.
+
+## S5: exact v1 modeling and comparison (2026-11-06)
+
+Stage complete. HEAD at start:30a3b1f, user's S4 commit. Source, shared contracts
+and ESBMC implementation were not modified; no assistant Git write occurred.
+
+### Questions and patch mapping
+
+Does exactly FIX-1..4 remove the observed v0 defects on shared default inputs?
+Does the accepted timing domain justify a universal max-green claim?
+
+VERSION=1 mirrors the patch: reject invalid parameters and both unreachable
+switch points; take control before warmup and count its10 seconds; reject illegal
+actions before forcing; force opposite phase if age+delta>max, then use the
+existing minimum-green guard. Original chosen input is retained in ACTION and
+REQUEST instrumentation; FORCED shows its effective target. VERSION=0 preserves
+the original source behavior, as checked by40 regression cases.
+
+The model uses the patch's exact first-switch-point expression. Its integer
+conditional and ceil calculation were checked through accepted/rejected traces,
+including delta0 where division must never occur. Controller saturation remains
+above the min/max/look-ahead thresholds for all selected cases; the first bad
+observed-green state is preserved. See MODEL_MAPPING.md for line/function mapping.
+
+### Input contracts and avoiding vacuous results
+
+The main v1 matrix has20 default-parameter checks: seven finite properties and
+three L2 fairness modes in both default/static scenarios. Inputs are legal0/1.
+We do not silently prune errors and call y0/any normal-operation PASS:
+- y0 is rejected by FIX-3 before reset/traffic time begins.
+- illegal actions are rejected by FIX-2 before forcing or time advancement.
+- finite rejected executions are not included in normal infinite L2 claims.
+
+Dedicated comparison command:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/check_v1.py \
+  --output verification/spin/results/raw/s5-v1-contract-traces.json
+```
+
+The original evidence file exists; choose a fresh path to rerun. Actual outcome:
+42 cases matched the unchanged Python v1 extraction:16 accepted traces and26
+expected rejections (21 input sequences/configurations times static on/off).
+The complete records, including REJECT reasons and ABORT states, are retained
+in [contract evidence](results/raw/s5-v1-contract-traces.json). ACCEPTED here is
+an input outcome, not a property verdict. Rejected constructor cases compare
+reason only because no reference environment object/reset exists. Rejected
+actions compare unchanged control/time state as well.
+
+Cases cover prolonged0/1 requests; non-divisible intervals; delta0/negative;
+yellow0/2; negative min, zero max, min>max; both unreachable switch-point guards;
+illegal-1/2 initially, after a switch and exactly when forcing would otherwise
+occur. The latter confirms validation priority. The accepted wide-delta trace
+is retained as a diagnostic rather than being mislabeled safe.
+
+### Main searches and validation commands
+
+```sh
+python3 verification/spin/scripts/run_spin.py --stage S5
+python3 verification/spin/scripts/run_spin.py --stage S2
+python3 verification/spin/scripts/run_spin.py --stage S3
+python3 verification/spin/scripts/run_spin.py --stage S4
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/test_verification.py
+python3 verification/spin/scripts/check_traces.py --version v0 \
+  --output verification/spin/results/raw/s1-trace-comparison.json
+python3 verification/spin/scripts/check_traces.py --version v1 \
+  --output verification/spin/results/raw/s5-v1-trace-comparison.json
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/check_liveness.py --version v1 \
+  --output verification/spin/results/raw/s5-v1-liveness-controls
+```
+
+Actual S5 outcomes:25 PASS/7 FAIL out of32. All20 v1 default legal-input checks
+PASS; six G2 probe pairs give six v0 FAILs and five v1 PASS/one v1 FAIL. All40
+previous v0 verdicts/depths remained unchanged. No UNKNOWN/TIMEOUT/ERROR occurred.
+Combined dataset:72 cases,46 PASS/26 FAIL. Existing14 tests passed in25.087 s;
+v0 96 cases match18,898 records; v1 96 cases match5,752 records, including early
+rejection events. These trajectory counts do not imply equal executed coverage.
+Eleven LTL controls matched expected outcomes and four full-model v1 fairness
+premises were witnessed feasible (default/static times request/eligible modes).
+
+Retained validation logs:
+- [commands.json](results/raw/s5-validation-20261106T112109Z/commands.json)
+- [s2-regression.txt](results/raw/s5-validation-20261106T112109Z/s2-regression.txt)
+- [s3-regression.txt](results/raw/s5-validation-20261106T112109Z/s3-regression.txt)
+- [s4-regression.txt](results/raw/s5-validation-20261106T112109Z/s4-regression.txt)
+- [tests.txt](results/raw/s5-validation-20261106T112109Z/tests.txt)
+- [v0-traces.txt](results/raw/s5-validation-20261106T112109Z/v0-traces.txt)
+- [v1-fairness-controls.txt](results/raw/s5-validation-20261106T112109Z/v1-fairness-controls.txt)
+- [v1-traces.txt](results/raw/s5-validation-20261106T112109Z/v1-traces.txt)
+
+These are one main S5 sweep and regression measurements, not a repeated
+performance study. Frozen [S5](results/snapshots/s5-results.csv) contains32 rows;
+[through S5](results/snapshots/through-s5-results.csv) contains72. Earlier stage
+snapshots are unchanged. Model/script sources are frozen under s5-model and
+s5-scripts; raw runs retain their own model copies, digests and exact commands.
+
+### Measured S5 rows
+
+| Case | Version | Result | Depth | CE decisions | Verifier time_s | memory_mb | Stored states | Transitions | Evidence |
+|---|---|---|---|---|---|---|---|---|---|
+| S1-v1-default | v1 | PASS | 908 | - | 0.007054 | 7.536 | 1439 | 1466 | [metadata](results/raw/S1-v1-default-20261106T111935622794Z/metadata.json) |
+| S1-v1-L1 | v1 | PASS | 908 | - | 0.008907 | 7.536 | 1439 | 1466 | [metadata](results/raw/S1-v1-L1-20261106T111936924314Z/metadata.json) |
+| T1-v1-default | v1 | PASS | 908 | - | 0.008646 | 7.536 | 1439 | 1466 | [metadata](results/raw/T1-v1-default-20261106T111937668961Z/metadata.json) |
+| T1-v1-L1 | v1 | PASS | 908 | - | 0.005567 | 7.536 | 1439 | 1466 | [metadata](results/raw/T1-v1-L1-20261106T111938460122Z/metadata.json) |
+| T2-v1-default | v1 | PASS | 1817 | - | 0.008617 | 7.536 | 1623 | 2216 | [metadata](results/raw/T2-v1-default-20261106T111939224072Z/metadata.json) |
+| T2-v1-L1 | v1 | PASS | 1817 | - | 0.007344 | 7.536 | 1623 | 2216 | [metadata](results/raw/T2-v1-L1-20261106T111940037751Z/metadata.json) |
+| G1-v1-default | v1 | PASS | 908 | - | 0.007940 | 7.536 | 1439 | 1466 | [metadata](results/raw/G1-v1-default-20261106T111940898098Z/metadata.json) |
+| G1-v1-L1 | v1 | PASS | 908 | - | 0.008033 | 7.536 | 1439 | 1466 | [metadata](results/raw/G1-v1-L1-20261106T111941654415Z/metadata.json) |
+| C1-v1-default | v1 | PASS | 952 | - | 0.012098 | 7.536 | 1491 | 1518 | [metadata](results/raw/C1-v1-default-20261106T111942408467Z/metadata.json) |
+| C1-v1-L1 | v1 | PASS | 952 | - | 0.007761 | 7.536 | 1491 | 1518 | [metadata](results/raw/C1-v1-L1-20261106T111943182486Z/metadata.json) |
+| G2-v1-default | v1 | PASS | 930 | - | 0.008404 | 7.536 | 1465 | 1492 | [metadata](results/raw/G2-v1-default-20261106T111943960598Z/metadata.json) |
+| G2-v1-L1 | v1 | PASS | 930 | - | 0.008455 | 7.536 | 1465 | 1492 | [metadata](results/raw/G2-v1-L1-20261106T111944748573Z/metadata.json) |
+| L1-v1-default | v1 | PASS | 997 | - | 0.006657 | 7.634 | 2118 | 2156 | [metadata](results/raw/L1-v1-default-20261106T111945523238Z/metadata.json) |
+| L1-v1-L1 | v1 | PASS | 997 | - | 0.009891 | 7.634 | 2118 | 2156 | [metadata](results/raw/L1-v1-L1-20261106T111946323534Z/metadata.json) |
+| L2-v1-default-none | v1 | PASS | 1907 | - | 0.019178 | 7.634 | 3209 | 8417 | [metadata](results/raw/L2-v1-default-none-20261106T111947096685Z/metadata.json) |
+| L2-v1-default-request | v1 | PASS | 2331 | - | 0.016136 | 7.927 | 7149 | 21257 | [metadata](results/raw/L2-v1-default-request-20261106T111947919741Z/metadata.json) |
+| L2-v1-default-eligible | v1 | PASS | 2331 | - | 0.009926 | 7.829 | 6927 | 18337 | [metadata](results/raw/L2-v1-default-eligible-20261106T111949252525Z/metadata.json) |
+| L2-v1-L1-none | v1 | PASS | 1907 | - | 0.005263 | 7.634 | 3209 | 8417 | [metadata](results/raw/L2-v1-L1-none-20261106T111950545516Z/metadata.json) |
+| L2-v1-L1-request | v1 | PASS | 2331 | - | 0.013496 | 7.927 | 7149 | 21257 | [metadata](results/raw/L2-v1-L1-request-20261106T111951351516Z/metadata.json) |
+| L2-v1-L1-eligible | v1 | PASS | 2331 | - | 0.013105 | 7.927 | 6927 | 18337 | [metadata](results/raw/L2-v1-L1-eligible-20261106T111952500654Z/metadata.json) |
+| G2-v0-default-dt7 | v0 | FAIL | 353 | 8 | 0.013391 | 7.536 | 354 | 354 | [metadata](results/raw/G2-v0-default-dt7-20261106T111953668272Z/metadata.json) |
+| G2-v1-default-dt7 | v1 | PASS | 922 | - | 0.010677 | 7.634 | 1684 | 1711 | [metadata](results/raw/G2-v1-default-dt7-20261106T111954497484Z/metadata.json) |
+| G2-v0-default-max61 | v0 | FAIL | 385 | 11 | 0.014463 | 7.536 | 386 | 386 | [metadata](results/raw/G2-v0-default-max61-20261106T111955248408Z/metadata.json) |
+| G2-v1-default-max61 | v1 | PASS | 930 | - | 0.009018 | 7.536 | 1465 | 1492 | [metadata](results/raw/G2-v1-default-max61-20261106T111956062969Z/metadata.json) |
+| G2-v0-default-dt3max16 | v0 | FAIL | 88 | 3 | 0.008411 | 7.536 | 89 | 89 | [metadata](results/raw/G2-v0-default-dt3max16-20261106T111956814428Z/metadata.json) |
+| G2-v1-default-dt3max16 | v1 | PASS | 414 | - | 0.010491 | 7.536 | 703 | 723 | [metadata](results/raw/G2-v1-default-dt3max16-20261106T111957629006Z/metadata.json) |
+| G2-v0-default-min0dt7 | v0 | FAIL | 45 | 1 | 0.009492 | 7.536 | 46 | 46 | [metadata](results/raw/G2-v0-default-min0dt7-20261106T111958383180Z/metadata.json) |
+| G2-v1-default-min0dt7 | v1 | PASS | 203 | - | 0.008994 | 7.536 | 219 | 223 | [metadata](results/raw/G2-v1-default-min0dt7-20261106T111959203700Z/metadata.json) |
+| G2-v0-default-min12dt1 | v0 | FAIL | 124 | 7 | 0.007648 | 7.536 | 125 | 125 | [metadata](results/raw/G2-v0-default-min12dt1-20261106T111959955097Z/metadata.json) |
+| G2-v1-default-min12dt1 | v1 | PASS | 645 | - | 0.007433 | 7.536 | 1221 | 1276 | [metadata](results/raw/G2-v1-default-min12dt1-20261106T112000778256Z/metadata.json) |
+| G2-v0-default-delta_gt_max | v0 | FAIL | 45 | 1 | 0.006098 | 7.536 | 46 | 46 | [metadata](results/raw/G2-v0-default-delta_gt_max-20261106T112001523435Z/metadata.json) |
+| G2-v1-default-delta_gt_max | v1 | FAIL | 139 | 1 | 0.006341 | 7.536 | 140 | 140 | [metadata](results/raw/G2-v1-default-delta_gt_max-20261106T112002334568Z/metadata.json) |
+
+time_s is verifier wall time, not generation/compile duration; memory_mb is pan's
+total actual memory. Single-run milliseconds should not be used to claim one
+method faster without a controlled benchmark. All PASS searches completed with
+full-state storage under the existing depth/memory limits. Finite S5 failures
+were replayed and reproduced with the matching version/configuration reference.
+
+### Default comparison: what the fixes achieve
+
+G2 and L1 change from FAIL to PASS in default/static cases. T2/G1/C1 static
+failures disappear after takeover-before-warmup and consistent phase accounting.
+Unconditional L2 changes from FAIL to PASS without assuming agent fairness,
+because FIX-1 forces switches under accepted default timings. Conditional variants
+also pass and their premises are feasible. This does not prove a learned policy
+fair or prove all possible parameter combinations correct. S2 safety PASSs stay
+PASS where applicable. Detailed comparison matrix is in FINDINGS.md.
+
+Input-domain changes are part of the comparison: y0/illegal actions become
+explicitly rejected inputs. Do not present rejection as successful traffic
+execution or interpret a halted error run as an infinite service guarantee.
+
+### Residual accepted-parameter defect (preserved, not silently repaired)
+
+Before editing the model, a direct execution of the unchanged Python v1 core
+showed delta12/yellow3/min0/max11 is accepted but triggers its G2 monitor. This
+was explained to the user before implementation. The main SPIN probe then
+confirmed the same behavior with a stored trail and reference reproduction:
+
+```sh
+python3 verification/spin/scripts/run_spin.py G2-v1-default-delta_gt_max
+```
+
+The constructor computes first_switch_point(10)=10 and
+first_switch_point(0)=0 when min_green=0; both are<=11, so it accepts. At the
+first decision, age10+delta12>max11 forces EW, then the unchanged delta loop
+shows EW for12 intervals. The selected G2 assertion fails at pre-step t24,
+started decision1, observed green age12, controller age11. The v0 comparison
+also fails, but earlier, because its first NS green exceeds11 after warmup.
+This is a defect in the parameter-admission reasoning, not a Promela correction
+or test malfunction. It is outside the teammate's recorded delta1..7 sweep,
+so it does not contradict the default PASSs or that narrower experiment.
+
+Five other selected probes (delta7/max60, delta5/max61, delta3/min10/max16,
+delta7/min0/max11, delta1/min12/max16) pass G2 in v1 and fail in v0. These show
+useful non-divisible-boundary behavior, not universal parameter correctness.
+A candidate remedy is an additional delta<=max admissibility check, or a change
+to intra-decision control. No remedy, shared contract amendment or original-source
+patch was applied; any follow-up must be reviewed with the ESBMC owner/user.
+No new shared property/defect ID was invented for this finding.
+
+### Limits and next stage
+
+S5 completes exact-patch modeling and comparison, not a declaration that every
+v1 input accepted by the patch is safe. Real SUMO replay/conformance, human
+model review, final tool comparison and report packaging remain S6. The original
+controller/ESBMC/shared files are untouched. Stop after this stage and report.

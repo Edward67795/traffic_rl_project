@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the implemented v0 S2/S3/S4 matrix with one property per exhaustive search.
+"""Run the implemented v0/v1 verification matrix with one property per exhaustive search.
 
 FAIL denotes a witnessed model violation, not runner failure. The command exits
 nonzero for ERROR/UNKNOWN/TIMEOUT or a failed witness reference cross-check.
@@ -27,11 +27,30 @@ REPO = SPIN.parents[1]
 HEADER = ['tool', 'property', 'version', 'config', 'bound', 'result',
           'ce_length', 'time_s', 'memory_mb', 'notes']
 PROPERTIES = ('S1', 'T1', 'T2', 'G1', 'C1', 'G2', 'L1', 'L2')
-STAGES = {'S2': PROPERTIES[:5], 'S3': PROPERTIES[5:7], 'S4': ('L2',)}
+STAGES = {'S2': PROPERTIES[:5], 'S3': PROPERTIES[5:7], 'S4': ('L2',), 'S5': PROPERTIES}
 SCENARIOS = ('default', 'y0', 'any', 'L1')
 CASES = {f'{p}-v0-{s}': (p, s) for p in PROPERTIES if p != 'L2' for s in SCENARIOS}
 CASES.update({f'L2-v0-{s}-{f}': ('L2', s) for s in SCENARIOS
               for f in ('none', 'request', 'eligible')})
+CASE_STAGE = {case: ('S4' if prop == 'L2' else 'S3' if prop in ('G2','L1') else 'S2')
+              for case,(prop,_) in CASES.items()}
+for prop in PROPERTIES:
+    for scenario in ('default','L1'):
+        modes = ('none','request','eligible') if prop == 'L2' else (None,)
+        for mode in modes:
+            case = f'{prop}-v1-{scenario}' + (f'-{mode}' if mode else '')
+            CASES[case] = (prop,scenario)
+            CASE_STAGE[case] = 'S5'
+PARAMETERS = {}
+PROBES = {
+    'dt7': (7,10,60), 'max61': (5,10,61), 'dt3max16': (3,10,16),
+    'min0dt7': (7,0,11), 'min12dt1': (1,12,16), 'delta_gt_max': (12,0,11),
+}
+for tag,(delta,minimum,maximum) in PROBES.items():
+    for version in ('v0','v1'):
+        case=f'G2-{version}-default-{tag}'
+        CASES[case]=('G2','default'); CASE_STAGE[case]='S5'
+        PARAMETERS[case]={'delta':delta,'minimum':minimum,'maximum':maximum,'probe':tag}
 STATES = ['GGGgrrrGGGgrrr', 'yyyyrrryyyyrrr', 'rrrrGGgrrrrGGg', 'rrrryyyrrrryyy']
 
 
@@ -88,18 +107,20 @@ def classify(output, returncode):
     return 'PASS'
 
 
-def reference_witness(prop, scenario, actions):
+def reference_witness(prop, scenario, actions, version="v0", delta=5, minimum=10, maximum=60):
     """Cross-check finite assertion witnesses using the read-only Python reference."""
     ns = {}
     model = REPO / 'verification/esbmc/model'
-    for name in ('traci_stub.py', 'env_core_v0.py'):
+    for name in ('traci_stub.py', f'env_core_{version}.py'):
         path = model / name
         exec(compile(path.read_text(), str(path), 'exec'), ns)
     ns['STATIC_PROGRAM'] = scenario == 'L1'
     ns['CHK_' + prop] = prop != 'C1'
     ns['MON_YELLOW'] = 0 if scenario == 'y0' else 3
+    ns['MON_MIN_GREEN'] = minimum
+    ns['MON_MAX_GREEN'] = maximum
     stub = ns['traci']
-    env = ns['SumoTrafficEnvCore'](5, 0 if scenario == 'y0' else 3, 10, 60, 3600)
+    env = ns['SumoTrafficEnvCore'](delta, 0 if scenario == 'y0' else 3, minimum, maximum, 3600)
     consumed = 0
     try:
         with contextlib.redirect_stdout(io.StringIO()):
@@ -132,17 +153,25 @@ def run_case(case_id, prop, scenario, args, network, versions):
     source_snapshot.mkdir()
     for name in ('controller.pml', 'properties.pml'):
         shutil.copyfile(SPIN / 'models' / name, source_snapshot / name)
-    flags = [f'-DCHK_{prop}', f'-DSTATIC_PROGRAM={int(scenario == "L1")}',
-             f'-DYELLOW_TIME={0 if scenario == "y0" else 3}']
+    version = 'v1' if '-v1-' in case_id else 'v0'
+    params=PARAMETERS.get(case_id,{})
+    delta=params.get('delta',5); minimum=params.get('minimum',10); maximum=params.get('maximum',60)
+    yellow=0 if scenario=='y0' else 3
+    flags = [f'-DCHK_{prop}', f'-DVERSION={int(version == "v1")}',
+             f'-DDELTA_TIME={delta}', f'-DMIN_GREEN={minimum}', f'-DMAX_GREEN={maximum}',
+             f'-DSTATIC_PROGRAM={int(scenario == "L1")}', f'-DYELLOW_TIME={yellow}']
     if scenario == 'any':
         flags.append('-DANY_ACTION')
-    config = f'{scenario};fidelity={"L1" if scenario == "L1" else "L0"};dt=5;y={0 if scenario == "y0" else 3};min=10;max=60'
+    config = f'{scenario};fidelity={"L1" if scenario == "L1" else "L0"};dt={delta};y={yellow};min={minimum};max={maximum}'
+    if 'probe' in params:
+        config += f';probe={params["probe"]}'
     fairness = case_id.rsplit('-', 1)[-1] if prop == 'L2' else None
     if fairness is not None:
         flags.append(f'-DAGENT_FAIRNESS={dict(none=0, request=1, eligible=2)[fairness]}')
         config += f';fairness={fairness}'
-    row = dict(zip(HEADER, ['spin', prop, 'v0', config, '', 'ERROR', '', '', '', '']))
+    row = dict(zip(HEADER, ['spin', prop, version, config, '', 'ERROR', '', '', '', '']))
     metadata = {'case': case_id, 'property': prop, 'scenario': scenario,
+                'version':version, 'parameters':{'delta':delta,'yellow':yellow,'min':minimum,'max':maximum},
                 'versions': versions, 'network': network, 'flags': flags,
                 'agent_fairness': fairness, 'process_weak_fairness': False,
                 'limits': {'depth': args.depth, 'memory_mb': args.memory,
@@ -227,11 +256,11 @@ def run_case(case_id, prop, scenario, args, network, versions):
                            'timing_samples': [[int(x) for x in match.split()] for match in
                                              re.findall(r'^\s*TIMING ((?:-?\d+ ){2}-?\d+)\s*$', replay, re.M)]}
                 if not witness['acceptance_cycle']:
-                    witness['reference'] = reference_witness(prop, scenario, actions)
+                    witness['reference'] = reference_witness(prop, scenario, actions, version, delta, minimum, maximum)
                 else:
                     if prop == 'L2':
                         cycle = analyze_cycle(replay, fairness)
-                        closure = reference_lasso(REPO, scenario, cycle)
+                        closure = reference_lasso(REPO, scenario, cycle, version=version)
                         if not cycle['selected_premise_holds'] or not cycle['violates_service']:
                             raise ValueError('L2 witness does not exhibit the selected fair-service violation')
                         if not closure['closed'] or closure['period_time_s'] <= 0:
@@ -257,12 +286,16 @@ def run_case(case_id, prop, scenario, args, network, versions):
         row['result'] = 'ERROR'
     relative = str(evidence.relative_to(SPIN))
     row['notes'] = f'evidence={relative};model-level only;ce counts started decisions;DFS witness not necessarily shortest'
+    if 'probe' in params:
+        row['notes'] += ';parameter probe beyond default;dt12 probe outside teammate dt1..7 sweep'
+    if version=='v1':
+        row['notes'] += ';accepted parameters and legal inputs;rejections tested separately'
     if prop == 'L2':
         row['notes'] += f';agent_fairness={fairness};ongoing positive-time controller;ce=prefix plus one cycle decisions'
     if prop == 'G2':
         row['notes'] += ';observed green per second AND controller age after decisions'
     if prop == 'L1':
-        row['notes'] += f';wait_limit={60 + 2 * (0 if scenario == "y0" else 3)}s;warmup and yellow included'
+        row['notes'] += f';wait_limit={maximum + 2 * yellow}s;warmup and yellow included'
     if prop == 'C1':
         row['notes'] += ';C1 sampled after decision;D4 unavailable'
     if scenario == 'y0' and prop == 'T2':
@@ -294,7 +327,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('cases', nargs='*', choices=None)
     parser.add_argument('--list', action='store_true')
-    parser.add_argument('--all', action='store_true', help='All currently implemented S2/S3/S4 cases, v0 only')
+    parser.add_argument('--all', action='store_true', help='All currently implemented v0/v1 cases including parameter probes')
     parser.add_argument('--stage', choices=STAGES, help='Run only this stage instead of --all/case IDs')
     parser.add_argument('--depth', type=int, default=100000)
     parser.add_argument('--memory', type=int, default=512)
@@ -316,7 +349,7 @@ def main():
     rows = []
     bad = False
     selected = CASES if args.all else [case for case, (prop, _) in CASES.items()
-                                      if prop in STAGES[args.stage]] if args.stage else args.cases
+                                      if CASE_STAGE[case] == args.stage] if args.stage else args.cases
     for case in selected:
         row, metadata = run_case(case, *CASES[case], args, network, versions)
         rows.append(row)

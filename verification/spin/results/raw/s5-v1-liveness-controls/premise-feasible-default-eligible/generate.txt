@@ -1,0 +1,1 @@
+ltl agent_service: ! (([] (<> (((request_event) && ((requested_action==0))) && (request_eligible)))) && ([] (<> (((request_event) && ((requested_action==1))) && (request_eligible)))))

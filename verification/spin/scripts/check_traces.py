@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare finite Promela traces with the read-only extracted Python v0 core.
+"""Compare finite Promela traces with the read-only extracted Python v0/v1 core.
 
 This is model conformance testing against a reference abstraction, not exhaustive
 property verification or evidence of conformance with real SUMO.
@@ -22,14 +22,20 @@ MODEL = SPIN_DIR / "models" / "controller.pml"
 REFERENCE = REPO / "verification" / "esbmc" / "model"
 
 
-def reference_trace(actions, static, delta, yellow, minimum=10, maximum=60):
+def reference_trace(actions, static, delta, yellow, minimum=10, maximum=60, version="v0"):
     namespace = {}
-    for filename in ("traci_stub.py", "env_core_v0.py"):
+    for filename in ("traci_stub.py", f"env_core_{version}.py"):
         path = REFERENCE / filename
         exec(compile(path.read_text(), str(path), "exec"), namespace)
     namespace["STATIC_PROGRAM"] = bool(static)
     stub = namespace["traci"]
-    env = namespace["SumoTrafficEnvCore"](delta, yellow, minimum, maximum, 3600)
+    try:
+        env = namespace["SumoTrafficEnvCore"](delta, yellow, minimum, maximum, 3600)
+    except ValueError as error:
+        if version != 'v1':
+            raise
+        reason = 2 if 'first green has no' in str(error) else 3 if 'no multiple of' in str(error) else 1
+        return [["REJECT", reason]]
     age_cap = maximum + minimum + delta + 1
     records = []
 
@@ -49,12 +55,19 @@ def reference_trace(actions, static, delta, yellow, minimum=10, maximum=60):
         env.reset()
         records.append(["DONE", 0, env.current_step, *state()])
         for number, action in enumerate(actions, 1):
-            env.step(action)
+            try:
+                env.step(action)
+            except ValueError:
+                if version != 'v1':
+                    raise
+                records.append(["REJECT", 4])
+                records.append(["ABORT", number, env.current_step, *state()])
+                break
             records.append(["DONE", number, env.current_step, *state()])
     return records
 
 
-def promela_trace(actions, static, delta, yellow):
+def promela_trace(actions, static, delta, yellow, minimum=10, maximum=60, version="v0"):
     with tempfile.TemporaryDirectory(prefix="traffic-spin-trace-") as directory:
         build = Path(directory)
         shutil.copyfile(MODEL, build / "controller.pml")
@@ -65,7 +78,8 @@ def promela_trace(actions, static, delta, yellow):
         (build / "actions.pml").write_text(
             f"#define N_ACTIONS {len(actions)}\n"
             f"inline choose_action() {{ if\n{branches}\nfi }}\n")
-        command = ["spin", "-T", "-DTRACE", f"-DSTATIC_PROGRAM={static}",
+        command = ["spin", "-T", "-DTRACE", f"-DVERSION={int(version == 'v1')}",
+                   f"-DMIN_GREEN={minimum}", f"-DMAX_GREEN={maximum}", f"-DSTATIC_PROGRAM={static}",
                    f"-DDELTA_TIME={delta}", f"-DYELLOW_TIME={yellow}",
                    "-u1000000", "controller.pml"]
         result = subprocess.run(command, cwd=build, capture_output=True,
@@ -74,7 +88,7 @@ def promela_trace(actions, static, delta, yellow):
             raise RuntimeError(f"{command}\n{result.stdout}\n{result.stderr}")
         records = []
         for line in result.stdout.splitlines():
-            match = re.fullmatch(r"\s*(TICK|DONE) ((?:-?\d+ ?)+)\s*", line)
+            match = re.fullmatch(r"\s*(TICK|DONE|ABORT|REJECT) ((?:-?\d+ ?)+)\s*", line)
             if match:
                 records.append([match[1], *map(int, match[2].split())])
         return records
@@ -82,6 +96,7 @@ def promela_trace(actions, static, delta, yellow):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version", choices=["v0", "v1"], default="v0")
     parser.add_argument("--random-cases", type=int, default=24)
     parser.add_argument("--seed", type=int, default=6863)
     parser.add_argument("--output", type=Path,
@@ -106,8 +121,8 @@ def main():
                       rng.randrange(2), rng.choice([1, 5, 7]), rng.choice([0, 3])))
     results = []
     for name, actions, static, delta, yellow in cases:
-        expected = reference_trace(actions, static, delta, yellow)
-        actual = promela_trace(actions, static, delta, yellow)
+        expected = reference_trace(actions, static, delta, yellow, version=args.version)
+        actual = promela_trace(actions, static, delta, yellow, version=args.version)
         if actual != expected:
             mismatch = next((i for i, pair in enumerate(zip(expected, actual))
                              if pair[0] != pair[1]), min(len(actual), len(expected)))
@@ -120,11 +135,11 @@ def main():
     evidence = {
         "kind": "finite-reference-trace-comparison",
         "warning": "Not exhaustive property verification; not a real SUMO replay",
-        "seed": args.seed,
+        "seed": args.seed, "version": args.version,
         "spin": subprocess.check_output(["spin", "-V"], text=True).strip(),
         "sha256": {str(path.relative_to(REPO)): hashlib.sha256(path.read_bytes()).hexdigest()
                    for path in [MODEL, MODEL.parent / "properties.pml", REFERENCE / "traci_stub.py",
-                                REFERENCE / "env_core_v0.py", Path(__file__).resolve()]},
+                                REFERENCE / f"env_core_{args.version}.py", Path(__file__).resolve()]},
         "cases": results,
     }
     if args.output:
@@ -132,7 +147,7 @@ def main():
         args.output.write_text(json.dumps(evidence, indent=2) + "\n")
     print(f"MATCH: {len(results)} finite cases, "
           f"{sum(row['records'] for row in results)} observation records")
-    print("Reference: extracted Python v0 + TraCI stub; real SUMO not exercised.")
+    print(f"Reference: extracted Python {args.version} + TraCI stub; real SUMO not exercised.")
 
 
 if __name__ == "__main__":

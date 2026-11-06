@@ -70,6 +70,7 @@ def fixture_source(sequence, events=True, initial=0):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--version',choices=['v0','v1'],default='v0')
     parser.add_argument('--output', type=Path, required=True,
                         help='New evidence directory; must not already exist')
     args = parser.parse_args()
@@ -101,10 +102,11 @@ def main():
         if verdict != expected:
             (args.output / 'summary.json').write_text(json.dumps(results, indent=2))
             raise RuntimeError(f'LTL control mismatch: {name}')
-    for scenario in ('default', 'y0', 'any', 'L1'):
+    scenarios=('default','L1') if args.version=='v1' else ('default','y0','any','L1')
+    for scenario in scenarios:
         for fairness, mode in [('request', 1), ('eligible', 2)]:
             name = f'premise-feasible-{scenario}-{fairness}'
-            flags = ['-DCHK_L2', f'-DAGENT_FAIRNESS={mode}', '-DFAIRNESS_FEASIBILITY',
+            flags = ['-DCHK_L2', f'-DVERSION={int(args.version == "v1")}', f'-DAGENT_FAIRNESS={mode}', '-DFAIRNESS_FEASIBILITY',
                      f'-DSTATIC_PROGRAM={int(scenario == "L1")}',
                      f'-DYELLOW_TIME={0 if scenario == "y0" else 3}']
             if scenario == 'any':
@@ -114,7 +116,7 @@ def main():
             if verdict != 'FAIL':
                 raise RuntimeError(f'No feasible fairness witness: {name}: {verdict}')
             cycle = analyze_cycle(replay, fairness)
-            reference = reference_lasso(REPO, scenario, cycle)
+            reference = reference_lasso(REPO, scenario, cycle, version=args.version)
             if not cycle['selected_premise_holds'] or not reference['closed'] or reference['period_time_s'] <= 0:
                 raise RuntimeError(f'Invalid feasibility lasso: {name}')
             record = {'name': name, 'kind': 'full-model-fairness-feasibility',
@@ -125,13 +127,13 @@ def main():
             (args.output / name / 'analysis.json').write_text(json.dumps(record, indent=2) + '\n')
             print(name, 'FEASIBLE (acceptance cycle of negated premise)', flush=True)
     summary = {'date_utc': datetime.now(timezone.utc).isoformat(),
-               'kind': 'auxiliary-controls-not-shared-property-results',
+               'kind': 'auxiliary-controls-not-shared-property-results', 'version':args.version,
                'spin': subprocess.check_output(['spin', '-V'], text=True).strip(),
                'sha256': {str(p.relative_to(REPO)): hashlib.sha256(p.read_bytes()).hexdigest()
                           for p in [*list((SPIN / 'models').glob('*.pml')), Path(__file__).resolve()]},
                'records': results}
     (args.output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
-    print('All 11 LTL controls and 8 full-model fairness-feasibility checks matched.', flush=True)
+    print(f'All 11 LTL controls and {2*len(scenarios)} full-model fairness-feasibility checks matched.', flush=True)
 
 
 if __name__ == '__main__':

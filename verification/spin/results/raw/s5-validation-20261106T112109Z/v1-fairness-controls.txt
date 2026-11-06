@@ -1,0 +1,16 @@
+unfair-ns-starvation FAIL expected FAIL
+unfair-ew-starvation FAIL expected FAIL
+alternating-service PASS expected PASS
+finite-ew-not-infinite FAIL expected FAIL
+request-fair-starvation FAIL expected FAIL
+request-fair-service PASS expected PASS
+unfair-premise-vacuity PASS expected PASS
+eligible-fair-starvation FAIL expected FAIL
+eligible-fair-service PASS expected PASS
+ineligible-premise-vacuity PASS expected PASS
+no-phantom-request-events PASS expected PASS
+premise-feasible-default-request FEASIBLE (acceptance cycle of negated premise)
+premise-feasible-default-eligible FEASIBLE (acceptance cycle of negated premise)
+premise-feasible-L1-request FEASIBLE (acceptance cycle of negated premise)
+premise-feasible-L1-eligible FEASIBLE (acceptance cycle of negated premise)
+All 11 LTL controls and 4 full-model fairness-feasibility checks matched.

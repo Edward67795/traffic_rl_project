@@ -358,8 +358,11 @@ feasible. Keep environment files/generated outputs out of version control.
   Boundary tests and S2 regression passed. Current matrix: 28 cases, 14 PASS/14 FAIL.
 - S4: complete for v0 L2: 12 cases, 7 conditional PASS/5 FAIL; cycle and
   fairness-feasibility evidence validated. Combined matrix: 40, 21 PASS/19 FAIL.
-- S5/S6: pending (documentation work ongoing). Next is S5, exact v1 comparison.
-- The user requested one stage at a time; report S4 completion before proceeding.
+- S5: complete: exact FIX-1..4 model,20 default v1 PASSs,12 paired G2 probes
+  (v1 five PASS/one residual FAIL),42 matched input-contract cases.
+  Current combined dataset:72 cases,46 PASS/26 FAIL.
+- S6: pending (documentation work ongoing); next is final validation/report.
+- The user requested one stage at a time; report S5 completion before proceeding.
   Keep README meanings/status current for teammates and append data to report.md.
 
 ## Execution record
@@ -637,3 +640,41 @@ implemented. See the next execution record for actual validation results.
   Updated README meanings/live progress, mapping, findings and report data.
 - HEAD at start: 717786c, user's S3 commit. No source/ESBMC/shared/network/Git
   writes, no real SUMO or human review. Stop at S4; S5 remains unstarted.
+
+### 2026-11-06: S5 started
+
+- HEAD 30a3b1f, user's S4 commit; working tree clean at start. User authorized S5.
+- Mirror FIX-1..4 exactly in Promela; do not modify original source/ESBMC/contract.
+- Main v1 normal-operation rows will cover default/static scenarios with legal
+  actions. y0 constructor rejection and invalid-action rejection are auxiliary
+  input-contract outcomes, not normal-operation PASS or invented CSV statuses.
+- Add aligned v0/v1 non-divisible timing probes and preserve all stage data.
+- Discovered reference v1 accepts delta12/yellow3/min0/max11, then violates G2
+  (observed green12 at pre-step t24, controller age11). This is outside the
+  teammate's dt1..7 sweep. Explained to user before implementing; preserve the
+  original patch and record a separate parameter-scope finding, not a new ID.
+
+### 2026-11-06: S5 completed
+
+- Mirrored original FIX-1..4 in VERSION=1; VERSION=0 retains v0. No patch was
+  applied to source/ESBMC/shared contracts. ACTION/REQUEST capture original input,
+  FORCED records effective target; REJECT/ABORT preserve explicit error behavior.
+- Main v1 checks restrict normal operation to accepted default parameters/legal
+  inputs in default/static scenarios. y0 and invalid actions have auxiliary
+  rejection evidence, not fabricated normal PASS or terminal L2 claims.
+-32 S5 searches:25 PASS/7 FAIL. All20 default v1 cases PASS; six G2 probe pairs
+  have six v0 FAILs and v1 five PASS/one FAIL. Current72 cases,46 PASS/26 FAIL.
+- The delta12/min0/max11/yellow3 probe is a retained v1 defect: admission passes,
+  observed green12>11 at t24, first decision, controller age11. Outside teammate
+  delta1..7 sweep. No candidate fix or new shared ID applied; report it honestly.
+-42 dedicated v1 contract/trace cases match (16 accepted/26 rejected). Existing
+  tests14 methods pass; v0 96/18,898 and v1 96/5,752 traces match. v1's lower
+  count includes early rejections and is not equal-coverage evidence.
+- Eleven LTL controls and four v1 fairness-feasibility cycles validated. All40
+  v0 regression verdicts/depths unchanged. No UNKNOWN/TIMEOUT/ERROR observed.
+- Added check_v1.py; runner --stage S5 runs32, --all72, --stage S2/S3/S4 remain
+  original v0 sets. Updated reference helpers for matching version/parameters.
+- Frozen S5/through-S5 CSV and model/script source; updated README stage meanings
+  and status, mapping, FINDINGS and report.md with all metrics/failures/limits.
+- HEAD at start30a3b1f; no Git writes. Real SUMO and human review pending.
+  Stop at S5; next S6 is final reproducibility, validation and report delivery.

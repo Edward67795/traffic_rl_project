@@ -1,0 +1,72 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (agent_service)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 36 byte, depth reached 25, errors: 0
+       26 states, stored
+       26 states, matched
+       52 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.002	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.262	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.536	total actual memory usage
+
+
+unreached in init
+	check.pml:6, state 19, "-end-"
+	(1 of 19 states)
+unreached in claim agent_service
+	_spin_nvr.tmp:20, state 31, "(!((observed==0)))"
+	_spin_nvr.tmp:29, state 45, "((!((observed==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:29, state 45, "(!((observed==0)))"
+	_spin_nvr.tmp:48, state 95, "(((!((observed==2))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:48, state 95, "(((!((observed==0))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:48, state 95, "((!((observed==2))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:48, state 95, "((!((observed==0))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:48, state 95, "(!((observed==2)))"
+	_spin_nvr.tmp:48, state 95, "(!((observed==0)))"
+	_spin_nvr.tmp:48, state 95, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:48, state 95, "((request_event&&(requested_action==0)))"
+	_spin_nvr.tmp:48, state 95, "((request_event&&(requested_action==1)))"
+	_spin_nvr.tmp:48, state 95, "(1)"
+	_spin_nvr.tmp:48, state 95, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:68, state 113, "(!((observed==0)))"
+	_spin_nvr.tmp:68, state 113, "(((!((observed==0))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:68, state 113, "((!((observed==0))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:87, state 161, "(((!((observed==2))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:87, state 161, "(((!((observed==0))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:87, state 161, "((!((observed==2))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:87, state 161, "((!((observed==0))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:87, state 161, "(!((observed==2)))"
+	_spin_nvr.tmp:87, state 161, "(!((observed==0)))"
+	_spin_nvr.tmp:87, state 161, "((request_event&&(requested_action==0)))"
+	_spin_nvr.tmp:87, state 161, "((request_event&&(requested_action==1)))"
+	_spin_nvr.tmp:87, state 161, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:87, state 161, "(1)"
+	_spin_nvr.tmp:87, state 161, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:101, state 186, "(((!((observed==2))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:101, state 186, "(((!((observed==0))&&(request_event&&(requested_action==0)))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:101, state 186, "((!((observed==2))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:101, state 186, "((!((observed==0))&&(request_event&&(requested_action==0))))"
+	_spin_nvr.tmp:101, state 186, "(!((observed==2)))"
+	_spin_nvr.tmp:101, state 186, "(!((observed==0)))"
+	_spin_nvr.tmp:101, state 186, "((request_event&&(requested_action==0)))"
+	_spin_nvr.tmp:101, state 186, "((request_event&&(requested_action==1)))"
+	_spin_nvr.tmp:101, state 186, "(1)"
+	_spin_nvr.tmp:101, state 186, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:101, state 186, "(((request_event&&(requested_action==0))&&(request_event&&(requested_action==1))))"
+	_spin_nvr.tmp:128, state 216, "-end-"
+	(7 of 216 states)
+
+pan: elapsed time 0 seconds

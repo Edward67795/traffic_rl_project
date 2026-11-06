@@ -1,0 +1,41 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (yellow_completion)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 44 byte, depth reached 1817, errors: 0
+     1623 states, stored (1807 visited)
+      409 states, matched
+     2216 transitions (= visited+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.111	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.267	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.536	total actual memory usage
+
+
+unreached in init
+	controller.pml:136, state 2, "rejected = 1"
+	controller.pml:136, state 3, "printf('REJECT 1\n')"
+	controller.pml:142, state 10, "rejected = 1"
+	controller.pml:142, state 11, "printf('REJECT 2\n')"
+	controller.pml:147, state 18, "rejected = 1"
+	controller.pml:147, state 19, "printf('REJECT 3\n')"
+	controller.pml:188, state 106, "rejected = 1"
+	controller.pml:188, state 107, "printf('REJECT 4\n')"
+	controller.pml:226, state 266, "-end-"
+	(9 of 266 states)
+unreached in claim yellow_completion
+	_spin_nvr.tmp:10, state 13, "-end-"
+	(1 of 13 states)
+
+pan: elapsed time 0 seconds

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "tests",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/test_verification.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v0-traces",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/check_traces.py",
+      "--output",
+      "verification/spin/results/raw/s1-trace-comparison.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v1-traces",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/check_traces.py",
+      "--version",
+      "v1",
+      "--output",
+      "verification/spin/results/raw/s5-v1-trace-comparison.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v1-fairness-controls",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/check_liveness.py",
+      "--version",
+      "v1",
+      "--output",
+      "verification/spin/results/raw/s5-v1-liveness-controls"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s2-regression",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s3-regression",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S3"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s4-regression",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S4"
+    ],
+    "exit_code": 0
+  }
+]

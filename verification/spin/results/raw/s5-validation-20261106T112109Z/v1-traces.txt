@@ -1,0 +1,2 @@
+MATCH: 96 finite cases, 5752 observation records
+Reference: extracted Python v1 + TraCI stub; real SUMO not exercised.
