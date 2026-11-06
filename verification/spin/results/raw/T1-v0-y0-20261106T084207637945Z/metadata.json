@@ -1,0 +1,244 @@
+{
+  "case": "T1-v0-y0",
+  "property": "T1",
+  "scenario": "y0",
+  "versions": {
+    "spin": "Spin Version 6.5.2 -- 6 December 2019",
+    "cc": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.3.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "network": {
+    "sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+    "phase_states": [
+      "GGGgrrrGGGgrrr",
+      "yyyyrrryyyyrrr",
+      "rrrrGGgrrrrGGg",
+      "rrrryyyrrrryyy"
+    ],
+    "durations": [
+      42,
+      3,
+      42,
+      3
+    ],
+    "protected_conflicts_checked": 38,
+    "mapping_assumption": "signal link i corresponds to junction request i",
+    "result": "PASS"
+  },
+  "flags": [
+    "-DCHK_T1",
+    "-DSTATIC_PROGRAM=0",
+    "-DYELLOW_TIME=0"
+  ],
+  "limits": {
+    "depth": 100000,
+    "memory_mb": 512,
+    "timeout_s_per_command": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_T1",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=0",
+        "-a",
+        "controller.pml"
+      ],
+      "shell": "spin -DCHK_T1 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=0 -a controller.pml",
+      "exit_code": 0,
+      "time_s": 0.043262916995445266
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-DSAFETY",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "shell": "cc -O2 -DMEMLIM=512 -DSAFETY -o pan pan.c",
+      "exit_code": 0,
+      "time_s": 0.27899970798171125
+    },
+    {
+      "argv": [
+        "./pan",
+        "-?"
+      ],
+      "shell": "./pan '-?'",
+      "exit_code": 1,
+      "time_s": 0.43759349998435937
+    },
+    {
+      "argv": [
+        "./pan",
+        "-m100000",
+        "-w18",
+        "-b"
+      ],
+      "shell": "./pan -m100000 -w18 -b",
+      "exit_code": 0,
+      "time_s": 0.012547708000056446
+    },
+    {
+      "argv": [
+        "spin",
+        "-T",
+        "-DCHK_T1",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=0",
+        "-t",
+        "-k",
+        "controller.pml.trail",
+        "controller.pml"
+      ],
+      "shell": "spin -T -DCHK_T1 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=0 -t -k controller.pml.trail controller.pml",
+      "exit_code": 0,
+      "time_s": 0.04157304100226611
+    }
+  ],
+  "model_sha256": {
+    "verification/spin/models/controller.pml": "6452f54bb06085b9c0c8b4bbe88fb7fe429c6035f365ae7ee73af5d5f7d4a4f8",
+    "verification/spin/models/properties.pml": "246feb5795e13013aa838f0652798bd213434eb761c48b3708cb72c8bd219a66",
+    "verification/spin/scripts/run_spin.py": "ab46fbc8131ca3b51f171a41d35c328afa35c396f511261480de48d3dc67456e"
+  },
+  "started_utc": "20261106T084207637945Z",
+  "timing": "time_s is verifier wall time only; generation/compile recorded separately",
+  "ce_length_convention": "count ACTION events through failing state, including an unfinished decision; not guaranteed shortest",
+  "limitations": [
+    "reference static timing, not real SUMO validation",
+    "C1 decision-boundary interpretation pending D4"
+  ],
+  "witness": {
+    "actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "observed_seconds": 91,
+    "last_observations": [
+      [
+        0,
+        0,
+        69,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        71,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        73,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        74,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        75,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "acceptance_cycle": false,
+    "reference": {
+      "reproduced": true,
+      "message": "T1: NS green -> EW green without yellow",
+      "time_s": 90,
+      "decision": 17,
+      "phase": 1,
+      "signal": 2,
+      "controller_age": 0
+    }
+  },
+  "result": {
+    "tool": "spin",
+    "property": "T1",
+    "version": "v0",
+    "config": "y0;fidelity=L0;dt=5;y=0;min=10;max=60",
+    "bound": "depth=571",
+    "result": "FAIL",
+    "ce_length": "17",
+    "time_s": "0.012548",
+    "memory_mb": "7.536",
+    "notes": "evidence=results/raw/T1-v0-y0-20261106T084207637945Z;model-level only;ce counts started decisions;DFS witness not necessarily shortest"
+  }
+}

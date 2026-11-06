@@ -1,0 +1,30 @@
+pan:1: assertion violated (green_age>=10) (at depth 931)
+pan: wrote controller.pml.trail
+
+(Spin Version 6.5.2 -- 6 December 2019)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 36 byte, depth reached 1759, errors: 1
+    10738 states, stored
+      211 states, matched
+    10949 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         2 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.655	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.851	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    8.122	total actual memory usage
+
+
+
+pan: elapsed time 0.01 seconds

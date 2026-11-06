@@ -1,0 +1,42 @@
+saw option -?
+Spin Version 6.5.2 -- 6 December 2019
+Valid Options are:
+	-a  find acceptance cycles
+	-A  ignore assert() violations
+	-b  consider it an error to exceed the depth-limit
+	-cN stop at Nth error (defaults to -c1)
+	-D  print state tables in dot-format and stop
+	-d  print state tables and stop
+	-e  create trails for all errors
+	-E  ignore invalid end states
+	-f  add weak fairness (to -a or -l)
+	-hN use different hash-seed N:0..499 (defaults to -h0)
+	-hash generate a random hash-polynomial for -h0 (see also -rhash)
+	      using a seed set with -RSn (default 12345)
+	-i  search for shortest path to error
+	-I  like -i, but approximate and faster
+	-J  reverse eval order of nested unlesses
+	-l  find non-progress cycles -> disabled, requires compilation with -DNP
+	-mN max depth N steps (default=10k)
+	-n  no listing of unreached states
+	-QN set time-limit on execution of N minutes
+	-q  require empty chans in valid end states
+	-r  read and execute trail - can add -v,-n,-PN,-g,-C
+	-r trailfilename  read and execute trail in file
+	-rN read and execute N-th error trail
+	-C  read and execute trail - columnated output (can add -v,-n)
+	-r -PN read and execute trail - restrict trail output to proc N
+	-g  read and execute trail + msc gui support
+	-S  silent replay: only user defined printfs show
+	-RSn use randomization seed n
+	-rhash use random hash-polynomial and randomly choose -p_rotateN, -p_permute, or p_reverse
+	-T  create trail files in read-only mode
+	-t_reverse  reverse order in which transitions are explored
+	-tsuf replace .trail with .suf on trailfiles
+	-V  print SPIN version number
+	-v  verbose -- filenames in unreached state listing
+	-wN hashtable of 2^N entries (defaults to -w24)
+	-x  do not overwrite an existing trail file
+
+	options -r, -C, -PN, -g, and -S can optionally be followed by
+	a filename argument, as in '-r filename', naming the trailfile

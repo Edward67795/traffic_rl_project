@@ -1,0 +1,30 @@
+pan:1: assertion violated  !((((previous==0)&&(signal==2))||((previous==2)&&(signal==0)))) (at depth 571)
+pan: wrote controller.pml.trail
+
+(Spin Version 6.5.2 -- 6 December 2019)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 28 byte, depth reached 571, errors: 1
+      580 states, stored
+        1 states, matched
+      581 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.031	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.279	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.536	total actual memory usage
+
+
+
+pan: elapsed time 0.01 seconds
