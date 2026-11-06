@@ -238,6 +238,7 @@ and final joint reporting remain S6 work. Stage datasets:
 
 ## S6 real-source checks and reproduction (2026-11-06)
 
+A fresh isolated code copy reproduced all72 formal verdicts, depths and CE counts
 in64.059 s including compilation. The saved evidence audit passed. Neither
 experiment is an installation test on another Mac.
 
