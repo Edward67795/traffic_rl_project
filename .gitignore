@@ -66,3 +66,11 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# verification workspace
+.venv/
+.hypothesis/
+pan
+pan.*
+*.trail
+_spin_nvr.tmp
