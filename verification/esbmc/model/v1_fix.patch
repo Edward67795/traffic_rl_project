@@ -18,7 +18,7 @@
  
  class SumoTrafficEnv(gym.Env):
      """
-@@ -108,6 +119,18 @@
+@@ -108,6 +119,21 @@
          """
          super().__init__()
  
@@ -29,6 +29,9 @@
 +            raise ValueError(f"yellow_time must be >= {Y_MIN}")
 +        if min_green < 0 or max_green < 1 or min_green > max_green:
 +            raise ValueError("need 0 <= min_green <= max_green and max_green >= 1")
++        if delta_time > max_green:
++            # every green runs at least one decision interval after a switch
++            raise ValueError("delta_time must be <= max_green")
 +        if _first_switch_point(WARMUP_STEPS, delta_time, min_green) > max_green:
 +            raise ValueError("first green has no switch point inside [min_green, max_green]")
 +        if _first_switch_point(0, delta_time, min_green) > max_green:
@@ -37,7 +40,7 @@
          self.net_file = net_file
          self.route_file = route_file
          self.use_gui = use_gui
-@@ -527,6 +550,12 @@
+@@ -527,6 +553,12 @@
          Args:
              action: target signal phase (0 to num_phases-1)
          """
@@ -50,7 +53,7 @@
          if action != self.current_phase:
              # respect minimum green
              if self.phase_duration < self.min_green:
-@@ -627,11 +656,15 @@
+@@ -627,11 +659,15 @@
  
          self.episode_count += 1
  

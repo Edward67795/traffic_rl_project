@@ -33,20 +33,24 @@ def load(chk: str = "", static: bool = False, mon=(10, 60, 3)):
 actions = st.lists(st.integers(0, 1), min_size=1, max_size=30)
 
 
-def run(ns, acts, d=5, y=3, mn=10, mx=60):
+def run(ns, acts, d=5, y=3, mn=10, mx=60, check_g2=False, check_c1=False):
+    # Each test checks only its own property: the stub monitor enabled by load(chk) and,
+    # if asked, the controller-level G2/C1 asserts. A failure then always names that property.
     env = ns["SumoTrafficEnvCore"](d, y, mn, mx, 3600)
     env.reset()
     for a in acts:
         env.step(a)
-        assert env.phase_duration <= env.max_green, "G2: phase_duration exceeds max_green"
-        assert env.current_phase in (0, 1), "C1: current_phase out of range"
+        if check_g2:
+            assert env.phase_duration <= env.max_green, "G2: phase_duration exceeds max_green"
+        if check_c1:
+            assert env.current_phase in (0, 1), "C1: current_phase out of range"
     return env
 
 
 @settings(max_examples=MAX_EXAMPLES, deadline=None)
 @given(actions)
 def test_G2_max_green(acts):
-    run(load("G2"), acts)
+    run(load("G2"), acts, check_g2=True)
 
 
 @settings(max_examples=MAX_EXAMPLES, deadline=None)
@@ -66,17 +70,17 @@ def test_T2_static_program(acts):
 def test_C1_any_action(acts):
     if VERSION != "v0" and any(a not in (0, 1) for a in acts):
         with pytest.raises(ValueError):       # v1 rejects invalid actions by design
-            run(load(), acts)
+            run(load(), acts, check_c1=True)
         return
-    run(load(), acts)
+    run(load(), acts, check_c1=True)
 
 
 @settings(max_examples=MAX_EXAMPLES, deadline=None)
-@given(st.integers(1, 7), st.integers(0, 12), st.integers(11, 16), actions)
+@given(st.integers(1, 20), st.integers(0, 12), st.integers(5, 16), actions)
 def test_G2_parametric(d, mn, mx, acts):
     try:
         ns = load()
         ns["SumoTrafficEnvCore"](d, 3, mn, mx, 3600)
     except ValueError:
         return                                # configuration rejected by the constructor
-    run(ns, acts, d=d, mn=mn, mx=mx)
+    run(ns, acts, d=d, mn=mn, mx=mx, check_g2=True)

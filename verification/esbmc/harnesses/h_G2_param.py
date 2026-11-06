@@ -2,10 +2,10 @@
 # A configuration the constructor rejects (ValueError) is not a violation.
 K: int = 20
 D_LO: int = 1
-D_HI: int = 7
+D_HI: int = 20               # wider than MAX_HI, so delta_time > max_green is explored
 MIN_LO: int = 0
 MIN_HI: int = 12
-MAX_LO: int = 11
+MAX_LO: int = 5
 MAX_HI: int = 16
 
 
