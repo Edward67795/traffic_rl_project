@@ -8,15 +8,20 @@ performance are outside this verification scope.
 
 ## Current status
 
-**S2 is implemented for v0: S1, T1, T2, G1 and C1.** The executed 20-case matrix
-contains 14 PASS and 6 FAIL; see [findings](FINDINGS.md) and [CSV](results/results.csv).
-These are model-level results under the documented abstractions. All six finite
-counterexamples reproduce against the extracted Python reference plus TraCI
-stub. Real SUMO validation and human model review are pending.
+**S3 is complete for the v0 model.** Seven properties now have executed checks:
+S1, T1, T2, G1, C1, G2 and L1. The current matrix has **28 cases: 14 PASS and
+14 FAIL**, with no UNKNOWN/TIMEOUT/ERROR. The eight new G2/L1 cases all FAIL;
+the previous 20 S2 cases retain their verdicts after regression.
 
-The 96 finite conformance cases still match all 18,898 observation records.
-G2/L1 (S3), L2 (S4), and v1 comparison (S5) remain pending. Do not extrapolate
-these v0 results to v1, other parameter configurations or the full SUMO system.
+All 14 current finite counterexamples reproduce against the extracted Python
+reference plus TraCI stub. The 96 finite conformance cases still match all
+18,898 observation records. There are 14 passing test methods including timing
+boundaries. These are model-level results; real SUMO validation and human model
+review remain pending. L2 (S4) and v1 comparison (S5) are not implemented yet.
+
+See [findings](FINDINGS.md), [current CSV](results/results.csv), and the
+[stage-by-stage record](report.md). Do not extrapolate the results to other
+parameters, v1 or the full Python/SUMO/DQN system.
 
 ## Documents and layout
 
@@ -42,6 +47,7 @@ verification/spin/
 │   └── test_verification.py
 └── results/
     ├── results.csv
+    ├── snapshots/              # Frozen stage CSVs and historical source
     └── raw/
         ├── s1-trace-comparison.json
         └── <case>-<UTC timestamp>/
@@ -74,8 +80,15 @@ python3 verification/spin/scripts/run_spin.py --list
 python3 verification/spin/scripts/run_spin.py --all
 ```
 
-`--all` currently means the 20 implemented v0 S2 cases: five properties across
-`default`, `y0`, `any`, and `L1`. Other stages are not silently included.
+`--all` currently means 28 v0 cases: seven implemented properties across
+`default`, `y0`, `any`, and `L1`. Select a stage to run its subset:
+
+```sh
+python3 verification/spin/scripts/run_spin.py --stage S2
+python3 verification/spin/scripts/run_spin.py --stage S3
+```
+
+S2 runs 20 cases; S3 runs the eight G2/L1 cases. Other stages are not included.
 Run individual cases by ID:
 
 ```sh
@@ -84,7 +97,7 @@ python3 verification/spin/scripts/run_spin.py T1-v0-y0 T2-v0-any C1-v0-L1
 
 Each run selects one property and an isolated temporary build directory.
 The runner generates with `spin -a`, compiles pan.c and searches with pan.
-T2 uses `-a` acceptance-cycle detection in addition to assertions; other S2
+T2 uses `-a` acceptance-cycle detection in addition to assertions; other implemented
 properties use `-DSAFETY`. Limits default to depth 100000, memory 512 MB and
 120 seconds per subprocess. Override with `--depth`, `--memory`, `--timeout`.
 The actual commands and limits are saved in each run's metadata.
@@ -118,7 +131,9 @@ Optional `--random-cases` and `--seed` change the suite and expected counts.
 The tests inject invalid signal codes, direct switches, 2/3-second yellow,
 wrong-direction returns, infinite yellow, 9/10-second green and phase mismatches.
 They also check that violations returning process exit code 0 are classified
-correctly and that actual search-depth exhaustion becomes UNKNOWN.
+correctly and that actual search-depth exhaustion becomes UNKNOWN. Timing tests exercise
+60/61-second greens, 66/67-second waits, both directions, yellow inclusion and
+wait resets. y0 uses the configured 60-second wait limit.
 
 ## Counterexamples
 
@@ -133,7 +148,8 @@ python3 verification/spin/scripts/replay_trail.py \
 ```
 
 Replace the placeholder with a real run directory. The script checks model
-hashes, restores the trail in a temporary directory and replays with identical
+hashes, chooses matching run-local or stage-snapshot source, restores the trail
+in a temporary directory and replays with identical
 preprocessor flags. Replay prints ACTION/OBS events and the failing assertion;
 a replay process exit code of 0 does not mean the property passed.
 
@@ -165,23 +181,39 @@ yellow. T2/y0 is vacuous because no yellow is observed; T1/y0 detects the missin
 interval. C1 checks after each complete decision, provisionally following the
 ESBMC harness while the referenced D4 decision remains unavailable.
 
-## Pipeline and remaining work
+## Stage guide and live progress
 
-Stage names are work labels, not shared property IDs.
+Last updated: 2026-11-06 (Asia/Shanghai). **Current checkpoint: S3 complete.**
+Current v0 matrix: 28 cases, 14 PASS / 14 FAIL. Next stage: S4 (L2/fairness).
+No S4 result is claimed yet.
+Stage names are work labels, not shared property IDs (stage S1 != property S1).
 
-| Stage | Status / completion gate |
-|---|---|
-| S0 | Toolchain smoke checks complete |
-| S1 | v0 model and finite reference comparison implemented; real SUMO fidelity unconfirmed |
-| S2 | S1/T1/T2/G1/C1 matrix executed; all six finite failures reference-reproduced |
-| S3 | Pending: G2/L1 with timing/wait boundary evidence |
-| S4 | Pending: L2 with/without explicit agent fairness |
-| S5 | Pending: exact v1 FIX-1..4 model and comparison |
-| S6 | Pending: final suite, SUMO checks, human-review status and joint-report material |
+| Stage | Meaning | Deliverables / completion gate | Current status |
+|---|---|---|---|
+| S0: environment | Establish a working, reproducible toolchain | Repository/contract inspection; SPIN/compiler versions; successful and failing safety/LTL smoke checks | Complete |
+| S1: v0 abstraction | Translate source control behavior into a finite-state model | Phase/action/timing/static-takeover mapping; documented abstractions; matching reference traces | Initial model complete: 96 finite cases match; real SUMO fidelity pending |
+| S2: safety/transitions | Check legal signals, yellow transitions, minimum green and phase consistency | S1/T1/T2/G1/C1 matrix; exhaustive runs; reviewed and reference-reproduced finite failures | Complete for v0: 20 cases, 14 PASS / 6 FAIL |
+| S3: timing/waiting | Check maximum green and directional waiting limits | G2 displayed/controller age checks; L1 wait counters; 60/61 and 66/67-second boundaries; evidence and snapshot | Complete for v0: 8 FAIL cases reference-reproduced; boundaries and S2 regression passed |
+| S4: infinite liveness | Determine whether both directions receive green infinitely often | L2 acceptance-cycle runs with/without explicit agent fairness; prefix/cycle explanations | Not started |
+| S5: repaired model | Mirror exactly FIX-1..4 and compare v0/v1 | v1 mapping; aligned matrix; rejected-input semantics; non-divisible timing checks | Not started |
+| S6: final delivery | Assemble reproducible evidence and report | Final suite/CSV; SUMO cross-checks; human-review status; joint-tool comparison and report | In progress for documentation only; final validation pending |
 
-R1/P1 stay in ESBMC scope. SPIN process weak fairness alone must not be confused
-with fair agent action selection. Real episode termination is omitted in the
-ongoing control abstraction and must be stated in future liveness results.
+Update this table when a stage begins, reaches a validation milestone or ends.
+Completed means the named stage gate was met under documented assumptions, not
+that the full Python/SUMO/DQN system was proved. Human model review and real
+SUMO checks remain pending. Current blockers/limitations are in FINDINGS.md;
+all attempts and original measurements are retained in report.md.
+
+R1/P1 stay in ESBMC scope. Process weak fairness must not be confused with fair
+agent action selection. Real episode termination is omitted in the ongoing
+control abstraction and must be stated in future liveness results.
+
+G2 combines per-second displayed green age and controller phase_duration at
+completed decisions, matching the shared ESBMC harness. Its static-program FAIL
+currently comes from the controller counter, while displayed green age is 29 s;
+it must not be described as a 61-second displayed-green witness. L1 includes
+warmup/yellow and resets only on the direction's green. Its limit is 66 s by
+default and 60 s in y0. See report.md for full component and sampling details.
 
 ## Evidence and collaboration rules
 

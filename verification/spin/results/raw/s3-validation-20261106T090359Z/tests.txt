@@ -1,0 +1,19 @@
+test_actual_depth_exhaustion (__main__.MonitorFaultInjection.test_actual_depth_exhaustion) ... ok
+test_controller_maximum_boundary (__main__.MonitorFaultInjection.test_controller_maximum_boundary) ... ok
+test_maximum_green_boundary (__main__.MonitorFaultInjection.test_maximum_green_boundary) ... ok
+test_minimum_green_boundary (__main__.MonitorFaultInjection.test_minimum_green_boundary) ... ok
+test_phase_consistency (__main__.MonitorFaultInjection.test_phase_consistency) ... ok
+test_signal_codebook (__main__.MonitorFaultInjection.test_signal_codebook) ... ok
+test_wait_boundary_both_directions (__main__.MonitorFaultInjection.test_wait_boundary_both_directions) ... ok
+test_wait_resets_and_counts_yellow (__main__.MonitorFaultInjection.test_wait_resets_and_counts_yellow) ... ok
+test_yellow_duration_and_target (__main__.MonitorFaultInjection.test_yellow_duration_and_target) ... ok
+test_yellow_is_observed_in_both_directions (__main__.MonitorFaultInjection.test_yellow_is_observed_in_both_directions) ... ok
+test_completed_search (__main__.ResultClassification.test_completed_search) ... ok
+test_errors_and_cycles (__main__.ResultClassification.test_errors_and_cycles) ... ok
+test_incomplete_searches (__main__.ResultClassification.test_incomplete_searches) ... ok
+test_violation_exit_zero (__main__.ResultClassification.test_violation_exit_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 25.488s
+
+OK

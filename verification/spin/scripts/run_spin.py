@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the implemented v0 S2 matrix with one property per exhaustive search.
+"""Run the implemented v0 S2/S3 matrix with one property per exhaustive search.
 
 FAIL denotes a witnessed model violation, not runner failure. The command exits
 nonzero for ERROR/UNKNOWN/TIMEOUT or a failed witness reference cross-check.
@@ -24,7 +24,8 @@ SPIN = Path(__file__).resolve().parents[1]
 REPO = SPIN.parents[1]
 HEADER = ['tool', 'property', 'version', 'config', 'bound', 'result',
           'ce_length', 'time_s', 'memory_mb', 'notes']
-PROPERTIES = ('S1', 'T1', 'T2', 'G1', 'C1')
+PROPERTIES = ('S1', 'T1', 'T2', 'G1', 'C1', 'G2', 'L1')
+STAGES = {'S2': PROPERTIES[:5], 'S3': PROPERTIES[5:]}
 SCENARIOS = ('default', 'y0', 'any', 'L1')
 CASES = {f'{p}-v0-{s}': (p, s) for p in PROPERTIES for s in SCENARIOS}
 STATES = ['GGGgrrrGGGgrrr', 'yyyyrrryyyyrrr', 'rrrrGGgrrrrGGg', 'rrrryyyrrrryyy']
@@ -92,6 +93,7 @@ def reference_witness(prop, scenario, actions):
         exec(compile(path.read_text(), str(path), 'exec'), ns)
     ns['STATIC_PROGRAM'] = scenario == 'L1'
     ns['CHK_' + prop] = prop != 'C1'
+    ns['MON_YELLOW'] = 0 if scenario == 'y0' else 3
     stub = ns['traci']
     env = ns['SumoTrafficEnvCore'](5, 0 if scenario == 'y0' else 3, 10, 60, 3600)
     consumed = 0
@@ -100,6 +102,8 @@ def reference_witness(prop, scenario, actions):
             env.reset()
             for consumed, action in enumerate(actions, 1):
                 env.step(action)
+                if prop == 'G2':
+                    assert env.phase_duration <= env.max_green, 'G2: controller phase_duration exceeds max_green'
                 if prop == 'C1':
                     assert env.current_phase in (0, 1), 'C1: phase out of range'
                     assert stub.trafficlight.code == (0 if env.current_phase == 0 else 2), \
@@ -107,7 +111,12 @@ def reference_witness(prop, scenario, actions):
     except AssertionError as error:
         return {'reproduced': True, 'message': str(error), 'time_s': stub.time,
                 'decision': consumed, 'phase': env.current_phase,
-                'signal': stub.trafficlight.code, 'controller_age': env.phase_duration}
+                'signal': stub.trafficlight.code, 'controller_age': env.phase_duration,
+                'observed_green_age': stub.green_len, 'ns_wait': stub.ns_wait,
+                'ew_wait': stub.ew_wait,
+                'component': ('controller_age' if 'phase_duration exceeds' in str(error)
+                              else 'observed_green' if prop == 'G2'
+                              else 'directional_wait' if prop == 'L1' else prop)}
     return {'reproduced': False, 'message': 'No finite reference assertion violation'}
 
 
@@ -115,6 +124,10 @@ def run_case(case_id, prop, scenario, args, network, versions):
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
     evidence = SPIN / 'results/raw' / f'{case_id}-{stamp}'
     evidence.mkdir(parents=True)
+    source_snapshot = evidence / 'models'
+    source_snapshot.mkdir()
+    for name in ('controller.pml', 'properties.pml'):
+        shutil.copyfile(SPIN / 'models' / name, source_snapshot / name)
     flags = [f'-DCHK_{prop}', f'-DSTATIC_PROGRAM={int(scenario == "L1")}',
              f'-DYELLOW_TIME={0 if scenario == "y0" else 3}']
     if scenario == 'any':
@@ -126,6 +139,9 @@ def run_case(case_id, prop, scenario, args, network, versions):
                 'limits': {'depth': args.depth, 'memory_mb': args.memory,
                            'timeout_s_per_command': args.timeout},
                 'commands': [], 'model_sha256': {}, 'started_utc': stamp,
+                'source_snapshot': 'models/',
+                'observation_columns': ['signal', 'current_phase', 'controller_age', 'green_age_before_sample', 'yellow_age_before_sample'],
+                'timing_columns': ['observed_green_age', 'ns_wait', 'ew_wait'],
                 'timing': 'time_s is verifier wall time only; generation/compile recorded separately',
                 'ce_length_convention': 'count ACTION events through failing state, including an unfinished decision; not guaranteed shortest',
                 'limitations': ['reference static timing, not real SUMO validation',
@@ -133,6 +149,8 @@ def run_case(case_id, prop, scenario, args, network, versions):
     for path in [SPIN / 'models/controller.pml', SPIN / 'models/properties.pml',
                  Path(__file__).resolve()]:
         metadata['model_sha256'][str(path.relative_to(REPO))] = hashlib.sha256(path.read_bytes()).hexdigest()
+    metadata['reference_sha256'] = {str(path.relative_to(REPO)): hashlib.sha256(path.read_bytes()).hexdigest()
+                                   for path in (REPO / 'verification/esbmc/model').glob('*.py')}
 
     def execute(command, cwd, filename):
         start = time.perf_counter()
@@ -196,7 +214,9 @@ def run_case(case_id, prop, scenario, args, network, versions):
                                 re.findall(r'^\s*OBS ((?:-?\d+ ){4}-?\d+)\s*$', replay, re.M)]
                 witness = {'actions': actions, 'observed_seconds': len(observations),
                            'last_observations': observations[-12:],
-                           'acceptance_cycle': 'START OF CYCLE' in replay}
+                           'acceptance_cycle': 'START OF CYCLE' in replay,
+                           'timing_samples': [[int(x) for x in match.split()] for match in
+                                             re.findall(r'^\s*TIMING ((?:-?\d+ ){2}-?\d+)\s*$', replay, re.M)]}
                 if not witness['acceptance_cycle']:
                     witness['reference'] = reference_witness(prop, scenario, actions)
                 else:
@@ -210,6 +230,10 @@ def run_case(case_id, prop, scenario, args, network, versions):
         row['result'] = 'ERROR'
     relative = str(evidence.relative_to(SPIN))
     row['notes'] = f'evidence={relative};model-level only;ce counts started decisions;DFS witness not necessarily shortest'
+    if prop == 'G2':
+        row['notes'] += ';observed green per second AND controller age after decisions'
+    if prop == 'L1':
+        row['notes'] += f';wait_limit={60 + 2 * (0 if scenario == "y0" else 3)}s;warmup and yellow included'
     if prop == 'C1':
         row['notes'] += ';C1 sampled after decision;D4 unavailable'
     if scenario == 'y0' and prop == 'T2':
@@ -232,7 +256,7 @@ def save_rows(rows):
     retained = [r for r in existing
                 if (r['tool'], r['property'], r['version'], r['config']) not in keys]
     with path.open('w', newline='') as stream:
-        writer = csv.DictWriter(stream, fieldnames=HEADER)
+        writer = csv.DictWriter(stream, fieldnames=HEADER, lineterminator='\n')
         writer.writeheader()
         writer.writerows(retained + rows)
 
@@ -241,7 +265,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('cases', nargs='*', choices=None)
     parser.add_argument('--list', action='store_true')
-    parser.add_argument('--all', action='store_true', help='All currently implemented S2 cases, v0 only')
+    parser.add_argument('--all', action='store_true', help='All currently implemented S2/S3 cases, v0 only')
+    parser.add_argument('--stage', choices=STAGES, help='Run only this stage instead of --all/case IDs')
     parser.add_argument('--depth', type=int, default=100000)
     parser.add_argument('--memory', type=int, default=512)
     parser.add_argument('--timeout', type=float, default=120)
@@ -251,8 +276,8 @@ def main():
         return
     if args.depth < 1 or args.memory < 1 or args.timeout <= 0:
         parser.error('Limits must be positive')
-    if (args.all and args.cases) or (not args.all and not args.cases):
-        parser.error('Choose --all or one or more case IDs')
+    if sum([bool(args.all), bool(args.stage), bool(args.cases)]) != 1:
+        parser.error('Choose one of --all, --stage, or case IDs')
     unknown = set(args.cases) - set(CASES)
     if unknown:
         parser.error(f'Unknown case IDs: {sorted(unknown)}')
@@ -261,7 +286,9 @@ def main():
                 'cc': subprocess.check_output(['cc', '--version'], text=True).strip()}
     rows = []
     bad = False
-    for case in (CASES if args.all else args.cases):
+    selected = CASES if args.all else [case for case, (prop, _) in CASES.items()
+                                      if prop in STAGES[args.stage]] if args.stage else args.cases
+    for case in selected:
         row, metadata = run_case(case, *CASES[case], args, network, versions)
         rows.append(row)
         save_rows(rows)

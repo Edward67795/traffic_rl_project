@@ -32,7 +32,7 @@ class ResultClassification(unittest.TestCase):
 
 
 class MonitorFaultInjection(unittest.TestCase):
-    def check(self, prop, samples, expected, phase=0, endless_yellow=False, depth=10000):
+    def check(self, prop, samples, expected, phase=0, endless_yellow=False, depth=10000, controller_age=0, yellow=3):
         with tempfile.TemporaryDirectory(prefix='traffic-spin-monitor-test-') as directory:
             build = Path(directory)
             shutil.copyfile(SPIN / 'models/properties.pml', build / 'properties.pml')
@@ -40,11 +40,11 @@ class MonitorFaultInjection(unittest.TestCase):
                              for value in samples)
             if endless_yellow:
                 body += '\ndo :: d_step { signal = 1; observe_second() } od;'
-            if prop == 'C1':
+            if prop in ('C1', 'G2'):
                 body += 'check_boundary();'
             (build / 'test.pml').write_text(
-                '#define MIN_GREEN 10\n'
-                f'byte signal=0; int current_phase={phase};\n'
+                f'#define MIN_GREEN 10\n#define MAX_GREEN 60\n#define YELLOW_TIME {yellow}\n'
+                f'byte signal=0; int current_phase={phase}; int phase_duration={controller_age};\n'
                 '#include "properties.pml"\ninit {\n' + body + '\n}\n')
             commands = [['spin', f'-DCHK_{prop}', '-a', 'test.pml'],
                         ['cc', '-O2', '-o', 'pan', 'pan.c'],
@@ -75,6 +75,29 @@ class MonitorFaultInjection(unittest.TestCase):
     def test_minimum_green_boundary(self):
         self.check('G1', [0] * 9 + [1], 'FAIL')
         self.check('G1', [0] * 10 + [1], 'PASS')
+
+    def test_maximum_green_boundary(self):
+        for direction in (0, 2):
+            self.check('G2', [direction] * 60, 'PASS')
+            self.check('G2', [direction] * 61, 'FAIL')
+        self.check('G2', [0] * 60 + [1] * 3 + [2] * 60, 'PASS')
+        self.check('G2', [0] * 60 + [1] * 3 + [0] * 60, 'PASS')
+
+    def test_controller_maximum_boundary(self):
+        self.check('G2', [0], 'PASS', controller_age=60)
+        self.check('G2', [0], 'FAIL', controller_age=61)
+
+    def test_wait_boundary_both_directions(self):
+        for served in (0, 2):
+            self.check('L1', [served] * 66, 'PASS')
+            self.check('L1', [served] * 67, 'FAIL')
+
+    def test_wait_resets_and_counts_yellow(self):
+        self.check('L1', [0] * 66 + [2] + [0] * 66, 'PASS')
+        self.check('L1', [0] * 63 + [1] * 3, 'PASS')
+        self.check('L1', [0] * 63 + [1] * 4, 'FAIL')
+        self.check('L1', [0] * 60, 'PASS', yellow=0)
+        self.check('L1', [0] * 61, 'FAIL', yellow=0)
 
     def test_actual_depth_exhaustion(self):
         self.check('G1', [0] * 10 + [1], 'UNKNOWN', depth=2)

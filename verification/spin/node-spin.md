@@ -82,7 +82,7 @@ Always record both scenario and environment fidelity in run metadata.
 | T1 | Green direction changes pass through an observed yellow interval | Symmetric per-second transition monitor |
 | T2 | Yellow lasts at least 3 seconds and leads to the opposite green | Duration/direction monitor plus eventual completion where needed |
 | G1 | Actual green is not terminated before min_green | Green-exit monitor |
-| G2 | Actual green never exceeds max_green | Per-second display-age invariant; record controller age separately |
+| G2 | Actual green never exceeds max_green | Displayed age per second AND controller age after decisions; identify failing component |
 | L1 | Each direction waits at most max_green + 2*yellow_time (66 s default) | Per-second directional wait counters |
 | L2 | Both directions are green infinitely often | LTL acceptance-cycle verification, with/without explicit agent fairness |
 | C1 | current_phase is 0/1 and agrees with the displayed signal | Decision-boundary check, provisional pending D4 evidence |
@@ -354,9 +354,11 @@ feasible. Keep environment files/generated outputs out of version control.
 - S2: complete for v0 S1/T1/T2/G1/C1 across four scenarios: 20 executed
   checks, 14 PASS and 6 FAIL, with all six finite failures reference-reproduced.
   Results are model-level; real SUMO validation and human review remain pending.
-- S3-S6: pending. Next: G2/L1 timing and waiting monitors (S3).
-- The user requested one stage at a time; report S2 completion before proceeding
-  to the next stage. Preserve the documented fidelity limitations.
+- S3: complete for v0 G2/L1: eight executed FAIL cases, all reference-reproduced.
+  Boundary tests and S2 regression passed. Current matrix: 28 cases, 14 PASS/14 FAIL.
+- S4-S6: pending (documentation work ongoing). Next is S4, L2/fairness.
+- The user requested one stage at a time; report S3 completion before proceeding.
+  Keep README meanings/status current for teammates and append data to report.md.
 
 ## Execution record
 
@@ -524,3 +526,71 @@ implemented. See the next execution record for actual validation results.
   SUMO, human review, L2 and v1 remain pending.
 - Suggested commit: spin: implement v0 SPIN verification through S2. User will
   commit/push via GitHub Desktop; do not perform Git writes automatically.
+
+### 2026-11-06: final-report evidence priorities confirmed
+
+- User confirmed that the modeling/verification narrative should be documented
+  throughout implementation. Follow the Report evidence checklist in report.md
+  at each subsequent stage, not only the numeric result-table requirements.
+- Retain source-to-Promela rationale, time/state abstraction and preservation
+  arguments, exact assertions/LTL and vacuity checks, search assumptions and
+  completeness, state/transition/resource metrics, raw counterexamples and
+  source causes, failed/corrected attempts, repair comparisons and limitations.
+- Prepare an end-to-end case study with linked source/model/property/witness/
+  repair evidence. G1/static-program is a candidate; real SUMO and v1 validation
+  are pending and must not be inferred from current S2 findings.
+- These are user-confirmed report priorities, not an instructor rubric. No new
+  verification run; checkpoint remains v0 through S2, next stage S3.
+
+### 2026-11-06: S3 started and teammate-facing progress policy
+
+- User authorized the next stage and requested README stage meanings and live
+  progress for teammates. README now defines S0-S6, deliverables/completion gates
+  and status; update it at stage start, validation milestones and completion.
+- S3 now in progress. Add G2 and L1, boundary tests, actual searches, witness
+  checks, stage CSV snapshot and report data; do not advance to S4 this turn.
+- G2 will align with the existing shared harness: per-second observed green
+  <= max_green AND controller phase_duration <= max_green at decision boundaries.
+  Record which component fails. The static-program counter violation alone
+  does not establish that the displayed green was overlong.
+- L1 measures both directions' waits, including warmup/yellow, resetting only
+  on that direction's green; limit is max_green + 2*configured yellow_time.
+  y0 therefore has a 60-second wait limit, not the default 66.
+
+### 2026-11-06: S3 completed
+
+- Added G2 displayed green <=60 per second AND controller age <=60 after decisions,
+  matching the shared harness. Added L1 NS/EW counters with configured wait limit.
+  Recorded which component fails; monitors do not change v0 control transitions.
+- G2 monitors saturate at 61; L1 waits at limit+1 (67 default, 61 in y0).
+  TIMING replay events store post-update counter values before failure assertions.
+- Added --stage S2/S3 selection; --all now runs 28 v0 cases. New raw runs retain
+  model copies and reference hashes. replay_trail.py resolves matching run-local
+  or frozen stage source so earlier witnesses remain reproducible after edits.
+- Executed tests (14 methods, 32 synthetic searches), finite trace comparison
+  (96 cases, 18,898 records), S3 matrix (eight FAIL) and S2 regression (14 PASS,
+  six FAIL). All 14 current finite failures are reference-reproduced. No project
+  UNKNOWN/TIMEOUT/ERROR. Full logs and metrics are linked in report.md.
+- G2 default/y0/any: observed green61, controller50, t=60, decision11.
+  G2/static: controller65, observed29, t=75, decision13. Do not describe that
+  static counter failure as an overlong displayed-green counterexample.
+- L1 default/any: EWwait67 at t=66/decision12; y0 wait61 at t=60/decision11;
+  static wait67 at t=254/decision48. Times use pre-step sample convention except
+  the G2 controller boundary. Witnesses are not claimed shortest.
+- Frozen S3 and through-S3 CSV snapshots; preserved original S2 model snapshot.
+  Updated README stage guide/status, MODEL_MAPPING, FINDINGS and report material.
+- No real SUMO or human review completed. No source/ESBMC/shared/network/Git
+  writes. Stop at S3 and report; next stage S4 is not started.
+
+### S3 closeout formatting correction
+
+- git diff --check flagged CRLF line endings from Python csv.DictWriter as
+  trailing whitespace in modified CSV rows. Saved the diagnostic in the S3
+  validation directory, changed future writer output to LF, and normalized
+  current/new S3 CSV files without changing parsed rows or measured metrics.
+  Original S2 snapshots were left unchanged.
+- Archived the measurement runner as results/snapshots/s3-runner.py before this
+  serializer-only correction. Raw metadata hashes describe that measured runner,
+  not a claim that its hash equals the final formatting-corrected script.
+- Repository HEAD observed at closeout is 7ccc6ea (user's S2 commit); no Git
+  commit/push/merge was performed by the assistant.

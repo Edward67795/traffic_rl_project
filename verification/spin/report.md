@@ -1,6 +1,6 @@
 # SPIN experimental record and report material
 
-Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0 through S2**.
+Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0 through S3**.
 This is a chronological research record for the final CSEE E6863 report, not a
 claim that all project stages are finished. Code/documentation remain in English.
 
@@ -28,7 +28,7 @@ Document roles: [README](README.md) is the reproduction entry point;
 [FINDINGS](FINDINGS.md) summarizes interpreted results;
 this file preserves experimental history for writing the final report.
 
-## Milestone status
+## Milestone status at the S2 checkpoint (historical)
 
 | Stage | Status at this checkpoint | Remaining qualification |
 |---|---|---|
@@ -303,3 +303,172 @@ What worked / what failed / corrected attempts:
 Interpretation and limitations:
 Next step:
 ```
+
+## Report evidence checklist (user confirmed 2026-11-06)
+
+The final narrative should connect source, abstraction, formal properties,
+model-checking evidence, counterexamples and repairs. The following priorities
+are our project presentation plan, not a known instructor grading rubric.
+Record supporting material as each stage proceeds rather than reconstructing
+technical choices at report-writing time.
+
+| Topic | Evidence to retain during implementation |
+|---|---|
+| Source-to-Promela abstraction | Source revision and method/line references, model locations, retained/omitted variables and behaviors, rationale and property-specific preservation argument |
+| Discrete-time semantics | Tick/update ordering, warmup accounting, decision versus second units, yellow handling, threshold boundary traces |
+| Controller/environment distinction | Controller phase versus displayed signal, controller age versus observed age, L0/L1 assumptions and takeover behavior |
+| Finite-state construction | Counter ranges/saturation thresholds, comparisons they preserve, introduced limitations and changes needed for each property/version |
+| Property specification | Natural-language statement, exact assertion/LTL, observation point, safety/liveness classification, trigger reachability and vacuity checks |
+| Search configuration | Selected claim, exact flags, fairness premise, depth/memory/time limits, search completeness, state/transition counts, measured time/memory and units |
+| Failed properties | Original trail, action sequence, prefix/cycle when applicable, sampled states/timestamps, source cause, reference/SUMO reproduction status |
+| Model/tool failures | Original error or mismatch, diagnosis, correction and rerun; distinguish these from controller defects |
+| v0/v1 repair comparison | Exact FIX mapping, aligned parameters/fidelity/observation points, before/after evidence, invalid-input rejection and residual issues |
+| Validation and limitations | Finite reference tests versus real SUMO, human review status, neural-network/traffic abstraction, episode extension and conditional guarantees |
+| Joint tool comparison | Aligned SPIN/ESBMC cases, differing bounds/assumptions, liveness support, guarantee strength and unverified teammate results |
+
+Keep at least one reviewable end-to-end case study linking the original source
+behavior, Promela representation, property, raw witness and repair outcome.
+G1/static-program is a candidate: S2 has a reference-reproduced 9-second green
+termination, but its real SUMO replay and v1 outcome are still pending. Do not
+write those pending results as established facts.
+
+A genuine FAIL can be a successful verification finding. Keep its evidence and
+explain its meaning; do not adjust models/properties merely to obtain PASS.
+No new experiment or metric was produced by adding this checklist.
+
+## S3: maximum-green and bounded-waiting stage (2026-11-06)
+
+Status: completed for v0; next is S4 (L2/fairness). Question: can the controller
+exceed the green or directional-wait limits, and do the abstractions preserve
+the first violating boundary?
+
+### Specification and modeling choices
+
+- G2 checks both per-second displayed green age and controller phase_duration
+  after a completed decision, matching the shared ESBMC h_G2 harness. These
+  quantities are distinct; identify the failing component instead of claiming
+  one measures the other. This choice was explained before implementation.
+- L1 checks NS/EW wait <=MAX_GREEN+2*YELLOW_TIME. Warmup and yellow count toward
+  waiting; a direction's green resets its wait. L1 is bounded waiting, checked
+  as safety, not an infinite fairness/liveness argument.
+- Observed green saturates at 61 and default wait counters at 67, preserving
+  first bad threshold states. y0's wait limit is 60 and first bad state is 61.
+  These are monitor counters; no original controller transition was changed.
+- Source mapping, sampling order and preservation arguments are in
+  MODEL_MAPPING.md. G2's controller-age saturation remains above max/min guards.
+- TIMING events capture post-update monitor values before assertions. Reference
+  times are pre-step timestamps or completed boundaries; the interval sampled
+  at t=60 is the 61st since t=0. Interpret timestamps with that convention.
+
+### Commands and completion evidence
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/test_verification.py
+python3 verification/spin/scripts/check_traces.py \
+  --output verification/spin/results/raw/s1-trace-comparison.json
+python3 verification/spin/scripts/run_spin.py --stage S3
+python3 verification/spin/scripts/run_spin.py --stage S2
+```
+
+Actual outcomes: 14 test methods passed in 25.488 seconds; 96 finite comparison
+cases / 18,898 records matched; all eight S3 searches FAIL with reproduced
+finite witnesses; S2 regression remains 14 PASS / 6 FAIL. No new project
+UNKNOWN/TIMEOUT/ERROR. The combined current matrix is 28 cases, 14 PASS / 14 FAIL.
+Test duration is not the verifier wall-time metric used in results.csv.
+
+Test coverage: 32 synthetic monitor searches, including 60/61 greens in both
+directions, controller age 60/61, resets across yellow/direction changes,
+66/67 waits in both directions, wait reset, yellow inclusion, y0 wait 60/61,
+prior S2 faults, infinite yellow and actual depth truncation. Expected fixture
+FAILs remain successful tests. No failing development test was observed in
+this S3 implementation; do not invent a failed attempt.
+
+Validation logs:
+- [tests.txt](results/raw/s3-validation-20261106T090359Z/tests.txt)
+- [traces.txt](results/raw/s3-validation-20261106T090359Z/traces.txt)
+- [s3-matrix.txt](results/raw/s3-validation-20261106T090359Z/s3-matrix.txt)
+- [s2-regression.txt](results/raw/s3-validation-20261106T090359Z/s2-regression.txt)
+- [archived-s2-replay.txt](results/raw/s3-validation-20261106T090359Z/archived-s2-replay.txt)
+- [s3-g2-replay.txt](results/raw/s3-validation-20261106T090359Z/s3-g2-replay.txt)
+
+The replay CLI successfully replayed a stored S2 T1/y0 assertion using matching
+historical source, and a new G2 assertion using run-local source. S2 model copies
+were frozen before edits; new runs now retain their own controller/properties
+source alongside hashes. Old results are not overwritten by model changes.
+
+### S3 measured results
+
+| Case | Verdict | Depth | CE decisions | Verifier time_s | memory_mb | Stored states | Transitions | Reference violation time_s | Component | Evidence |
+|---|---|---|---|---|---|---|---|---|---|---|
+| G2-v0-default | FAIL | 380 | 11 | 0.008876 | 7.536 | 381 | 381 | 60 | observed_green | [metadata](results/raw/G2-v0-default-20261106T090427766230Z/metadata.json) |
+| G2-v0-y0 | FAIL | 380 | 11 | 0.010772 | 7.536 | 381 | 381 | 60 | observed_green | [metadata](results/raw/G2-v0-y0-20261106T090428544566Z/metadata.json) |
+| G2-v0-any | FAIL | 380 | 11 | 0.010230 | 7.536 | 381 | 381 | 60 | observed_green | [metadata](results/raw/G2-v0-any-20261106T090429354453Z/metadata.json) |
+| G2-v0-L1 | FAIL | 474 | 13 | 0.010844 | 7.536 | 475 | 475 | 75 | controller_age | [metadata](results/raw/G2-v0-L1-20261106T090430125413Z/metadata.json) |
+| L1-v0-default | FAIL | 408 | 12 | 0.009843 | 7.536 | 409 | 409 | 66 | directional_wait | [metadata](results/raw/L1-v0-default-20261106T090430915881Z/metadata.json) |
+| L1-v0-y0 | FAIL | 370 | 11 | 0.012018 | 7.536 | 371 | 371 | 60 | directional_wait | [metadata](results/raw/L1-v0-y0-20261106T090431686597Z/metadata.json) |
+| L1-v0-any | FAIL | 408 | 12 | 0.007617 | 7.536 | 409 | 409 | 66 | directional_wait | [metadata](results/raw/L1-v0-any-20261106T090432492617Z/metadata.json) |
+| L1-v0-L1 | FAIL | 1630 | 48 | 0.014452 | 7.634 | 1639 | 1640 | 254 | directional_wait | [metadata](results/raw/L1-v0-L1-20261106T090433253634Z/metadata.json) |
+
+time_s is actual verifier subprocess wall time (generation/compilation excluded);
+memory_mb is pan's total actual memory. These are single runs, not statistically
+stable performance estimates. The raw metadata records tool versions, commands,
+limits, network hash, model/runner hashes and read-only Python reference hashes.
+All current 28 rows were executed with the S3 models and measurement runner
+retained in [s3-runner.py](results/snapshots/s3-runner.py). The frozen
+[S3 CSV](results/snapshots/s3-v0-results.csv) has eight cases; the
+[through-S3 snapshot](results/snapshots/through-s3-v0-results.csv) has all 28.
+The original S2 snapshots and two historical S2 sweeps remain preserved.
+
+### Failure interpretation and final-report material
+
+1. G2/default, y0 and any share a valid repeated-NS action witness: the first
+   offending green count is 61 at pre-step t=60, during started decision 11.
+   Controller age is only 50 because v0 warmup was not counted. Do not attribute
+   these any-case failures specifically to an invalid action: the witness uses
+   ordinary legal actions.
+2. G2/static fails after decision 13 at t=75: controller age 65 exceeds 60, but
+   displayed EW green age is 29. This is controller timing drift under the
+   static program, not proof of an overlong displayed interval at that instant.
+3. L1/default and any violate the 66-second bound with EW wait 67 at pre-step
+   t=66 during decision 12. y0's configured bound is 60; it fails at wait 61,
+   pre-step t=60, decision 11. Warmup is part of directional waiting.
+4. L1/static's DFS witness reaches EW wait 67 at pre-step t=254, decision 48,
+   after takeover. The static program alone alternates, but online control can
+   retain one green indefinitely because v0 never forces a switch. This is
+   a finite safety witness, not yet an L2 infinite-starvation proof.
+5. All eight original trails were replayed and their action sequences reproduced
+   the selected check in the extracted Python reference. No real SUMO replay
+   has been performed; the same abstraction/fidelity caveats remain.
+
+The result is evidence of controller defects (including F1/F2 and accounting
+issues), not an implementation failure of this stage. Other properties are
+isolated per run, so a witness may have violated another property earlier.
+Do not conflate first DFS witnesses with shortest counterexamples or compare
+lengths across different observation semantics without explanation.
+
+### S2 regression and next stage
+
+Twenty S2 cases were rerun after shared monitor/runner edits: all verdicts and
+search depths were unchanged. This is a regression measurement, not 20 new
+property configurations. Their detailed measured timings and raw evidence are
+preserved by the combined stage snapshot and the current CSV. The historical
+S2 checkpoint must remain labeled with its historical model hashes.
+
+README was updated at stage start, after validation and at completion, with
+stage meanings and gates for teammates. Stop at S3. S4 must introduce explicit
+agent-fairness premises and L2 cycle reasoning; no L2/v1 claim is made here.
+Human review and real SUMO fidelity remain pending.
+
+### S3 closeout correction: CSV line endings
+
+The final git diff --check reported Python CSV's default CRLF as trailing
+whitespace in modified rows. This is a serialization/repository-check issue,
+not a property or model failure. The original diagnostic is retained in the
+S3 validation directory as pre-normalization-diff-check.txt. Changed the runner
+writer to LF and normalized the current/new S3 CSV files; verified that every
+parsed header/field/row remained identical. Original S2 history was not changed.
+No verifier rerun was needed for this formatting-only correction. The measured
+runner source was archived before the change, preserving its raw-metadata hash.
+
+Repository HEAD at this stage is 7ccc6ea, the user's S2 commit. All S3 changes
+remain uncommitted; no assistant Git write operation was performed.

@@ -1,8 +1,8 @@
-# v0 model mapping (S1-S2 stages)
+# v0 model mapping (S1-S3 stages)
 
 The current model implements v0 control flow and selected shared checks:
-S1, T1, T2, G1 and C1. The S2 runner emits a verification results CSV.
-v1, G2, L1 and L2 remain pending.
+S1, T1, T2, G1, C1, G2 and L1. The runner emits a shared-format results CSV.
+v1 and L2 remain pending.
 
 | Source / reference | Promela |
 |---|---|
@@ -36,8 +36,7 @@ control comparison using age is against MIN_GREEN, so the projection preserves
 all choices and signal transitions above the cap. Future v1 checks/monitors must
 reassess that abstraction. G1 now tracks displayed green age, saturated at MIN_GREEN + 1;
 T2 tracks yellow age saturated at 3. These preserve the respective >= threshold
-checks. Counters not used by the selected property remain unchanged. No wait
-counters or G2 monitor exist yet.
+checks. Counters not used by the selected property remain unchanged. S3 adds G2 displayed-green age and L1 directional wait counters as described below.
 
 Supported parameter domain currently requires DELTA_TIME > 0, YELLOW_TIME >= 0,
 MIN_GREEN >= 0, MAX_GREEN >= 1. These model-domain assertions are not v0 input
@@ -96,3 +95,42 @@ ACTION and OBS prints are replay instrumentation only; no unbounded counters
 are stored in verification states. The runner reconstructs started decisions
 and sample time from replay events, counting the partial failing decision.
 DFS witnesses can be long and are not claimed shortest.
+
+## S3 timing and waiting semantics
+
+| Property / component | State and threshold | Sampling |
+|---|---|---|
+| G2 displayed green | green_age increments on the same green, resets on yellow/change; assert <=MAX_GREEN | Each observed second, after the new sample counts |
+| G2 controller age | Existing phase_duration; assert <=MAX_GREEN | After each completed decision |
+| L1 NS wait | Reset to zero on NS green; otherwise increment; assert <=WAIT_LIMIT | Each observed second |
+| L1 EW wait | Reset to zero on EW green; otherwise increment; assert <=WAIT_LIMIT | Each observed second |
+
+G2 is the conjunction of displayed and controller-age checks, aligning the
+shared harness rather than equating its two quantities. G2/static's current
+counterexample violates controller age only at that point (65 vs displayed 29).
+Each witness identifies the component; other properties are disabled per run.
+
+WAIT_LIMIT is MAX_GREEN + 2*YELLOW_TIME, including warmup and yellow in waiting.
+It is 66 for default/any/static and 60 for y0. This bounded waiting property is
+checked as a safety invariant with a finite violation prefix; it is distinct
+from L2's infinite liveness and does not rely on a fair agent.
+
+The monitor ages saturate at one above the violated threshold (green 61,
+wait 67 by default). Because an assertion checks that first over-limit state
+immediately, saturation cannot hide a failure or wrap back into a safe value.
+Controller AGE_CAP remains 76 at default timing, above both MIN_GREEN and
+MAX_GREEN. It preserves v0 switch eligibility and the controller <=60 check.
+
+TIMING replay events are emitted after monitor-counter updates and before their
+assertions. Their columns are observed_green_age, ns_wait, ew_wait. OBS remains
+the pre-update sample. Counters belonging to disabled checks stay at zero;
+reference diagnostics may compute additional counters, so compare only the
+selected check's active timing fields. Timestamps are reconstructed from sample
+order; the first sample is at pre-step t=0. A failure at t=60 is the 61st counted
+interval, not a claim that the simulation has already returned from step 61.
+
+The tests cover both green directions at 60/61, controller age 60/61, green
+reset across yellow/phase changes, waits 66/67 in both directions, wait reset,
+yellow inclusion and the y0 60/61 waiting boundary. Real SUMO validation is still
+pending. S2 source snapshots and run-local model copies retain old trail replay
+when current monitor source changes.

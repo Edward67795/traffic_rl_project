@@ -4,6 +4,9 @@ byte previous = 0;
 byte last_green = 0;
 int green_age = 0;
 byte yellow_age = 0;
+int ns_wait = 0;
+int ew_wait = 0;
+#define WAIT_LIMIT (MAX_GREEN + 2 * YELLOW_TIME)
 
 inline observe_second() {
 #ifdef CHK_S1
@@ -56,10 +59,52 @@ inline observe_second() {
     fi;
     previous = signal;
 #endif
+#ifdef CHK_G2
+    if
+    :: signal == 0 || signal == 2 ->
+        if
+        :: signal != previous -> green_age = 1
+        :: else ->
+            if
+            :: green_age < MAX_GREEN + 1 -> green_age++
+            :: else -> skip
+            fi
+        fi
+    :: else -> green_age = 0
+    fi;
+    previous = signal;
+    printf("TIMING %d %d %d\n", green_age, ns_wait, ew_wait);
+    assert(green_age <= MAX_GREEN);
+#endif
+#ifdef CHK_L1
+    if
+    :: signal == 0 -> ns_wait = 0
+    :: else ->
+        if
+        :: ns_wait < WAIT_LIMIT + 1 -> ns_wait++
+        :: else -> skip
+        fi
+    fi;
+    if
+    :: signal == 2 -> ew_wait = 0
+    :: else ->
+        if
+        :: ew_wait < WAIT_LIMIT + 1 -> ew_wait++
+        :: else -> skip
+        fi
+    fi;
+    printf("TIMING %d %d %d\n", green_age, ns_wait, ew_wait);
+    assert(ns_wait <= WAIT_LIMIT);
+    assert(ew_wait <= WAIT_LIMIT);
+#endif
     skip
 }
 
 inline check_boundary() {
+#ifdef CHK_G2
+    /* Shared harness checks controller age in addition to displayed green age. */
+    assert(phase_duration <= MAX_GREEN);
+#endif
 #ifdef CHK_C1
     assert(current_phase == 0 || current_phase == 1);
     assert((current_phase == 0 && signal == 0) ||

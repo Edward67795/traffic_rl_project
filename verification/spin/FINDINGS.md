@@ -1,8 +1,11 @@
-# SPIN findings: S2 v0 baseline
+# SPIN findings: v0 through S3
+
+Current checkpoint: v0 through S3; see the appended S3 results below.
+The S2 baseline below is retained as historical evidence.
 
 Run date: 2026-11-06. Tool: SPIN 6.5.2; Apple Clang 21; Python 3.13.7.
-Scope: v0 only, S1/T1/T2/G1/C1, default timing except y0. v1 and G2/L1/L2
-are not implemented in this stage. No real SUMO run or human model review is
+Scope: v0 only, S1/T1/T2/G1/C1, default timing except y0. G2/L1 were not implemented at the S2 checkpoint; they are now covered in S3.
+v1 and L2 remain pending. No real SUMO run or human model review is
 claimed here. Results apply to the documented finite-state abstractions.
 
 ## Executed matrix
@@ -93,3 +96,40 @@ Prior raw runs are retained; results.csv points to the current run per case.
 - These results do not replace ESBMC evidence and do not claim equivalent coverage.
 - The next work stage is S3: G2 and L1, with explicit observed-green and wait
   counters and boundary checks. L2 fairness and v1 FIX-1..4 follow in S4/S5.
+
+## S3 results: maximum green and bounded waiting (2026-11-06)
+
+Current combined v0 matrix is 28 cases: 14 PASS, 14 FAIL. The eight S3 cases
+are all FAIL, with finite witnesses replayed and reference-reproduced. Re-running
+the 20 S2 cases preserved all prior verdicts. No project UNKNOWN/TIMEOUT/ERROR
+occurred. L2/v1, real SUMO and human model review remain pending.
+
+| Case | Result | Depth | CE decisions | Reference pre-step/boundary time_s | Component | Observed green age | Controller age | NS/EW wait | Evidence |
+|---|---|---|---|---|---|---|---|---|---|
+| G2-v0-default | FAIL | 380 | 11 | 60 | observed_green | 61 | 50 | 0/61 | [witness](results/raw/G2-v0-default-20261106T090427766230Z/witness.json) |
+| G2-v0-y0 | FAIL | 380 | 11 | 60 | observed_green | 61 | 50 | 0/61 | [witness](results/raw/G2-v0-y0-20261106T090428544566Z/witness.json) |
+| G2-v0-any | FAIL | 380 | 11 | 60 | observed_green | 61 | 50 | 0/61 | [witness](results/raw/G2-v0-any-20261106T090429354453Z/witness.json) |
+| G2-v0-L1 | FAIL | 474 | 13 | 75 | controller_age | 29 | 65 | 32/0 | [witness](results/raw/G2-v0-L1-20261106T090430125413Z/witness.json) |
+| L1-v0-default | FAIL | 408 | 12 | 66 | directional_wait | 67 | 56 | 0/67 | [witness](results/raw/L1-v0-default-20261106T090430915881Z/witness.json) |
+| L1-v0-y0 | FAIL | 370 | 11 | 60 | directional_wait | 61 | 50 | 0/61 | [witness](results/raw/L1-v0-y0-20261106T090431686597Z/witness.json) |
+| L1-v0-any | FAIL | 408 | 12 | 66 | directional_wait | 67 | 56 | 0/67 | [witness](results/raw/L1-v0-any-20261106T090432492617Z/witness.json) |
+| L1-v0-L1 | FAIL | 1630 | 48 | 254 | directional_wait | 64 | 63 | 0/67 | [witness](results/raw/L1-v0-L1-20261106T090433253634Z/witness.json) |
+
+G2/default, y0 and any fail on 61 counted green intervals, even though controller
+age is only 50: warmup was omitted from its accounting. G2/static first fails
+the separate controller-age check (65 >60) while displayed green age is 29.
+This matches the shared double-check harness and does not establish overlong
+displayed green in that particular witness.
+
+L1/default and any reach EW wait 67 >66; y0 reaches 61 >60. Static L1 eventually
+fails after online takeover allows repeated NS requests to starve EW. The current
+DFS witness is 48 decisions and is not claimed shortest. Other properties are
+disabled during each selected check, so an earlier violation of another property
+does not stop these searches.
+
+S3 validation: 14 test methods passed (32 synthetic monitor searches in total);
+96 finite source-reference cases still match 18,898 records. The raw test,
+trace, S3 matrix, S2 regression and archived/new replay outputs are linked from
+the S3 entry in report.md. Frozen CSVs: [S3 only](results/snapshots/s3-v0-results.csv)
+and [through S3](results/snapshots/through-s3-v0-results.csv). Detailed measured
+time/memory, assumptions and source digests are preserved in the raw metadata.

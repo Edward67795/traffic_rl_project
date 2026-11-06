@@ -5,7 +5,7 @@
   "spin": "Spin Version 6.5.2 -- 6 December 2019",
   "sha256": {
     "verification/spin/models/controller.pml": "6452f54bb06085b9c0c8b4bbe88fb7fe429c6035f365ae7ee73af5d5f7d4a4f8",
-    "verification/spin/models/properties.pml": "246feb5795e13013aa838f0652798bd213434eb761c48b3708cb72c8bd219a66",
+    "verification/spin/models/properties.pml": "05222592885b2adc49189507f33c6b9ad7fdccf606e6b6c7a6438e2f4800e16c",
     "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
     "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff",
     "verification/spin/scripts/check_traces.py": "f320f7ead2c0ca8ba82474ea88023a45289d1f226f4793092b74d7baba5dc020"
