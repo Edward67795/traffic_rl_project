@@ -23,6 +23,9 @@ class SumoTrafficEnvCore:
             raise ValueError("yellow_time must be >= 3")
         if min_green < 0 or max_green < 1 or min_green > max_green:
             raise ValueError("need 0 <= min_green <= max_green and max_green >= 1")
+        if delta_time > max_green:
+            # every green runs at least one decision interval after a switch
+            raise ValueError("delta_time must be <= max_green")
         if first_switch_point(WARMUP_STEPS, delta_time, min_green) > max_green:
             raise ValueError("first green has no switch point inside [min_green, max_green]")
         if first_switch_point(0, delta_time, min_green) > max_green:

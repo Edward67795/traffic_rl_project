@@ -19,6 +19,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -191,13 +192,18 @@ def run_esbmc(esbmc: str, path: Path, extra: list, timeout: int):
         extra = [x for x in extra if x != AUTO] + auto_unwind(esbmc, path)
     cmd = [sys.executable, "-c", wrapper, esbmc, str(path), "--python", sys.executable] + DEFAULT_ARGS + extra
     t0 = time.time()
+    # The wrapper and the esbmc it starts share a new process group, so a timeout kills both
+    # (killing only the wrapper would leave the solver running in the background).
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                         start_new_session=True)
     try:
-        p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-        out = p.stdout + p.stderr
+        so, se = p.communicate(timeout=timeout)
         timed_out = False
-    except subprocess.TimeoutExpired as e:
-        out = (e.stdout or "") if isinstance(e.stdout, str) else ""
+    except subprocess.TimeoutExpired:
+        os.killpg(p.pid, signal.SIGKILL)
+        so, se = p.communicate()
         timed_out = True
+    out = (so or "") + (se or "")
     elapsed = time.time() - t0
     m = re.search(r"@@RUN (\{.*\})", out)
     meta = json.loads(m.group(1)) if m else {"rc": None, "rss_mb": None}
