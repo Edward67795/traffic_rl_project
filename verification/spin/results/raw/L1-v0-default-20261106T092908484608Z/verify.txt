@@ -1,0 +1,30 @@
+pan:1: assertion violated (ew_wait<=(60+(2*3))) (at depth 408)
+pan: wrote controller.pml.trail
+
+(Spin Version 6.5.2 -- 6 December 2019)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 36 byte, depth reached 408, errors: 1
+      409 states, stored
+        0 states, matched
+      409 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.025	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.279	actual memory usage for states
+    2.000	memory used for hash table (-w18)
+    5.341	memory used for DFS stack (-m100000)
+    7.536	total actual memory usage
+
+
+
+pan: elapsed time 0 seconds

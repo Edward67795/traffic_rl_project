@@ -1,0 +1,136 @@
+{
+  "case": "L2-v0-any-eligible",
+  "property": "L2",
+  "scenario": "any",
+  "versions": {
+    "spin": "Spin Version 6.5.2 -- 6 December 2019",
+    "cc": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.3.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "network": {
+    "sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+    "phase_states": [
+      "GGGgrrrGGGgrrr",
+      "yyyyrrryyyyrrr",
+      "rrrrGGgrrrrGGg",
+      "rrrryyyrrrryyy"
+    ],
+    "durations": [
+      42,
+      3,
+      42,
+      3
+    ],
+    "protected_conflicts_checked": 38,
+    "mapping_assumption": "signal link i corresponds to junction request i",
+    "result": "PASS"
+  },
+  "flags": [
+    "-DCHK_L2",
+    "-DSTATIC_PROGRAM=0",
+    "-DYELLOW_TIME=3",
+    "-DANY_ACTION",
+    "-DAGENT_FAIRNESS=2"
+  ],
+  "agent_fairness": "eligible",
+  "process_weak_fairness": false,
+  "limits": {
+    "depth": 100000,
+    "memory_mb": 512,
+    "timeout_s_per_command": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_L2",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=3",
+        "-DANY_ACTION",
+        "-DAGENT_FAIRNESS=2",
+        "-a",
+        "controller.pml"
+      ],
+      "shell": "spin -DCHK_L2 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=3 -DANY_ACTION -DAGENT_FAIRNESS=2 -a controller.pml",
+      "exit_code": 0,
+      "time_s": 0.20666691599762999
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "shell": "cc -O2 -DMEMLIM=512 -o pan pan.c",
+      "exit_code": 0,
+      "time_s": 0.49882908299332485
+    },
+    {
+      "argv": [
+        "./pan",
+        "-?"
+      ],
+      "shell": "./pan '-?'",
+      "exit_code": 1,
+      "time_s": 0.3782198750122916
+    },
+    {
+      "argv": [
+        "./pan",
+        "-m100000",
+        "-w18",
+        "-b",
+        "-a"
+      ],
+      "shell": "./pan -m100000 -w18 -b -a",
+      "exit_code": 0,
+      "time_s": 0.018185249995440245
+    }
+  ],
+  "model_sha256": {
+    "verification/spin/models/controller.pml": "6bff730b21e4eb71126515e2c6dff3e6d78708e0c2d9bd39c41ac3ee6c0b3067",
+    "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
+    "verification/spin/scripts/run_spin.py": "327a5b401ea9eddac1114b287785f50fd57208bed534875317459b513855d161",
+    "verification/spin/scripts/liveness.py": "8ad70bf2fcc571e317cf6e40b20a40663e00390fdfca9b733cd3b90ea9506450"
+  },
+  "started_utc": "20261106T092252217368Z",
+  "source_snapshot": "models/",
+  "observation_columns": [
+    "signal",
+    "current_phase",
+    "controller_age",
+    "green_age_before_sample",
+    "yellow_age_before_sample"
+  ],
+  "timing_columns": [
+    "observed_green_age",
+    "ns_wait",
+    "ew_wait"
+  ],
+  "timing": "time_s is verifier wall time only; generation/compile recorded separately",
+  "ce_length_convention": "count ACTION events through failing state, including an unfinished decision; not guaranteed shortest",
+  "limitations": [
+    "reference static timing, not real SUMO validation",
+    "C1 decision-boundary interpretation pending D4"
+  ],
+  "reference_sha256": {
+    "verification/esbmc/model/env_core_v1.py": "4a8376213d4e6cbde10a15671478a2c7298ebe2f5d2fefcb98c11bca0a4bc8ca",
+    "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
+    "verification/esbmc/model/env_core_v1_naive.py": "2094fd268013c07e9e4f4265fac61c79e0ae3f6386c276c7987dda8fd5986614",
+    "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff"
+  },
+  "result": {
+    "tool": "spin",
+    "property": "L2",
+    "version": "v0",
+    "config": "any;fidelity=L0;dt=5;y=3;min=10;max=60;fairness=eligible",
+    "bound": "depth=4305",
+    "result": "PASS",
+    "ce_length": "",
+    "time_s": "0.018185",
+    "memory_mb": "8.610",
+    "notes": "evidence=results/raw/L2-v0-any-eligible-20261106T092252217368Z;model-level only;ce counts started decisions;DFS witness not necessarily shortest;agent_fairness=eligible;ongoing positive-time controller;ce=prefix plus one cycle decisions"
+  }
+}

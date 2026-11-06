@@ -1,6 +1,6 @@
 # SPIN experimental record and report material
 
-Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0 through S3**.
+Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **v0 through S4**.
 This is a chronological research record for the final CSEE E6863 report, not a
 claim that all project stages are finished. Code/documentation remain in English.
 
@@ -472,3 +472,166 @@ runner source was archived before the change, preserving its raw-metadata hash.
 
 Repository HEAD at this stage is 7ccc6ea, the user's S2 commit. All S3 changes
 remain uncommitted; no assistant Git write operation was performed.
+
+## S4: infinite service, fairness and acceptance cycles (2026-11-06)
+
+Stage completed for v0; next is S5. Repository HEAD at stage start was 717786c
+(the user's S3 commit). No Git write operation was performed by the assistant.
+
+### Research question and exact specification
+
+Does each direction obtain green infinitely often in the ongoing control-loop
+abstraction? Check L2 = GF sampled_NS AND GF sampled_EW under three alternatives:
+none (unconditional); request fairness (GF input0 AND GF input1); eligible-request
+fairness (GF eligible_input0 AND GF eligible_input1). Eligibility is controller
+age>=min_green at the captured decision input. The latter is a stronger premise,
+not a relabeling of the first. Fairness concerns the input stream, not the
+scheduler; no pan -f is used. Each model build contains one LTL claim.
+
+Samples update only at simulated seconds. Decisions have delta>0 and finite
+internal loops; there is no arbitrary episode cutoff in this infinite model.
+The min(age,76) quotient preserves both switching and eligibility comparisons.
+Human review and source/SUMO fidelity remain pending; see MODEL_MAPPING.md.
+
+### Attempts, controls and regression
+
+An initial 12-case sweep gave 7 PASS / 5 FAIL. Before the final sweep, reference
+cycle validation was strengthened to compare service sets and selected input
+fairness, and the new event-clear hook was scoped so non-L2 control graphs
+remain unchanged. No initial cycle mismatch was observed. The final 12-case
+sweep gave the same verdicts and depths. Initial raw runs remain preserved.
+Both sweeps are repeated measurements of 12 configurations, not 24 new cases.
+
+Eleven synthetic LTL controls matched their intended results: starvation of
+both directions; alternating service; finite EW followed by permanent NS;
+request-fair starvation; eligible-fair starvation; successful fair service;
+intentional premise vacuity; and no phantom fairness from non-event values.
+Eight full-model checks of !FAIR_INPUT found acceptance cycles demonstrating
+premise feasibility for both fairness modes in all four scenarios. These
+auxiliary verifier FAILs are expected positive evidence, not controller-defect
+rows. Their source/logs/cycles are retained separately. A fixed-policy compact
+counterexample adds one explanatory execution without changing the controller.
+
+Existing safety/timing tests: 14 methods passed in 24.814 s; 96 finite trace
+cases / 18,898 records still match the extraction/stub. All 28 S2/S3 regression
+verdicts and search depths remained unchanged. No project UNKNOWN/TIMEOUT/ERROR
+was observed. Final current matrix: 40 cases, 21 PASS / 19 FAIL. Fourteen FAILs
+are finite assertions and five are L2 acceptance-cycle witnesses.
+
+Commands (repository root):
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/run_spin.py --stage S4
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/run_spin.py --stage S2
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/run_spin.py --stage S3
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/test_verification.py
+python3 verification/spin/scripts/check_traces.py \
+  --output verification/spin/results/raw/s1-trace-comparison.json
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/check_liveness.py \
+  --output verification/spin/results/raw/s4-controls-rerun
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/explain_l2_counterexample.py \
+  --output verification/spin/results/raw/s4-short-witness-rerun
+```
+
+The last two commands require new output paths to preserve prior evidence.
+Original auxiliary [summary](results/raw/s4-liveness-controls/summary.json) and
+[compact witness analysis](results/raw/s4-short-request-fair-witness/analysis.json)
+are retained. Main validation logs:
+- [commands.json](results/raw/s4-validation-20261106T092809Z/commands.json)
+- [s2-regression.txt](results/raw/s4-validation-20261106T092809Z/s2-regression.txt)
+- [s3-regression.txt](results/raw/s4-validation-20261106T092809Z/s3-regression.txt)
+- [s4-matrix.txt](results/raw/s4-validation-20261106T092809Z/s4-matrix.txt)
+- [short-fair-witness.txt](results/raw/s4-validation-20261106T092809Z/short-fair-witness.txt)
+- [tests.txt](results/raw/s4-validation-20261106T092809Z/tests.txt)
+- [traces.txt](results/raw/s4-validation-20261106T092809Z/traces.txt)
+
+### Final measured S4 results
+
+Depth is actual Promela search depth; time_s is measured verifier wall time;
+memory_mb is reported pan total memory. Generation/compile/replay timings and
+commands are recorded separately in metadata. Single-run times are not a
+performance benchmark. Every search used full-state storage and the existing
+100000-depth / 512-MB limits. No depth/memory truncation occurred.
+
+| Case | Result | Depth | CE decisions | time_s | memory_mb | Stored states | Transitions | Evidence |
+|---|---|---|---|---|---|---|---|---|
+| L2-v0-default-none | FAIL | 1207 | 17 | 0.014523 | 7.536 | 604 | 604 | [metadata](results/raw/L2-v0-default-none-20261106T092837197598Z/metadata.json) |
+| L2-v0-default-request | PASS | 2801 | - | 0.013218 | 7.927 | 7826 | 23420 | [metadata](results/raw/L2-v0-default-request-20261106T092838073024Z/metadata.json) |
+| L2-v0-default-eligible | PASS | 2801 | - | 0.008290 | 7.829 | 6647 | 16832 | [metadata](results/raw/L2-v0-default-eligible-20261106T092839187916Z/metadata.json) |
+| L2-v0-y0-none | FAIL | 1207 | 17 | 0.012273 | 7.536 | 604 | 604 | [metadata](results/raw/L2-v0-y0-none-20261106T092840397158Z/metadata.json) |
+| L2-v0-y0-request | PASS | 2747 | - | 0.013759 | 7.829 | 6241 | 18229 | [metadata](results/raw/L2-v0-y0-request-20261106T092841227604Z/metadata.json) |
+| L2-v0-y0-eligible | PASS | 2747 | - | 0.011163 | 7.731 | 5060 | 12268 | [metadata](results/raw/L2-v0-y0-eligible-20261106T092842336371Z/metadata.json) |
+| L2-v0-any-none | FAIL | 1207 | 17 | 0.011875 | 7.536 | 604 | 604 | [metadata](results/raw/L2-v0-any-none-20261106T092843450262Z/metadata.json) |
+| L2-v0-any-request | FAIL | 4981 | 37 | 0.010167 | 7.829 | 5898 | 7597 | [metadata](results/raw/L2-v0-any-request-20261106T092844259554Z/metadata.json) |
+| L2-v0-any-eligible | PASS | 4305 | - | 0.015851 | 8.610 | 20767 | 44152 | [metadata](results/raw/L2-v0-any-eligible-20261106T092845590793Z/metadata.json) |
+| L2-v0-L1-none | FAIL | 2365 | 33 | 0.015956 | 7.634 | 1915 | 3677 | [metadata](results/raw/L2-v0-L1-none-20261106T092846701680Z/metadata.json) |
+| L2-v0-L1-request | PASS | 5041 | - | 0.068917 | 16.423 | 145623 | 448952 | [metadata](results/raw/L2-v0-L1-request-20261106T092847522020Z/metadata.json) |
+| L2-v0-L1-eligible | PASS | 5041 | - | 0.062323 | 15.739 | 133797 | 354396 | [metadata](results/raw/L2-v0-L1-eligible-20261106T092848684396Z/metadata.json) |
+
+Stage snapshots: [S4 only](results/snapshots/s4-v0-results.csv) and
+[through S4](results/snapshots/through-s4-v0-results.csv). Source/script snapshots
+are retained under results/snapshots/s4-model and s4-scripts. Earlier stage
+snapshots were not replaced; run-local sources preserve original trails.
+
+### Cycle analysis and interpretation
+
+A replay marker can split a decision. ce_length counts ACTION starts in the
+prefix plus one period; it is not elapsed seconds or a shortest-witness claim.
+REQUEST events record original input and eligibility. Loop OBS samples identify
+which greens recur; no ACTION or time samples would invalidate interpretation.
+
+For each failing loop, the selected premise holds and at least one direction
+is absent. Rotating to completed decision boundaries and repeating the input
+period in the Python extraction closes the documented projected state, with
+positive time and matching services/fairness. This is supplementary quotient
+validation, not a finite simulation proof of infinite full-system behavior.
+
+| Case | Prefix ACTION events | Period ACTION events | Period sample seconds | Recurrent greens | Missing direction | Reference period seconds |
+|---|---|---|---|---|---|---|
+| L2-v0-default-none | 16 | 1 | 5 | [0] | EW | 5 |
+| L2-v0-y0-none | 16 | 1 | 5 | [0] | EW | 5 |
+| L2-v0-any-none | 16 | 1 | 5 | [0] | EW | 5 |
+| L2-v0-any-request | 1 | 36 | 192 | [0] | EW | 192 |
+| L2-v0-L1-none | 32 | 1 | 5 | [2] | NS | 5 |
+
+The four unconditional cases fail, including static fidelity: after online
+takeover a nondeterministic agent can retain one direction forever. Input
+request fairness suffices on the legal-action scenarios in the checked model,
+but fails under any's invalid actions. Stronger eligible-request fairness passes
+all four scenarios. These are conditional guarantees, not assumptions shown
+true of a trained policy. Fair premises were separately witnessed realizable;
+this does not mean every input execution satisfies them. Conditional y0 L2
+PASS coexists with T1/y0 FAIL because recurring service does not guarantee safety.
+
+### Compact report case study: request fairness is insufficient
+
+Constrain only the input generator to prefix [0,0,2,1,0], then repeat [0,2,1,0].
+The prefix reaches online NS with controller age5. In each period:
+
+| Input | Age at request | Effect |
+|---|---|---|
+| 0 | 5 | Retain NS; delta advances age to10 |
+| 2 | 10 | Invalid action; yellow then NS fallback, stored phase2, age resets to5 |
+| 1 | 5 | EW request ignored because minimum green is not met; age advances to10 |
+| 0 | 10 | Yellow then NS, stored phase0, age resets to5 |
+
+A period is 4*5 +2*3 =26 seconds. Requests0/1 occur infinitely often but EW
+never gets green; the request1 is always ineligible. SPIN reports an acceptance
+cycle and the reference quotient closes. Its saved Buchi marker rotates the
+four-action word (prefix/cycle event counts need not equal policy segmentation).
+No shortest/minimality claim is made. Original 36-decision DFS period remains
+preserved separately. This links source fallback/min-green semantics, Promela
+translation, temporal assumptions and a concrete counterexample for the report.
+
+### Limits and next step
+
+Infinite claims apply to ongoing positive-time control and the documented
+abstraction; real training episodes terminate. The request-event sampling and
+age projection require human review. No SUMO execution or v1 proof is claimed.
+Do not call the stronger input premise a repair. S5 must implement FIX-1..4
+and separately handle invalid-input rejection and unconditional service.
+README now marks S4 complete. Stop at this stage and report; next is S5.
+
+S4 interpretation note: infinitely frequent requests can have arbitrarily long
+finite gaps. Conditional L2 service therefore does not establish the numeric
+L1 waiting bound; the S3 L1 failures and S4 conditional L2 passes are compatible.

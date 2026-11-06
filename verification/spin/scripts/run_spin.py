@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the implemented v0 S2/S3 matrix with one property per exhaustive search.
+"""Run the implemented v0 S2/S3/S4 matrix with one property per exhaustive search.
 
 FAIL denotes a witnessed model violation, not runner failure. The command exits
 nonzero for ERROR/UNKNOWN/TIMEOUT or a failed witness reference cross-check.
@@ -20,14 +20,18 @@ import tempfile
 import time
 import xml.etree.ElementTree as ET
 
+from liveness import analyze_cycle, reference_lasso
+
 SPIN = Path(__file__).resolve().parents[1]
 REPO = SPIN.parents[1]
 HEADER = ['tool', 'property', 'version', 'config', 'bound', 'result',
           'ce_length', 'time_s', 'memory_mb', 'notes']
-PROPERTIES = ('S1', 'T1', 'T2', 'G1', 'C1', 'G2', 'L1')
-STAGES = {'S2': PROPERTIES[:5], 'S3': PROPERTIES[5:]}
+PROPERTIES = ('S1', 'T1', 'T2', 'G1', 'C1', 'G2', 'L1', 'L2')
+STAGES = {'S2': PROPERTIES[:5], 'S3': PROPERTIES[5:7], 'S4': ('L2',)}
 SCENARIOS = ('default', 'y0', 'any', 'L1')
-CASES = {f'{p}-v0-{s}': (p, s) for p in PROPERTIES for s in SCENARIOS}
+CASES = {f'{p}-v0-{s}': (p, s) for p in PROPERTIES if p != 'L2' for s in SCENARIOS}
+CASES.update({f'L2-v0-{s}-{f}': ('L2', s) for s in SCENARIOS
+              for f in ('none', 'request', 'eligible')})
 STATES = ['GGGgrrrGGGgrrr', 'yyyyrrryyyyrrr', 'rrrrGGgrrrrGGg', 'rrrryyyrrrryyy']
 
 
@@ -133,9 +137,14 @@ def run_case(case_id, prop, scenario, args, network, versions):
     if scenario == 'any':
         flags.append('-DANY_ACTION')
     config = f'{scenario};fidelity={"L1" if scenario == "L1" else "L0"};dt=5;y={0 if scenario == "y0" else 3};min=10;max=60'
+    fairness = case_id.rsplit('-', 1)[-1] if prop == 'L2' else None
+    if fairness is not None:
+        flags.append(f'-DAGENT_FAIRNESS={dict(none=0, request=1, eligible=2)[fairness]}')
+        config += f';fairness={fairness}'
     row = dict(zip(HEADER, ['spin', prop, 'v0', config, '', 'ERROR', '', '', '', '']))
     metadata = {'case': case_id, 'property': prop, 'scenario': scenario,
                 'versions': versions, 'network': network, 'flags': flags,
+                'agent_fairness': fairness, 'process_weak_fairness': False,
                 'limits': {'depth': args.depth, 'memory_mb': args.memory,
                            'timeout_s_per_command': args.timeout},
                 'commands': [], 'model_sha256': {}, 'started_utc': stamp,
@@ -147,7 +156,7 @@ def run_case(case_id, prop, scenario, args, network, versions):
                 'limitations': ['reference static timing, not real SUMO validation',
                                 'C1 decision-boundary interpretation pending D4']}
     for path in [SPIN / 'models/controller.pml', SPIN / 'models/properties.pml',
-                 Path(__file__).resolve()]:
+                 Path(__file__).resolve(), SPIN / 'scripts/liveness.py']:
         metadata['model_sha256'][str(path.relative_to(REPO))] = hashlib.sha256(path.read_bytes()).hexdigest()
     metadata['reference_sha256'] = {str(path.relative_to(REPO)): hashlib.sha256(path.read_bytes()).hexdigest()
                                    for path in (REPO / 'verification/esbmc/model').glob('*.py')}
@@ -182,14 +191,14 @@ def run_case(case_id, prop, scenario, args, network, versions):
             if code or 'Error:' in output:
                 raise RuntimeError('SPIN generation failed')
             compile_cmd = ['cc', '-O2', f'-DMEMLIM={args.memory}']
-            if prop != 'T2':
+            if prop not in ('T2', 'L2'):
                 compile_cmd.append('-DSAFETY')
             code, _, _ = execute([*compile_cmd, '-o', 'pan', 'pan.c'], build, 'compile.txt')
             if code:
                 raise RuntimeError('C compilation failed')
             execute(['./pan', '-?'], build, 'pan-help.txt')
             pan = ['./pan', f'-m{args.depth}', '-w18', '-b']
-            if prop == 'T2':
+            if prop in ('T2', 'L2'):
                 pan.append('-a')
             code, output, elapsed = execute(pan, build, 'verify.txt')
             row['result'] = classify(output, code)
@@ -220,7 +229,25 @@ def run_case(case_id, prop, scenario, args, network, versions):
                 if not witness['acceptance_cycle']:
                     witness['reference'] = reference_witness(prop, scenario, actions)
                 else:
-                    witness['reference'] = {'reproduced': None, 'message': 'Infinite cycle needs liveness analysis'}
+                    if prop == 'L2':
+                        cycle = analyze_cycle(replay, fairness)
+                        closure = reference_lasso(REPO, scenario, cycle)
+                        if not cycle['selected_premise_holds'] or not cycle['violates_service']:
+                            raise ValueError('L2 witness does not exhibit the selected fair-service violation')
+                        if not closure['closed'] or closure['period_time_s'] <= 0:
+                            raise ValueError('L2 reference projection did not close with positive time')
+                        if closure['period_green_codes'] != cycle['cycle_service_codes']:
+                            raise ValueError('Reference lasso service differs from the SPIN cycle')
+                        if fairness == 'request' and not closure['request_fair']:
+                            raise ValueError('Reference period does not satisfy request fairness')
+                        if fairness == 'eligible' and not closure['eligible_request_fair']:
+                            raise ValueError('Reference period does not satisfy eligible fairness')
+                        witness['cycle'] = cycle
+                        witness['reference_lasso'] = closure
+                        witness['reference'] = {'reproduced': None,
+                                                'message': 'Projected reference lasso closes; full-system liveness not tested'}
+                    else:
+                        witness['reference'] = {'reproduced': None, 'message': 'Infinite cycle needs liveness analysis'}
                 (evidence / 'witness.json').write_text(json.dumps(witness, indent=2) + '\n')
                 metadata['witness'] = witness
     except subprocess.TimeoutExpired:
@@ -230,6 +257,8 @@ def run_case(case_id, prop, scenario, args, network, versions):
         row['result'] = 'ERROR'
     relative = str(evidence.relative_to(SPIN))
     row['notes'] = f'evidence={relative};model-level only;ce counts started decisions;DFS witness not necessarily shortest'
+    if prop == 'L2':
+        row['notes'] += f';agent_fairness={fairness};ongoing positive-time controller;ce=prefix plus one cycle decisions'
     if prop == 'G2':
         row['notes'] += ';observed green per second AND controller age after decisions'
     if prop == 'L1':
@@ -265,7 +294,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('cases', nargs='*', choices=None)
     parser.add_argument('--list', action='store_true')
-    parser.add_argument('--all', action='store_true', help='All currently implemented S2/S3 cases, v0 only')
+    parser.add_argument('--all', action='store_true', help='All currently implemented S2/S3/S4 cases, v0 only')
     parser.add_argument('--stage', choices=STAGES, help='Run only this stage instead of --all/case IDs')
     parser.add_argument('--depth', type=int, default=100000)
     parser.add_argument('--memory', type=int, default=512)

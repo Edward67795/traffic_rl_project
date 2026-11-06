@@ -1,0 +1,108 @@
+ltl agent_service: (! (([] (<> ((request_event) && ((requested_action==0))))) && ([] (<> ((request_event) && ((requested_action==1))))))) || (([] (<> ((observed==0)))) && ([] (<> ((observed==2)))))
+Never claim moves to line 7	[(!((observed==2)))]
+Never claim moves to line 62	[(!((observed==2)))]
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+OBS 0 0 0 0 0
+REQUEST 0 0
+ACTION 0
+OBS 0 0 0 0 0
+OBS 0 0 1 0 0
+OBS 0 0 2 0 0
+OBS 0 0 3 0 0
+OBS 0 0 4 0 0
+REQUEST 0 0
+ACTION 0
+OBS 0 0 5 0 0
+OBS 0 0 6 0 0
+OBS 0 0 7 0 0
+OBS 0 0 8 0 0
+OBS 0 0 9 0 0
+REQUEST 2 1
+ACTION 2
+OBS 1 0 10 0 0
+OBS 1 0 10 0 0
+OBS 1 0 10 0 0
+OBS 0 2 0 0 0
+OBS 0 2 1 0 0
+OBS 0 2 2 0 0
+OBS 0 2 3 0 0
+OBS 0 2 4 0 0
+REQUEST 1 0
+ACTION 1
+OBS 0 2 5 0 0
+OBS 0 2 6 0 0
+OBS 0 2 7 0 0
+OBS 0 2 8 0 0
+OBS 0 2 9 0 0
+<<<<<START OF CYCLE>>>>>
+REQUEST 0 1
+ACTION 0
+OBS 1 2 10 0 0
+OBS 1 2 10 0 0
+OBS 1 2 10 0 0
+OBS 0 0 0 0 0
+OBS 0 0 1 0 0
+OBS 0 0 2 0 0
+OBS 0 0 3 0 0
+OBS 0 0 4 0 0
+REQUEST 0 0
+ACTION 0
+OBS 0 0 5 0 0
+OBS 0 0 6 0 0
+OBS 0 0 7 0 0
+OBS 0 0 8 0 0
+OBS 0 0 9 0 0
+Never claim moves to line 64	[((!((observed==2))&&(request_event&&(requested_action==0))))]
+Never claim moves to line 25	[(!((observed==2)))]
+REQUEST 2 1
+ACTION 2
+OBS 1 0 10 0 0
+OBS 1 0 10 0 0
+OBS 1 0 10 0 0
+OBS 0 2 0 0 0
+OBS 0 2 1 0 0
+OBS 0 2 2 0 0
+OBS 0 2 3 0 0
+OBS 0 2 4 0 0
+REQUEST 1 0
+Never claim moves to line 24	[((!((observed==2))&&(request_event&&(requested_action==1))))]
+ACTION 1
+Never claim moves to line 16	[(!((observed==2)))]
+Never claim moves to line 62	[(!((observed==2)))]
+OBS 0 2 5 0 0
+OBS 0 2 6 0 0
+OBS 0 2 7 0 0
+OBS 0 2 8 0 0
+OBS 0 2 9 0 0
+spin: trail ends after 756 steps
+#processes: 1
+		signal = 0
+		current_phase = 2
+		phase_duration = 10
+		online = 1
+		sp_index = 0
+		sp_left = 43
+		remaining = 0
+		action = 0
+		observed = 0
+		previous = 0
+		last_green = 0
+		green_age = 0
+		yellow_age = 0
+		ns_wait = 0
+		ew_wait = 0
+		request_event = 0
+		requested_action = 1
+		request_eligible = 0
+		policy_pos = 5
+756:	proc  0 (:init::1) ./properties.pml:19 (state 52)
+756:	proc  - (agent_service:1) _spin_nvr.tmp:61 (state 104)
+1 processes created

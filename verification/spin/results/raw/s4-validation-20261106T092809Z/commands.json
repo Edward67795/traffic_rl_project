@@ -1,0 +1,60 @@
+[
+  {
+    "name": "tests",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/test_verification.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "traces",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/check_traces.py",
+      "--output",
+      "verification/spin/results/raw/s1-trace-comparison.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s4-matrix",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S4"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s2-regression",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "s3-regression",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/run_spin.py",
+      "--stage",
+      "S3"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "short-fair-witness",
+    "argv": [
+      "python3",
+      "verification/spin/scripts/explain_l2_counterexample.py",
+      "--output",
+      "verification/spin/results/raw/s4-short-request-fair-witness"
+    ],
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,338 @@
+{
+  "case": "L2-v0-default-none",
+  "property": "L2",
+  "scenario": "default",
+  "versions": {
+    "spin": "Spin Version 6.5.2 -- 6 December 2019",
+    "cc": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.3.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "network": {
+    "sha256": "71df771bebe92c002ffc66076e3c175317d0ecddf53bd74e9349d6858a5b766d",
+    "phase_states": [
+      "GGGgrrrGGGgrrr",
+      "yyyyrrryyyyrrr",
+      "rrrrGGgrrrrGGg",
+      "rrrryyyrrrryyy"
+    ],
+    "durations": [
+      42,
+      3,
+      42,
+      3
+    ],
+    "protected_conflicts_checked": 38,
+    "mapping_assumption": "signal link i corresponds to junction request i",
+    "result": "PASS"
+  },
+  "flags": [
+    "-DCHK_L2",
+    "-DSTATIC_PROGRAM=0",
+    "-DYELLOW_TIME=3",
+    "-DAGENT_FAIRNESS=0"
+  ],
+  "agent_fairness": "none",
+  "process_weak_fairness": false,
+  "limits": {
+    "depth": 100000,
+    "memory_mb": 512,
+    "timeout_s_per_command": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_L2",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=3",
+        "-DAGENT_FAIRNESS=0",
+        "-a",
+        "controller.pml"
+      ],
+      "shell": "spin -DCHK_L2 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=3 -DAGENT_FAIRNESS=0 -a controller.pml",
+      "exit_code": 0,
+      "time_s": 0.027846291020978242
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "shell": "cc -O2 -DMEMLIM=512 -o pan pan.c",
+      "exit_code": 0,
+      "time_s": 0.32105029199738055
+    },
+    {
+      "argv": [
+        "./pan",
+        "-?"
+      ],
+      "shell": "./pan '-?'",
+      "exit_code": 1,
+      "time_s": 0.46310041699325666
+    },
+    {
+      "argv": [
+        "./pan",
+        "-m100000",
+        "-w18",
+        "-b",
+        "-a"
+      ],
+      "shell": "./pan -m100000 -w18 -b -a",
+      "exit_code": 0,
+      "time_s": 0.01452329201856628
+    },
+    {
+      "argv": [
+        "spin",
+        "-T",
+        "-DCHK_L2",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=3",
+        "-DAGENT_FAIRNESS=0",
+        "-t",
+        "-k",
+        "controller.pml.trail",
+        "controller.pml"
+      ],
+      "shell": "spin -T -DCHK_L2 -DSTATIC_PROGRAM=0 -DYELLOW_TIME=3 -DAGENT_FAIRNESS=0 -t -k controller.pml.trail controller.pml",
+      "exit_code": 0,
+      "time_s": 0.039518917008535936
+    }
+  ],
+  "model_sha256": {
+    "verification/spin/models/controller.pml": "ca676e8cbec39e4c6e714eb37d5edd021ee17ca6916a7bcc41166b45bd2e3abf",
+    "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
+    "verification/spin/scripts/run_spin.py": "45e747f5e0cd2aed9d68466f9e7663f54539f74f329754c618ccbe61a9813432",
+    "verification/spin/scripts/liveness.py": "8ad70bf2fcc571e317cf6e40b20a40663e00390fdfca9b733cd3b90ea9506450"
+  },
+  "started_utc": "20261106T092837197598Z",
+  "source_snapshot": "models/",
+  "observation_columns": [
+    "signal",
+    "current_phase",
+    "controller_age",
+    "green_age_before_sample",
+    "yellow_age_before_sample"
+  ],
+  "timing_columns": [
+    "observed_green_age",
+    "ns_wait",
+    "ew_wait"
+  ],
+  "timing": "time_s is verifier wall time only; generation/compile recorded separately",
+  "ce_length_convention": "count ACTION events through failing state, including an unfinished decision; not guaranteed shortest",
+  "limitations": [
+    "reference static timing, not real SUMO validation",
+    "C1 decision-boundary interpretation pending D4"
+  ],
+  "reference_sha256": {
+    "verification/esbmc/model/env_core_v1.py": "4a8376213d4e6cbde10a15671478a2c7298ebe2f5d2fefcb98c11bca0a4bc8ca",
+    "verification/esbmc/model/traci_stub.py": "a34e37da50bd6258fb4143c3e4436063ffff8d6db69d4be3b8fd1a89a1ba5ef4",
+    "verification/esbmc/model/env_core_v1_naive.py": "2094fd268013c07e9e4f4265fac61c79e0ae3f6386c276c7987dda8fd5986614",
+    "verification/esbmc/model/env_core_v0.py": "22cfd385604f86f08d6cf946f76bb98e7156c75b6fdba68f0c41d40e52ab22ff"
+  },
+  "witness": {
+    "actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "observed_seconds": 91,
+    "last_observations": [
+      [
+        0,
+        0,
+        69,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        71,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        73,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        74,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        75,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        76,
+        0,
+        0
+      ]
+    ],
+    "acceptance_cycle": true,
+    "timing_samples": [],
+    "cycle": {
+      "prefix_actions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cycle_actions": [
+        0
+      ],
+      "prefix_decisions": 16,
+      "cycle_decisions": 1,
+      "prefix_samples": 86,
+      "cycle_samples": 5,
+      "cycle_requests": [
+        [
+          0,
+          1
+        ]
+      ],
+      "cycle_service_codes": [
+        0
+      ],
+      "missing_green_directions": [
+        "EW"
+      ],
+      "request_fair": false,
+      "eligible_request_fair": false,
+      "selected_premise_holds": true,
+      "violates_service": true
+    },
+    "reference_lasso": {
+      "kind": "projected-extracted-reference-lasso-closure",
+      "state_before": {
+        "phase": 0,
+        "signal": 0,
+        "controller_age_projected": 76,
+        "online": false,
+        "static_index": 0,
+        "static_left": 43
+      },
+      "state_after": {
+        "phase": 0,
+        "signal": 0,
+        "controller_age_projected": 76,
+        "online": false,
+        "static_index": 0,
+        "static_left": 43
+      },
+      "closed": true,
+      "period_time_s": 5,
+      "period_green_codes": [
+        0
+      ],
+      "period_actions": [
+        0
+      ],
+      "request_fair": false,
+      "eligible_request_fair": false,
+      "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+    },
+    "reference": {
+      "reproduced": null,
+      "message": "Projected reference lasso closes; full-system liveness not tested"
+    }
+  },
+  "result": {
+    "tool": "spin",
+    "property": "L2",
+    "version": "v0",
+    "config": "default;fidelity=L0;dt=5;y=3;min=10;max=60;fairness=none",
+    "bound": "depth=1207",
+    "result": "FAIL",
+    "ce_length": "17",
+    "time_s": "0.014523",
+    "memory_mb": "7.536",
+    "notes": "evidence=results/raw/L2-v0-default-none-20261106T092837197598Z;model-level only;ce counts started decisions;DFS witness not necessarily shortest;agent_fairness=none;ongoing positive-time controller;ce=prefix plus one cycle decisions"
+  }
+}

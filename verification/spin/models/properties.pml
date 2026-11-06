@@ -8,7 +8,28 @@ int ns_wait = 0;
 int ew_wait = 0;
 #define WAIT_LIMIT (MAX_GREEN + 2 * YELLOW_TIME)
 
+#ifdef CHK_L2
+#ifndef AGENT_FAIRNESS
+#define AGENT_FAIRNESS 0
+#endif
+bool request_event = false;
+int requested_action = 0;
+bool request_eligible = false;
+
+inline record_request() {
+    d_step {
+        requested_action = action;
+        request_eligible = (phase_duration >= MIN_GREEN);
+        request_event = true;
+        printf("REQUEST %d %d\n", requested_action, request_eligible)
+    }
+}
+#endif
+
 inline observe_second() {
+#ifdef CHK_L2
+    observed = signal;
+#endif
 #ifdef CHK_S1
     /* Network preflight validates the protected-link interpretation of each code. */
     assert(signal <= 3);
@@ -121,4 +142,21 @@ ltl yellow_completion {
     [] ((observed == 1 || observed == 3) ->
         <> (observed == 0 || observed == 2))
 }
+#endif
+
+#if defined(CHK_L2) && !defined(TRACE)
+#define BOTH_SERVICE (([] <> (observed == 0)) && ([] <> (observed == 2)))
+#if AGENT_FAIRNESS == 2
+#define FAIR_INPUT (([] <> (request_event && requested_action == 0 && request_eligible)) && ([] <> (request_event && requested_action == 1 && request_eligible)))
+#elif AGENT_FAIRNESS == 1
+#define FAIR_INPUT (([] <> (request_event && requested_action == 0)) && ([] <> (request_event && requested_action == 1)))
+#else
+#define FAIR_INPUT true
+#endif
+#ifdef FAIRNESS_FEASIBILITY
+/* Deliberately negate the premise: an acceptance cycle witnesses feasibility. */
+ltl agent_service { ! FAIR_INPUT }
+#else
+ltl agent_service { FAIR_INPUT -> BOTH_SERVICE }
+#endif
 #endif

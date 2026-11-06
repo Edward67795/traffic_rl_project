@@ -356,8 +356,10 @@ feasible. Keep environment files/generated outputs out of version control.
   Results are model-level; real SUMO validation and human review remain pending.
 - S3: complete for v0 G2/L1: eight executed FAIL cases, all reference-reproduced.
   Boundary tests and S2 regression passed. Current matrix: 28 cases, 14 PASS/14 FAIL.
-- S4-S6: pending (documentation work ongoing). Next is S4, L2/fairness.
-- The user requested one stage at a time; report S3 completion before proceeding.
+- S4: complete for v0 L2: 12 cases, 7 conditional PASS/5 FAIL; cycle and
+  fairness-feasibility evidence validated. Combined matrix: 40, 21 PASS/19 FAIL.
+- S5/S6: pending (documentation work ongoing). Next is S5, exact v1 comparison.
+- The user requested one stage at a time; report S4 completion before proceeding.
   Keep README meanings/status current for teammates and append data to report.md.
 
 ## Execution record
@@ -594,3 +596,44 @@ implemented. See the next execution record for actual validation results.
   not a claim that its hash equals the final formatting-corrected script.
 - Repository HEAD observed at closeout is 7ccc6ea (user's S2 commit); no Git
   commit/push/merge was performed by the assistant.
+
+### 2026-11-06: S4 started
+
+- User authorized S4, one stage at a time. README now marks S4 in progress.
+- Implement L2 as GF sampled_NS AND GF sampled_EW, for ongoing positive-time
+  executions; do not use transient zero-time assignments as green service.
+- Compare no premise, GF request0 AND GF request1, and the stronger GF eligible
+  request0 AND GF eligible request1. Eligibility is controller age >=min_green
+  at the input event. Keep conditional and unconditional results separate.
+- Fairness is an explicit LTL implication over decision events, not pan -f.
+  Add fairness-feasibility witnesses and synthetic positive/negative controls
+  so conditional PASS is not mistaken for meaningful proof under impossible inputs.
+- Preserve S3 model snapshot before edits; retain cycle prefix/period data,
+  repeated reference-state projection and positive time advancement. Finite
+  reference replay alone does not prove the original Python/SUMO system live.
+
+### 2026-11-06: S4 completed
+
+- Added sampled L2 service and captured input-event/eligibility propositions.
+  Three separate modes: none, request fairness, eligible-request fairness.
+  Conditional formulas are explicit implications; no process weak fairness used.
+- Executed 12 main cases: none FAIL in all scenarios; request PASS default/y0/
+  static, FAIL any; eligible PASS all four. Total S4 7 PASS/5 FAIL; current
+  40 v0 cases, 21 PASS/19 FAIL. No UNKNOWN/TIMEOUT/ERROR.
+- Five acceptance trails have prefix/period input and sample counts, actual
+  fair-input checks, missing greens and positive-time reference quotient closure.
+  The any/request period has both legal inputs but requests1 when ineligible.
+- Eleven synthetic LTL controls matched expectations, eight full-model fairness
+  feasibility cycles validated, and one compact fixed-input starvation witness
+  validated. Auxiliary expected failures are not shared project result rows.
+- Compact example: prefix [0,0,2,1,0], repeat [0,2,1,0] for 26-second NS-only
+  periods. Input1 is always too early; invalid2 resets phase/age via fallback.
+  Not claimed shortest; original DFS cycle evidence is retained.
+- Existing 14 test methods and 96/18,898 finite comparisons passed; all 28 S2/S3
+  regression verdicts and depths unchanged. Two S4 sweeps are preserved; final
+  run strengthens closure checks and scopes event instrumentation to L2 only.
+- Added liveness.py, check_liveness.py, explain_l2_counterexample.py; --stage S4
+  selects12 and --all selects40. Frozen S4/through-S4 CSV and model/script source.
+  Updated README meanings/live progress, mapping, findings and report data.
+- HEAD at start: 717786c, user's S3 commit. No source/ESBMC/shared/network/Git
+  writes, no real SUMO or human review. Stop at S4; S5 remains unstarted.

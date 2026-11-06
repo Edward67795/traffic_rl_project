@@ -8,20 +8,22 @@ performance are outside this verification scope.
 
 ## Current status
 
-**S3 is complete for the v0 model.** Seven properties now have executed checks:
-S1, T1, T2, G1, C1, G2 and L1. The current matrix has **28 cases: 14 PASS and
-14 FAIL**, with no UNKNOWN/TIMEOUT/ERROR. The eight new G2/L1 cases all FAIL;
-the previous 20 S2 cases retain their verdicts after regression.
+**S4 is complete for the v0 model.** All eight assigned SPIN properties now have
+implemented v0 checks. The current matrix has **40 cases: 21 PASS, 19 FAIL**,
+with no UNKNOWN/TIMEOUT/ERROR. S4 adds 12 L2 cases: 7 PASS and 5 FAIL. The prior
+28 S2/S3 cases retain their verdicts after regression.
 
-All 14 current finite counterexamples reproduce against the extracted Python
-reference plus TraCI stub. The 96 finite conformance cases still match all
-18,898 observation records. There are 14 passing test methods including timing
-boundaries. These are model-level results; real SUMO validation and human model
-review remain pending. L2 (S4) and v1 comparison (S5) are not implemented yet.
+The 14 finite assertion witnesses reproduce against the extracted Python
+reference/stub. The five L2 witnesses have acceptance-cycle evidence and
+positive-time, closed reference projections; this is not a full-system liveness
+proof. Fairness premises were separately shown realizable in all eight
+conditional cases. The 96 finite trace cases still match 18,898 observations;
+14 existing test methods and 11 new LTL controls passed their expected checks.
 
-See [findings](FINDINGS.md), [current CSV](results/results.csv), and the
-[stage-by-stage record](report.md). Do not extrapolate the results to other
-parameters, v1 or the full Python/SUMO/DQN system.
+Real SUMO validation and human model review remain pending. v1 (S5) is not yet
+implemented. See [findings](FINDINGS.md), [current CSV](results/results.csv), and
+[experimental record](report.md). Conditional L2 PASS must always name its input
+fairness premise; it does not mean the controller enforces fairness.
 
 ## Documents and layout
 
@@ -44,7 +46,10 @@ verification/spin/
 │   ├── check_traces.py
 │   ├── run_spin.py
 │   ├── replay_trail.py
-│   └── test_verification.py
+│   ├── test_verification.py
+│   ├── liveness.py
+│   ├── check_liveness.py
+│   └── explain_l2_counterexample.py
 └── results/
     ├── results.csv
     ├── snapshots/              # Frozen stage CSVs and historical source
@@ -80,15 +85,17 @@ python3 verification/spin/scripts/run_spin.py --list
 python3 verification/spin/scripts/run_spin.py --all
 ```
 
-`--all` currently means 28 v0 cases: seven implemented properties across
-`default`, `y0`, `any`, and `L1`. Select a stage to run its subset:
+`--all` currently means 40 v0 cases: 28 S2/S3 cases and 12 L2 cases
+(four scenarios times three agent-fairness modes). Select a stage to run its subset:
 
 ```sh
 python3 verification/spin/scripts/run_spin.py --stage S2
 python3 verification/spin/scripts/run_spin.py --stage S3
+python3 verification/spin/scripts/run_spin.py --stage S4
 ```
 
-S2 runs 20 cases; S3 runs the eight G2/L1 cases. Other stages are not included.
+S2 runs 20 cases; S3 runs eight G2/L1 cases; S4 runs 12 L2 cases.
+Example L2 ID: L2-v0-any-request. v1 is not included.
 Run individual cases by ID:
 
 ```sh
@@ -97,13 +104,14 @@ python3 verification/spin/scripts/run_spin.py T1-v0-y0 T2-v0-any C1-v0-L1
 
 Each run selects one property and an isolated temporary build directory.
 The runner generates with `spin -a`, compiles pan.c and searches with pan.
-T2 uses `-a` acceptance-cycle detection in addition to assertions; other implemented
+T2 and L2 use `-a` acceptance-cycle detection; T2 also has timing assertions; other implemented
 properties use `-DSAFETY`. Limits default to depth 100000, memory 512 MB and
 120 seconds per subprocess. Override with `--depth`, `--memory`, `--timeout`.
 The actual commands and limits are saved in each run's metadata.
 
-Exit code 0 means all runs completed with PASS or witnessed FAIL and finite
-witnesses matched the reference. ERROR/UNKNOWN/TIMEOUT or a failed witness
+Exit code 0 means all runs completed with PASS or witnessed FAIL, finite
+witnesses matched the reference, and L2 cycle interpretations/reference closures
+passed validation. ERROR/UNKNOWN/TIMEOUT or a failed witness
 reference check produce nonzero. A property FAIL is an expected scientific
 outcome, not necessarily a command error. Always read the CSV and logs.
 
@@ -153,8 +161,8 @@ in a temporary directory and replays with identical
 preprocessor flags. Replay prints ACTION/OBS events and the failing assertion;
 a replay process exit code of 0 does not mean the property passed.
 
-`witness.json` includes actions, recent sampled states and the reference
-violation. A started decision counts even when the assertion fails partway
+`witness.json` includes actions, sampled states and finite-reference violations
+or L2 prefix/period, sampled services, fairness and reference-closure analysis. A started decision counts even when the assertion fails partway
 through it. DFS witnesses are not guaranteed shortest. Controller age can be
 saturated in Promela while the Python reference retains its exact larger value.
 
@@ -181,11 +189,59 @@ yellow. T2/y0 is vacuous because no yellow is observed; T1/y0 detects the missin
 interval. C1 checks after each complete decision, provisionally following the
 ESBMC harness while the referenced D4 decision remains unavailable.
 
+## L2 fairness and infinite-execution interpretation
+
+L2 is `(GF observed_NS) AND (GF observed_EW)`. Observed greens are sampled only
+on simulated seconds. Positive decision time and the ongoing controller loop
+are explicit assumptions; real episode termination is omitted.
+
+| Mode in case ID/config | Premise of the LTL implication | default / y0 / any / static L1 |
+|---|---|---|
+| none | true (unconditional service) | FAIL / FAIL / FAIL / FAIL |
+| request | GF request0 AND GF request1 at decision input events | PASS / PASS / FAIL / PASS |
+| eligible | GF eligible_request0 AND GF eligible_request1 | PASS / PASS / PASS / PASS |
+
+Eligibility means phase_duration >=min_green when the input is received. These
+are input assumptions, not implemented controller guarantees. No pan -f is used.
+Request fairness is insufficient under invalid actions: requests for EW can
+always occur before min_green after invalid actions reset the age. The eligible
+premise is stronger; do not rename its result unconditional liveness.
+GF requests permit arbitrarily long finite gaps, so these premises do not
+establish L1's bounded waiting-time guarantee.
+
+A cycle of the negated fairness premise was found for every conditional mode
+and scenario, demonstrating that the input premise is realizable. Synthetic
+controls also test intentional premise vacuity, starvation and phantom events.
+They are auxiliary checks, not additional PASS/FAIL rows in the shared CSV.
+
+Reproduce auxiliary checks with fresh output directories:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/check_liveness.py \
+  --output verification/spin/results/raw/s4-controls-rerun
+PYTHONDONTWRITEBYTECODE=1 python3 verification/spin/scripts/explain_l2_counterexample.py \
+  --output verification/spin/results/raw/s4-short-witness-rerun
+```
+
+Choose unused output paths: existing evidence is deliberately not overwritten.
+Original [control data](results/raw/s4-liveness-controls/summary.json) and the
+[compact witness](results/raw/s4-short-request-fair-witness/analysis.json) are retained.
+The compact policy prepares with [0,0,2,1,0], then repeats [0,2,1,0]: its 26-second
+cycle has both legal requests, but only NS/yellow. This illustrative constrained
+input policy leaves the controller unchanged; it is not claimed shortest.
+
+A saved acceptance trail contains a prefix and one loop. ce_length counts
+started ACTION events in that prefix plus one loop; the marker may split a
+decision. witness.json separates both counts and records time samples per loop.
+Repeating the rotated action word closes the documented Python-reference state
+projection with positive time; this is supplementary evidence, not a finite
+simulation proof of infinite liveness in real SUMO.
+
 ## Stage guide and live progress
 
-Last updated: 2026-11-06 (Asia/Shanghai). **Current checkpoint: S3 complete.**
-Current v0 matrix: 28 cases, 14 PASS / 14 FAIL. Next stage: S4 (L2/fairness).
-No S4 result is claimed yet.
+Last updated: 2026-11-06 (Asia/Shanghai). **Current checkpoint: S4 complete.**
+Current v0 matrix: 40 cases, 21 PASS / 19 FAIL. Next stage: S5 (v1 comparison).
+No v1 result is claimed yet.
 Stage names are work labels, not shared property IDs (stage S1 != property S1).
 
 | Stage | Meaning | Deliverables / completion gate | Current status |
@@ -194,7 +250,7 @@ Stage names are work labels, not shared property IDs (stage S1 != property S1).
 | S1: v0 abstraction | Translate source control behavior into a finite-state model | Phase/action/timing/static-takeover mapping; documented abstractions; matching reference traces | Initial model complete: 96 finite cases match; real SUMO fidelity pending |
 | S2: safety/transitions | Check legal signals, yellow transitions, minimum green and phase consistency | S1/T1/T2/G1/C1 matrix; exhaustive runs; reviewed and reference-reproduced finite failures | Complete for v0: 20 cases, 14 PASS / 6 FAIL |
 | S3: timing/waiting | Check maximum green and directional waiting limits | G2 displayed/controller age checks; L1 wait counters; 60/61 and 66/67-second boundaries; evidence and snapshot | Complete for v0: 8 FAIL cases reference-reproduced; boundaries and S2 regression passed |
-| S4: infinite liveness | Determine whether both directions receive green infinitely often | L2 acceptance-cycle runs with/without explicit agent fairness; prefix/cycle explanations | Not started |
+| S4: infinite liveness | Determine whether both directions receive green infinitely often | L2 acceptance-cycle runs with/without explicit agent fairness; prefix/cycle explanations | Complete for v0: 12 cases, 7 conditional PASS / 5 FAIL; cycle and feasibility evidence retained |
 | S5: repaired model | Mirror exactly FIX-1..4 and compare v0/v1 | v1 mapping; aligned matrix; rejected-input semantics; non-divisible timing checks | Not started |
 | S6: final delivery | Assemble reproducible evidence and report | Final suite/CSV; SUMO cross-checks; human-review status; joint-tool comparison and report | In progress for documentation only; final validation pending |
 

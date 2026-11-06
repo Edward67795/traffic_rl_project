@@ -139,6 +139,9 @@ init {
     ::
 #endif
         choose_action();
+#ifdef CHK_L2
+        record_request();
+#endif
         printf("ACTION %d\n", action);
 #ifdef TRACE
         decision++;
@@ -161,5 +164,8 @@ init {
         od;
         report_boundary();
         check_boundary()
+#ifdef CHK_L2
+        ; request_event = false
+#endif
     od
 }

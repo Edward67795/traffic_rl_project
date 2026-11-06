@@ -1,0 +1,137 @@
+{
+  "name": "premise-feasible-y0-eligible",
+  "kind": "full-model-fairness-feasibility",
+  "actual_verifier_result": "FAIL",
+  "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+  "cycle": {
+    "prefix_actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "cycle_actions": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "prefix_decisions": 17,
+    "cycle_decisions": 4,
+    "prefix_samples": 90,
+    "cycle_samples": 20,
+    "cycle_requests": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "cycle_service_codes": [
+      0,
+      2
+    ],
+    "missing_green_directions": [],
+    "request_fair": true,
+    "eligible_request_fair": true,
+    "selected_premise_holds": true,
+    "violates_service": false
+  },
+  "reference_lasso": {
+    "kind": "projected-extracted-reference-lasso-closure",
+    "state_before": {
+      "phase": 1,
+      "signal": 2,
+      "controller_age_projected": 5,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "state_after": {
+      "phase": 1,
+      "signal": 2,
+      "controller_age_projected": 5,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "closed": true,
+    "period_time_s": 20,
+    "period_green_codes": [
+      0,
+      2
+    ],
+    "period_actions": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "request_fair": true,
+    "eligible_request_fair": true,
+    "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+  },
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_L2",
+        "-DAGENT_FAIRNESS=2",
+        "-DFAIRNESS_FEASIBILITY",
+        "-DSTATIC_PROGRAM=0",
+        "-DYELLOW_TIME=0",
+        "-a",
+        "check.pml"
+      ],
+      "exit_code": 0,
+      "time_s": 0.0332740829908289
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "exit_code": 0,
+      "time_s": 0.3197047499998007
+    },
+    {
+      "argv": [
+        "./pan",
+        "-a",
+        "-m100000",
+        "-w18",
+        "-b"
+      ],
+      "exit_code": 0,
+      "time_s": 0.400447834021179
+    }
+  ]
+}

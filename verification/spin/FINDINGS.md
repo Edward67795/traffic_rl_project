@@ -1,6 +1,7 @@
-# SPIN findings: v0 through S3
+# SPIN findings: v0 through S4
 
-Current checkpoint: v0 through S3; see the appended S3 results below.
+Current checkpoint: v0 through S4, 40 cases (21 PASS / 19 FAIL).
+See the appended S4 results; prior sections preserve earlier checkpoints.
 The S2 baseline below is retained as historical evidence.
 
 Run date: 2026-11-06. Tool: SPIN 6.5.2; Apple Clang 21; Python 3.13.7.
@@ -133,3 +134,55 @@ trace, S3 matrix, S2 regression and archived/new replay outputs are linked from
 the S3 entry in report.md. Frozen CSVs: [S3 only](results/snapshots/s3-v0-results.csv)
 and [through S3](results/snapshots/through-s3-v0-results.csv). Detailed measured
 time/memory, assumptions and source digests are preserved in the raw metadata.
+
+## S4 results: infinite service and explicit fairness (2026-11-06)
+
+Twelve L2 configurations completed: 7 conditional PASS and 5 FAIL; no
+UNKNOWN/TIMEOUT/ERROR. S2/S3 regression verdicts/depths were unchanged. Current
+combined matrix: 40 v0 cases, 21 PASS / 19 FAIL. No v1/full-SUMO claim is made.
+
+| Scenario | Unconditional | Both requests infinitely often | Both eligible requests infinitely often |
+|---|---|---|---|
+| default | FAIL | PASS | PASS |
+| y0 | FAIL | PASS | PASS |
+| any | FAIL | FAIL | PASS |
+| static L1 | FAIL | PASS | PASS |
+
+Fairness is an LTL premise over captured decision inputs; eligibility is
+controller age>=min_green at input. Process weak fairness is not substituted.
+All conditional premises were shown realizable using auxiliary acceptance
+cycles of their negations. A conditional PASS does not show that a real agent
+satisfies that premise or that v0 enforces it. y0 conditional service PASS does
+not repair its T1 safety failure; properties are checked separately.
+
+### Cyclic counterexamples
+
+| Case | Prefix ACTION events | Period ACTION events | Period observed seconds | Missing green | Input premise holds | Evidence |
+|---|---|---|---|---|---|---|
+| L2-v0-default-none | 16 | 1 | 5 | EW | True | [witness](results/raw/L2-v0-default-none-20261106T092837197598Z/witness.json) |
+| L2-v0-y0-none | 16 | 1 | 5 | EW | True | [witness](results/raw/L2-v0-y0-none-20261106T092840397158Z/witness.json) |
+| L2-v0-any-none | 16 | 1 | 5 | EW | True | [witness](results/raw/L2-v0-any-none-20261106T092843450262Z/witness.json) |
+| L2-v0-any-request | 1 | 36 | 192 | EW | True | [witness](results/raw/L2-v0-any-request-20261106T092844259554Z/witness.json) |
+| L2-v0-L1-none | 32 | 1 | 5 | NS | True | [witness](results/raw/L2-v0-L1-none-20261106T092846701680Z/witness.json) |
+
+Each cycle has time progress and matching, closed projected reference behavior.
+None is presented as a finite real-SUMO liveness test. The any/request loop is
+request-fair but requests EW when ineligible after invalid actions reset the age.
+The stronger eligible premise excludes this behavior.
+
+An auxiliary, compact explanation has policy prefix [0,0,2,1,0] and repeated
+word [0,2,1,0]. Once online phase0/age5 is reached, 0 raises age to10; invalid2
+returns NS and resets age; 1 at age5 is ignored; 0 at age10 returns NS. The
+26-second period contains both legal inputs but never EW green. The original
+DFS witness remains preserved; the compact example is not claimed shortest.
+
+Auxiliary controls: 11 LTL fixtures matched expected verdicts, including tests
+that distinguish finite from infinite service, intentional premise vacuity and
+missing request events. Eight full-model fairness-feasibility cycles and the
+compact starvation example validated. These 20 auxiliary executions are not
+counted in the shared 40-case matrix. Existing tests (14 methods) and 96 finite
+reference trace cases passed. Frozen [S4](results/snapshots/s4-v0-results.csv) and
+[through S4](results/snapshots/through-s4-v0-results.csv) datasets retain metrics.
+
+Next: S5, exact v1 FIX-1..4 modeling and version comparison. Real SUMO validation,
+original-code episode interpretation and human review remain explicit limits.

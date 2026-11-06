@@ -1,0 +1,402 @@
+{
+  "actions": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+  ],
+  "observed_seconds": 203,
+  "last_observations": [
+    [
+      0,
+      2,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      6,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      9,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      10,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      10,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      10,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "acceptance_cycle": true,
+  "timing_samples": [],
+  "cycle": {
+    "prefix_actions": [
+      0
+    ],
+    "cycle_actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    "prefix_decisions": 1,
+    "cycle_decisions": 36,
+    "prefix_samples": 11,
+    "cycle_samples": 192,
+    "cycle_requests": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        -1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "cycle_service_codes": [
+      0
+    ],
+    "missing_green_directions": [
+      "EW"
+    ],
+    "request_fair": true,
+    "eligible_request_fair": false,
+    "selected_premise_holds": true,
+    "violates_service": true
+  },
+  "reference_lasso": {
+    "kind": "projected-extracted-reference-lasso-closure",
+    "state_before": {
+      "phase": 0,
+      "signal": 0,
+      "controller_age_projected": 5,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "state_after": {
+      "phase": 0,
+      "signal": 0,
+      "controller_age_projected": 5,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "closed": true,
+    "period_time_s": 192,
+    "period_green_codes": [
+      0
+    ],
+    "period_actions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    "request_fair": true,
+    "eligible_request_fair": false,
+    "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+  },
+  "reference": {
+    "reproduced": null,
+    "message": "Projected reference lasso closes; full-system liveness not tested"
+  }
+}

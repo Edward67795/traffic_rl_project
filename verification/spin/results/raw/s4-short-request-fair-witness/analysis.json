@@ -1,0 +1,135 @@
+{
+  "kind": "illustrative-fixed-input-policy-counterexample",
+  "verdict": "FAIL",
+  "policy_prefix": [
+    0,
+    0,
+    2,
+    1,
+    0
+  ],
+  "policy_cycle": [
+    0,
+    2,
+    1,
+    0
+  ],
+  "commands": [
+    {
+      "argv": [
+        "spin",
+        "-DCHK_L2",
+        "-DAGENT_FAIRNESS=1",
+        "-DANY_ACTION",
+        "-a",
+        "check.pml"
+      ],
+      "exit_code": 0,
+      "time_s": 0.21320595798897557
+    },
+    {
+      "argv": [
+        "cc",
+        "-O2",
+        "-DMEMLIM=512",
+        "-o",
+        "pan",
+        "pan.c"
+      ],
+      "exit_code": 0,
+      "time_s": 0.5285182079824153
+    },
+    {
+      "argv": [
+        "./pan",
+        "-a",
+        "-m100000",
+        "-w18",
+        "-b"
+      ],
+      "exit_code": 0,
+      "time_s": 0.3896164170000702
+    }
+  ],
+  "cycle": {
+    "prefix_actions": [
+      0,
+      0,
+      2,
+      1
+    ],
+    "cycle_actions": [
+      0,
+      0,
+      2,
+      1
+    ],
+    "prefix_decisions": 4,
+    "cycle_decisions": 4,
+    "prefix_samples": 33,
+    "cycle_samples": 26,
+    "cycle_requests": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "cycle_service_codes": [
+      0
+    ],
+    "missing_green_directions": [
+      "EW"
+    ],
+    "request_fair": true,
+    "eligible_request_fair": false,
+    "selected_premise_holds": true,
+    "violates_service": true
+  },
+  "reference_lasso": {
+    "kind": "projected-extracted-reference-lasso-closure",
+    "state_before": {
+      "phase": 2,
+      "signal": 0,
+      "controller_age_projected": 10,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "state_after": {
+      "phase": 2,
+      "signal": 0,
+      "controller_age_projected": 10,
+      "online": true,
+      "static_index": 0,
+      "static_left": 43
+    },
+    "closed": true,
+    "period_time_s": 26,
+    "period_green_codes": [
+      0
+    ],
+    "period_actions": [
+      0,
+      0,
+      2,
+      1
+    ],
+    "request_fair": true,
+    "eligible_request_fair": false,
+    "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+  },
+  "meaning": "Request fairness does not guarantee service with invalid actions",
+  "limitation": "Input policy restricted for explanation; controller unchanged; not a shortest witness"
+}

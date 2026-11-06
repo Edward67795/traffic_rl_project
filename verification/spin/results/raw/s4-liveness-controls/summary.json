@@ -1,0 +1,2035 @@
+{
+  "date_utc": "2026-11-06T09:25:33.811842+00:00",
+  "kind": "auxiliary-controls-not-shared-property-results",
+  "spin": "Spin Version 6.5.2 -- 6 December 2019",
+  "sha256": {
+    "verification/spin/models/controller.pml": "ca676e8cbec39e4c6e714eb37d5edd021ee17ca6916a7bcc41166b45bd2e3abf",
+    "verification/spin/models/properties.pml": "9e8b4fb891bcc25aebf67fbfa9f9ef5ceff07cf317c00d95237d399961625242",
+    "verification/spin/scripts/check_liveness.py": "591c34f61acca2d140e5046db21b95acb10c9767909cd6548dd290502ece2377"
+  },
+  "records": [
+    {
+      "name": "unfair-ns-starvation",
+      "kind": "synthetic-ltl-control",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.15727104200050235
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.5363295419956557
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.5950121670030057
+        }
+      ]
+    },
+    {
+      "name": "unfair-ew-starvation",
+      "kind": "synthetic-ltl-control",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.033894541003974155
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.29100933301378973
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.38130487501621246
+        }
+      ]
+    },
+    {
+      "name": "alternating-service",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.032342416991014034
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.2913774580229074
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.4317668750009034
+        }
+      ]
+    },
+    {
+      "name": "finite-ew-not-infinite",
+      "kind": "synthetic-ltl-control",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.05822354200063273
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.2946536249946803
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.41236300001037307
+        }
+      ]
+    },
+    {
+      "name": "request-fair-starvation",
+      "kind": "synthetic-ltl-control",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.2106365000072401
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.4540301250235643
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.46613179199630395
+        }
+      ]
+    },
+    {
+      "name": "request-fair-service",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.20316433301195502
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.45423979198676534
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.38470662498730235
+        }
+      ]
+    },
+    {
+      "name": "unfair-premise-vacuity",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.23257133300649002
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.4473299999954179
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.38710145800723694
+        }
+      ]
+    },
+    {
+      "name": "eligible-fair-starvation",
+      "kind": "synthetic-ltl-control",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.23304887500125915
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.4738384160154965
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.37818070899811573
+        }
+      ]
+    },
+    {
+      "name": "eligible-fair-service",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.20561958299367689
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.45233579198247753
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.37613366698496975
+        }
+      ]
+    },
+    {
+      "name": "ineligible-premise-vacuity",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.2334265839890577
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.45052304200362414
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3754975829797331
+        }
+      ]
+    },
+    {
+      "name": "no-phantom-request-events",
+      "kind": "synthetic-ltl-control",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.22817391701391898
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.45124508399749175
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3804027500154916
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-default-request",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "prefix_decisions": 1,
+        "cycle_decisions": 19,
+        "prefix_samples": 10,
+        "cycle_samples": 101,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 0,
+          "signal": 0,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 0,
+          "signal": 0,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 101,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=3",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.053756667010020465
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3243510409956798
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.42262208298780024
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-default-eligible",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_decisions": 17,
+        "cycle_decisions": 4,
+        "prefix_samples": 93,
+        "cycle_samples": 26,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 26,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=3",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.03293495799880475
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3164993330137804
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3947450829728041
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-y0-request",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "prefix_decisions": 1,
+        "cycle_decisions": 19,
+        "prefix_samples": 10,
+        "cycle_samples": 95,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 0,
+          "signal": 0,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 0,
+          "signal": 0,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 95,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.031652500008931383
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.32180895798956044
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.45372904199757613
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-y0-eligible",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_decisions": 17,
+        "cycle_decisions": 4,
+        "prefix_samples": 90,
+        "cycle_samples": 20,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 20,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=0",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.0332740829908289
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3197047499998007
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.400447834021179
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-any-request",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1
+        ],
+        "prefix_decisions": 17,
+        "cycle_decisions": 21,
+        "prefix_samples": 93,
+        "cycle_samples": 114,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 114,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=3",
+            "-DANY_ACTION",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.03287245801766403
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3189739160006866
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.394038583006477
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-any-eligible",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_decisions": 17,
+        "cycle_decisions": 4,
+        "prefix_samples": 93,
+        "cycle_samples": 26,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 0,
+          "static_left": 43
+        },
+        "closed": true,
+        "period_time_s": 26,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=0",
+            "-DYELLOW_TIME=3",
+            "-DANY_ACTION",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.03174737500376068
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3220137089956552
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.37441608298104256
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-L1-request",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_decisions": 34,
+        "cycle_decisions": 18,
+        "prefix_samples": 178,
+        "cycle_samples": 96,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 2,
+          "static_left": 3
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 2,
+          "static_left": 3
+        },
+        "closed": true,
+        "period_time_s": 96,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=1",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=1",
+            "-DYELLOW_TIME=3",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.03245962498476729
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3223929590021726
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.3927904170122929
+        }
+      ]
+    },
+    {
+      "name": "premise-feasible-L1-eligible",
+      "kind": "full-model-fairness-feasibility",
+      "actual_verifier_result": "FAIL",
+      "meaning": "Acceptance cycle of !FAIR_INPUT demonstrates a realizable premise",
+      "cycle": {
+        "prefix_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "cycle_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_decisions": 34,
+        "cycle_decisions": 18,
+        "prefix_samples": 178,
+        "cycle_samples": 96,
+        "cycle_requests": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "cycle_service_codes": [
+          0,
+          2
+        ],
+        "missing_green_directions": [],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "selected_premise_holds": true,
+        "violates_service": false
+      },
+      "reference_lasso": {
+        "kind": "projected-extracted-reference-lasso-closure",
+        "state_before": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 2,
+          "static_left": 3
+        },
+        "state_after": {
+          "phase": 1,
+          "signal": 2,
+          "controller_age_projected": 5,
+          "online": true,
+          "static_index": 2,
+          "static_left": 3
+        },
+        "closed": true,
+        "period_time_s": 96,
+        "period_green_codes": [
+          0,
+          2
+        ],
+        "period_actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "request_fair": true,
+        "eligible_request_fair": true,
+        "limitation": "Finite closure on the documented quotient, not full Python/SUMO proof"
+      },
+      "commands": [
+        {
+          "argv": [
+            "spin",
+            "-DCHK_L2",
+            "-DAGENT_FAIRNESS=2",
+            "-DFAIRNESS_FEASIBILITY",
+            "-DSTATIC_PROGRAM=1",
+            "-DYELLOW_TIME=3",
+            "-a",
+            "check.pml"
+          ],
+          "exit_code": 0,
+          "time_s": 0.032899208017624915
+        },
+        {
+          "argv": [
+            "cc",
+            "-O2",
+            "-DMEMLIM=512",
+            "-o",
+            "pan",
+            "pan.c"
+          ],
+          "exit_code": 0,
+          "time_s": 0.31921366599272005
+        },
+        {
+          "argv": [
+            "./pan",
+            "-a",
+            "-m100000",
+            "-w18",
+            "-b"
+          ],
+          "exit_code": 0,
+          "time_s": 0.40218520801863633
+        }
+      ]
+    }
+  ]
+}

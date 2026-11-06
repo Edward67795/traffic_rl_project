@@ -1,8 +1,8 @@
-# v0 model mapping (S1-S3 stages)
+# v0 model mapping (S1-S4 stages)
 
 The current model implements v0 control flow and selected shared checks:
-S1, T1, T2, G1, C1, G2 and L1. The runner emits a shared-format results CSV.
-v1 and L2 remain pending.
+S1, T1, T2, G1, C1, G2, L1 and L2. The runner emits a shared-format results CSV.
+v1 remains pending.
 
 | Source / reference | Promela |
 |---|---|
@@ -134,3 +134,44 @@ reset across yellow/phase changes, waits 66/67 in both directions, wait reset,
 yellow inclusion and the y0 60/61 waiting boundary. Real SUMO validation is still
 pending. S2 source snapshots and run-local model copies retain old trail replay
 when current monitor source changes.
+
+## S4 L2 construction and fairness preservation
+
+`observed` is updated from signal inside the per-second observation tick.
+L2 requires GF(observed==0) AND GF(observed==2); transient assignments between
+ticks cannot count as service. The model is an ongoing control loop with
+DELTA_TIME>0, finite warmup/yellow/delta loops and no externally blocking process.
+Real training episode termination is deliberately outside this infinite model.
+
+At each chosen action, record_request captures requested_action and eligibility
+(phase_duration>=MIN_GREEN), and sets request_event. The event is cleared at
+the completed decision. The request value is captured before controller action
+processing, so it remains an input event, not an inferred output direction.
+The pulse can span several Promela transitions but positive-time finite decisions
+ensure GF pulse/value means infinitely many input events, not a stuck flag.
+
+AGENT_FAIRNESS=0 checks unconditional L2. Mode 1 checks
+(GF request0 AND GF request1) -> L2. Mode 2 checks
+(GF eligible_request0 AND GF eligible_request1) -> L2. Each build has exactly
+one agent_service LTL claim. pan -a searches its negation; pan -f is not used.
+Eligible-request fairness is a stronger environment premise, not a controller fix.
+
+The v0 age projection min(age,76) preserves phase_duration>=10, the only age
+guard used by v0 switching and the new eligibility proposition. Signal/phase,
+input domain and static cursor are retained. Absolute time and episode length
+are absent, but every accepted loop must include ACTION events and OBS samples;
+a time-free internal loop is rejected by the witness interpreter.
+
+For each FAIL, split replay at START OF CYCLE, identify prefix/period ACTION
+and REQUEST events, measure period sample count and missing green directions,
+and verify the selected premise on the loop. Rotate to completed decision
+boundaries and execute the extracted Python reference action period twice:
+its projected control state must close, sampled services must match and time
+must increase. This checks the quotient interpretation; it does not establish
+full Python/SUMO liveness or eliminate the need for human review.
+
+FAIRNESS_FEASIBILITY changes the sole claim to !FAIR_INPUT. Its acceptance
+cycle is positive feasibility evidence, not a shared-property FAIL. Eight full
+model premise checks and 11 synthetic LTL controls are stored separately from
+the 12 main S4 rows. The fixed-policy example only restricts agent inputs to
+produce a compact existential witness; controller transitions are unchanged.

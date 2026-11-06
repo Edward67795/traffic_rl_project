@@ -1,0 +1,141 @@
+{
+  "actions": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    0,
+    0
+  ],
+  "observed_seconds": 190,
+  "last_observations": [
+    [
+      0,
+      -1,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      6,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      9,
+      0,
+      0
+    ],
+    [
+      1,
+      -1,
+      10,
+      0,
+      0
+    ],
+    [
+      1,
+      -1,
+      10,
+      0,
+      1
+    ],
+    [
+      1,
+      -1,
+      10,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      3
+    ]
+  ],
+  "acceptance_cycle": false,
+  "timing_samples": [],
+  "reference": {
+    "reproduced": true,
+    "message": "T2: yellow not followed by the other direction",
+    "time_s": 189,
+    "decision": 35,
+    "phase": 0,
+    "signal": 0,
+    "controller_age": 0,
+    "observed_green_age": 0,
+    "ns_wait": 3,
+    "ew_wait": 16,
+    "component": "T2"
+  }
+}

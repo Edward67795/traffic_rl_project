@@ -1,0 +1,2 @@
+Validated request-fair starvation: prefix [0,0,2,1,0], repeat [0,2,1,0].
+Reference period: 26 seconds; greens: [0]
