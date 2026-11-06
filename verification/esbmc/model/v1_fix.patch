@@ -1,0 +1,69 @@
+--- a/src/environment.py
++++ b/src/environment.py
+@@ -39,6 +39,17 @@
+ import traci
+ import sumolib
+ 
++WARMUP_STEPS = 10  # seconds simulated in reset() before the first decision
++Y_MIN = 3          # minimum yellow time in seconds
++
++
++def _first_switch_point(start, delta_time, min_green):
++    """Smallest phase_duration >= min_green reachable from `start` in steps of delta_time."""
++    if start >= min_green:
++        return start
++    k = (min_green - start + delta_time - 1) // delta_time
++    return start + k * delta_time
++
+ 
+ class SumoTrafficEnv(gym.Env):
+     """
+@@ -108,6 +119,18 @@
+         """
+         super().__init__()
+ 
++        # FIX-3: reject configurations under which the timing properties cannot all hold
++        if delta_time < 1:
++            raise ValueError("delta_time must be >= 1")
++        if yellow_time < Y_MIN:
++            raise ValueError(f"yellow_time must be >= {Y_MIN}")
++        if min_green < 0 or max_green < 1 or min_green > max_green:
++            raise ValueError("need 0 <= min_green <= max_green and max_green >= 1")
++        if _first_switch_point(WARMUP_STEPS, delta_time, min_green) > max_green:
++            raise ValueError("first green has no switch point inside [min_green, max_green]")
++        if _first_switch_point(0, delta_time, min_green) > max_green:
++            raise ValueError("no multiple of delta_time inside [min_green, max_green]")
++
+         self.net_file = net_file
+         self.route_file = route_file
+         self.use_gui = use_gui
+@@ -527,6 +550,12 @@
+         Args:
+             action: target signal phase (0 to num_phases-1)
+         """
++        # FIX-2: the action space is {0, 1}; anything else is a caller bug
++        if action not in (0, 1):
++            raise ValueError(f"action must be 0 or 1, got {action!r}")
++        # FIX-1: enforce max_green, looking one decision step ahead
++        if self.phase_duration + self.delta_time > self.max_green:
++            action = 1 - self.current_phase
+         if action != self.current_phase:
+             # respect minimum green
+             if self.phase_duration < self.min_green:
+@@ -627,11 +656,15 @@
+ 
+         self.episode_count += 1
+ 
++        # FIX-4a: take control of the light before warmup, so SUMO's static program never runs
++        self._set_phase(0)
++
+         # Warmup
+-        warmup_steps = 10
++        warmup_steps = WARMUP_STEPS
+         for _ in range(warmup_steps):
+             traci.simulationStep()
+             self.current_step += 1
++            self.phase_duration += 1  # FIX-4b: the warmup green counts toward the first green
+ 
+         state = self._get_state()
+ 
