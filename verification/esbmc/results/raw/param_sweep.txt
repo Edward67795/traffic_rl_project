@@ -1,0 +1,4 @@
+fix=none     : 48 failing configs, e.g. [(1, 5, 12, 13), (1, 5, 14, 15), (1, 10, 12, 13), (1, 10, 14, 15)]
+fix=naive    : 24 failing configs, e.g. [(3, 5, 14, 15), (3, 10, 14, 15), (3, 11, 14, 15), (5, 5, 12, 15)]
+fix=lookahead:  4 failing configs, e.g. [(5, 11, 12, 15), (5, 11, 14, 15), (7, 10, 12, 14), (7, 11, 12, 14)]
+configs where min/max green are jointly unsatisfiable: [(5, 11, 12), (5, 11, 14), (7, 10, 12), (7, 11, 12)]
