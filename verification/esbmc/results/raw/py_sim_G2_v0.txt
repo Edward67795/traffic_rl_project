@@ -1,0 +1,2 @@
+VIOLATION after 365 trials: AssertionError: G2: observed green longer than max_green
+choices (in call order): [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

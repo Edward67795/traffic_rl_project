@@ -1,0 +1,4 @@
+run 0: diverges at second 43: SUMO yyyyrrryyyyrrr vs model GGGgrrrGGGgrrr; first decision mismatch at step None
+run 2: diverges at second 43: SUMO yyyyrrryyyyrrr vs model GGGgrrrGGGgrrr; first decision mismatch at step None
+run 4: diverges at second 43: SUMO yyyyrrryyyyrrr vs model GGGgrrrGGGgrrr; first decision mismatch at step None
+v0/L0: 10 of 30 runs diverge from SUMO
