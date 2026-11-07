@@ -1,0 +1,26 @@
+=== A: agent always chooses action 0 ===
+step  1 | t=  15 | env.current_phase=0 phase_duration=  5 | SUMO shows NS-green  program=0
+step  2 | t=  20 | env.current_phase=0 phase_duration= 10 | SUMO shows NS-green  program=0
+step  3 | t=  25 | env.current_phase=0 phase_duration= 15 | SUMO shows NS-green  program=0
+step  4 | t=  30 | env.current_phase=0 phase_duration= 20 | SUMO shows NS-green  program=0
+step  5 | t=  35 | env.current_phase=0 phase_duration= 25 | SUMO shows NS-green  program=0
+step  6 | t=  40 | env.current_phase=0 phase_duration= 30 | SUMO shows NS-green  program=0
+step  7 | t=  45 | env.current_phase=0 phase_duration= 35 | SUMO shows yellow    program=0
+step  8 | t=  50 | env.current_phase=0 phase_duration= 40 | SUMO shows EW-green  program=0
+step  9 | t=  55 | env.current_phase=0 phase_duration= 45 | SUMO shows EW-green  program=0
+step 10 | t=  60 | env.current_phase=0 phase_duration= 50 | SUMO shows EW-green  program=0
+step 11 | t=  65 | env.current_phase=0 phase_duration= 55 | SUMO shows EW-green  program=0
+step 12 | t=  70 | env.current_phase=0 phase_duration= 60 | SUMO shows EW-green  program=0
+step 13 | t=  75 | env.current_phase=0 phase_duration= 65 | SUMO shows EW-green  program=0  <-- exceeds max_green
+step 14 | t=  80 | env.current_phase=0 phase_duration= 70 | SUMO shows EW-green  program=0  <-- exceeds max_green
+
+=== B: out-of-range action 2 after min-green is satisfied ===
+env.current_phase=2, SUMO shows NS-green
+signal: NS-green@t=11[0]  ->  yellow@t=21[online]  ->  NS-green@t=24[online]  ->  yellow@t=34[online]  ->  NS-green@t=37[online]
+
+=== C: yellow_time=0 ===
+signal: NS-green@t=11[0]  ->  EW-green@t=21[online]  ->  NS-green@t=31[online]  ->  EW-green@t=41[online]
+
+=== D: valid actions only: 0 x 8, then 1 x 3 ===
+signal: NS-green@t=11[0]  ->  yellow@t=43[0]  ->  EW-green@t=46[0]  ->  yellow@t=51[online]  ->  EW-green@t=54[online]
+env.current_phase at end: 1
