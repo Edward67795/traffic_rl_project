@@ -1,0 +1,21 @@
+************* Module environment
+src/environment.py:43:0: R0902: Too many instance attributes (38/7) (too-many-instance-attributes)
+src/environment.py:75:4: R0913: Too many arguments (13/5) (too-many-arguments)
+src/environment.py:75:4: R0917: Too many positional arguments (13/5) (too-many-positional-arguments)
+src/environment.py:75:4: R0914: Too many local variables (21/15) (too-many-locals)
+src/environment.py:75:4: R0915: Too many statements (62/50) (too-many-statements)
+src/environment.py:362:15: W0612: Unused variable 'lane_id' (unused-variable)
+src/environment.py:377:4: R0914: Too many local variables (21/15) (too-many-locals)
+src/environment.py:494:19: W0718: Catching too general exception Exception (broad-exception-caught)
+src/environment.py:570:4: W0221: Number of parameters was 3 in 'Env.reset' and is now 3 in overriding 'SumoTrafficEnv.reset' method (arguments-differ)
+src/environment.py:654:4: R0914: Too many local variables (16/15) (too-many-locals)
+src/environment.py:699:8: W0612: Unused variable 'departed' (unused-variable)
+src/environment.py:745:8: W0107: Unnecessary pass statement (unnecessary-pass)
+src/environment.py:599:8: W0201: Attribute 'phase_states' defined outside __init__ (attribute-defined-outside-init)
+src/environment.py:29:0: C0411: standard import "os" should be placed before third party imports "gymnasium", "gymnasium.spaces", "numpy" (wrong-import-order)
+src/environment.py:30:0: C0411: standard import "sys" should be placed before third party imports "gymnasium", "gymnasium.spaces", "numpy" (wrong-import-order)
+src/environment.py:31:0: C0411: standard import "collections.deque" should be placed before third party imports "gymnasium", "gymnasium.spaces", "numpy" (wrong-import-order)
+
+-----------------------------------
+Your code has been rated at 9.48/10
+

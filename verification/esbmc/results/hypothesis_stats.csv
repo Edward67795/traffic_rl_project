@@ -1,0 +1,6 @@
+test,model,max_examples,seeds,bug_found,rate
+test_G2_max_green,v0,200,10,1,0.10
+test_L1_no_starvation,v0,200,10,1,0.10
+test_T2_static_program,v0,200,10,4,0.40
+test_C1_any_action,v0,200,10,10,1.00
+test_G2_parametric,v0,200,10,10,1.00

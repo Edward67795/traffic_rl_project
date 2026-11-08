@@ -1,0 +1,41 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+______________________________ test_G2_parametric ______________________________
+
+    @settings(max_examples=MAX_EXAMPLES, deadline=None)
+>   @given(st.integers(1, 20), st.integers(0, 12), st.integers(5, 16), actions)
+                   ^^^
+
+verification/esbmc/baselines/test_hypothesis.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+verification/esbmc/baselines/test_hypothesis.py:86: in test_G2_parametric
+    run(ns, acts, d=d, mn=mn, mx=mx, check_g2=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'nondet_int': <function load.<locals>.<lambda> at 0x1036342c0>, '__ESBMC_assume': <function load.<locals>.<lambda> at...PHASE_NS': <class 'str'>, 'YELLOW_NS': <class 'str'>, 'PHASE_EW': <class 'str'>, 'YELLOW_EW': <class 'str'>, ...}, ...}
+acts = [0], d = 6, y = 3, mn = 0, mx = 5, check_g2 = True, check_c1 = False
+
+    def run(ns, acts, d=5, y=3, mn=10, mx=60, check_g2=False, check_c1=False):
+        # Each test checks only its own property: the stub monitor enabled by load(chk) and,
+        # if asked, the controller-level G2/C1 asserts. A failure then always names that property.
+        env = ns["SumoTrafficEnvCore"](d, y, mn, mx, 3600)
+        env.reset()
+        for a in acts:
+            env.step(a)
+            if check_g2:
+>               assert env.phase_duration <= env.max_green, "G2: phase_duration exceeds max_green"
+E               AssertionError: G2: phase_duration exceeds max_green
+E               assert 6 <= 5
+E                +  where 6 = <SumoTrafficEnvCore object at 0x1028f8080>.phase_duration
+E                +  and   5 = <SumoTrafficEnvCore object at 0x1028f8080>.max_green
+E               Failing test case: test_G2_parametric(
+E                   d=6,
+E                   mn=0,
+E                   mx=5,
+E                   acts=[0],  # or any other generated value
+E               )
+
+verification/esbmc/baselines/test_hypothesis.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED verification/esbmc/baselines/test_hypothesis.py::test_G2_parametric - ...
+1 failed, 4 passed in 1.18s

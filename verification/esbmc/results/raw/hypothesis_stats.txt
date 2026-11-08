@@ -1,0 +1,6 @@
+test_G2_max_green          found in  1 of 10 seeds
+test_L1_no_starvation      found in  1 of 10 seeds
+test_T2_static_program     found in  4 of 10 seeds
+test_C1_any_action         found in 10 of 10 seeds
+test_G2_parametric         found in 10 of 10 seeds
+written to /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/results/hypothesis_stats.csv

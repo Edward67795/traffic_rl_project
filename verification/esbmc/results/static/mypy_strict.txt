@@ -1,0 +1,41 @@
+src/environment.py:85: error: Missing type arguments for generic type "dict"  [type-arg]
+src/environment.py:85: error: Incompatible default for parameter "reward_weights" (default has type "None", parameter has type "dict[Any, Any]")  [assignment]
+src/environment.py:85: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src/environment.py:85: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src/environment.py:159: error: Need type annotation for "state_history"  [var-annotated]
+src/environment.py:160: error: Need type annotation for "queue_history"  [var-annotated]
+src/environment.py:161: error: Need type annotation for "wait_history"  [var-annotated]
+src/environment.py:162: error: Need type annotation for "arrival_history"  [var-annotated]
+src/environment.py:223: error: Missing type arguments for generic type "list"  [type-arg]
+src/environment.py:254: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:254: error: Incompatible default for parameter "seed" (default has type "None", parameter has type "int")  [assignment]
+src/environment.py:254: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src/environment.py:254: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src/environment.py:312: error: Incompatible types in assignment (expression has type "ndarray[tuple[Any, ...], dtype[Any]]", variable has type "None")  [assignment]
+src/environment.py:313: error: Incompatible types in assignment (expression has type "ndarray[tuple[Any, ...], dtype[Any]]", variable has type "None")  [assignment]
+src/environment.py:409: error: "None" has no attribute "copy"  [attr-defined]
+src/environment.py:410: error: "None" has no attribute "copy"  [attr-defined]
+src/environment.py:516: error: Returning Any from function declared to return "float"  [no-any-return]
+src/environment.py:520: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:536: error: Call to untyped function "_set_yellow_phase" in typed context  [no-untyped-call]
+src/environment.py:547: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:560: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:560: note: Use "-> None" if function does not return a value
+src/environment.py:570: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:570: error: Signature of "reset" incompatible with supertype "gymnasium.core.Env"  [override]
+src/environment.py:570: note:      Superclass:
+src/environment.py:570: note:          def reset(self, *, seed: int | None = ..., options: dict[str, Any] | None = ...) -> tuple[Any, dict[str, Any]]
+src/environment.py:570: note:      Subclass:
+src/environment.py:570: note:          def reset(self, seed: int = ..., options: dict[Any, Any] = ...) -> Any
+src/environment.py:570: error: Incompatible default for parameter "seed" (default has type "None", parameter has type "int")  [assignment]
+src/environment.py:570: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src/environment.py:570: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src/environment.py:570: error: Missing type arguments for generic type "dict"  [type-arg]
+src/environment.py:570: error: Incompatible default for parameter "options" (default has type "None", parameter has type "dict[Any, Any]")  [assignment]
+src/environment.py:654: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:667: error: Incompatible types in assignment (expression has type "int", variable has type "None")  [assignment]
+src/environment.py:741: error: Function is missing a type annotation  [no-untyped-def]
+src/environment.py:747: error: Function is missing a return type annotation  [no-untyped-def]
+src/environment.py:747: note: Use "-> None" if function does not return a value
+src/environment.py:754: error: Missing type arguments for generic type "dict"  [type-arg]
+Found 28 errors in 1 file (checked 1 source file)
