@@ -1,0 +1,3 @@
+replaying 16 actions: [-1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0]   (looking for T2)   [src v1]
+  t=10s  ValueError: action must be 0 or 1, got -1
+T2 NOT reproduced in SUMO (other violations: ValueError)

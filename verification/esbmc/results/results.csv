@@ -19,3 +19,16 @@ esbmc,T2,v0,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,FAIL,16,2.04,228,T2-v0-L1
 esbmc,G2,v0,d5-y3-min10-max60;STATIC_PROGRAM=True;K=20,K=20,FAIL,13,2.58,273,G2-v0-L1; ok; Violated property: file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/G2-v0-L1.py line 376 column 8 function main assertion env->phase_duration <= env->max_green: G2: phase_duration exceeds max_green env->phase_duration <; esbmc 8.6.0; solver Bitwuzla 0.9.1
 esbmc,T1,v0,d5-y0-min10-max60;STATIC_PROGRAM=True,K=16,FAIL,5,1.69,194,T1-v0-y0-L1; ok; Violated property: file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/T1-v0-y0-L1.py line 216 column 12 function _monitor assertion !(prev == K_NS_GREEN && kind == K_EW_GREEN): T1: NS green -> EW green without yellow !; esbmc 8.6.0; solver Bitwuzla 0.9.1
 esbmc,L1,v0,d5-y3-min10-max60;STATIC_PROGRAM=True;K=20,K=20,FAIL,15,2.85,298,L1-v0-L1; ok; Violated property: file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/L1-v0-L1.py line 251 column 12 function _monitor assertion self->ns_wait <= MON_MAX_GREEN + 2 * MON_YELLOW: L1: NS waited too long for green self->ns_w; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,S1,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.51,242,S1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,T1,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.55,249,T1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,T2,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.73,270,T2-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G1,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.71,261,G1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G2,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.92,270,G2-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,L1,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,2.83,372,L1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,C1,v1,d5-y3-min10-max60;STATIC_PROGRAM=True,K=16,PASS,,1.13,178,C1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,R1,v1,d5-y3-min10-max60,K=16,PASS,,1.42,334,R1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,P1,v1,d5-y3-min10-max60,K=4,PASS,,1.05,174,P1-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G2,v1naive,d5-y3-min10-max60,K=20,FAIL,6,1.27,205,G2param-v1naive; ok; Violated property: file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/G2param-v1naive.py line 390 column 8 function main assertion env->phase_duration <= env->max_green: G2: phase_duration exceeds max_green env->ph; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G2,v1,d5-y3-min10-max60,K=20,PASS,,2.24,270,G2param-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G2,v0,d5-y3-min10-max60,K=16,FAIL,0,0.66,106,G2ind-v0; ok; Violated property: file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/G2ind-v0.py line 378 column 4 function main assertion (signed int)py:/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/G2ind-v; esbmc 8.6.0; solver Bitwuzla 0.9.1
+esbmc,G2,v1,d5-y3-min10-max60,K=16,PASS,,0.70,109,G2ind-v1; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1
