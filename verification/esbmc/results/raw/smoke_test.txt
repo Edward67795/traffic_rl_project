@@ -1,20 +1,21 @@
 ESBMC: ESBMC version 8.6.0 64-bit aarch64 macos   Python: 3.12.8
 
- 1. class + method mutating fields                       expected PASS got PASS    0.38s  ok
- 2. dict[int, str] with `in` and subscript               expected PASS got PASS    0.48s  ok
- 3. str.replace on a runtime string                      expected PASS got PASS    3.26s  ok
- 4. str.replace result is precise (must FAIL)            expected FAIL got FAIL    0.39s  ok
+ 1. class + method mutating fields                       expected PASS got PASS    0.37s  ok
+ 2. dict[int, str] with `in` and subscript               expected PASS got PASS    0.47s  ok
+ 3. str.replace on a runtime string                      expected PASS got PASS    3.12s  ok
+ 4. str.replace result is precise (must FAIL)            expected FAIL got FAIL    0.38s  ok
  5. global object, nested attribute call, str arg -> int code expected PASS got PASS    0.39s  ok
  6. for _ in range(n) with nondet n                      expected PASS got PASS    0.40s  ok
  7. nondet helper function + try/except ValueError       expected PASS got PASS    0.39s  ok
- 8. division by zero is detected (must FAIL)             expected FAIL got FAIL    0.39s  ok
+ 8. division by zero is detected (must FAIL)             expected FAIL got FAIL    0.38s  ok
  9. list repetition, index write, chained comparison     expected PASS got PASS    1.17s  ok
-10. element of a concatenated list (known imprecise: FAIL) expected FAIL got FAIL    0.47s  ok
-11. a method named `set` (known frontend ERROR)          expected ERROR got ERROR   0.39s  ok
+10. element of a concatenated list (known imprecise: FAIL) expected FAIL got FAIL    0.46s  ok
+11. a method named `set` (known frontend ERROR)          expected ERROR got ERROR   0.38s  ok
         * #location: 
       migrate expr failed
       ERROR: migrate expr failed: constant
-12. __ESBMC_cover reachability (--multi-property)        expected FAIL got FAIL    0.39s  ok
+12. __ESBMC_cover reachability (--multi-property)        expected FAIL got FAIL    0.38s  ok
 13. --k-induction proves an unbounded invariant          expected PASS got PASS    0.39s  ok
+14. object built in try, used after it (known Homebrew 8.6.0 bug: FAIL) expected FAIL got FAIL    0.39s  ok
 
-13 of 13 cases ok
+14 of 14 cases ok

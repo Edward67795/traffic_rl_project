@@ -1,0 +1,5 @@
+GGGgrrrGGGgrrr  G/G conflicts: 0 []   G/g (permissive, allowed): 6 [(0, 10), (1, 10), (2, 10), (3, 7), (3, 8), (3, 9)]
+yyyyrrryyyyrrr  G/G conflicts: 0 []   G/g (permissive, allowed): 0 []
+rrrrGGgrrrrGGg  G/G conflicts: 0 []   G/g (permissive, allowed): 2 [(5, 13), (6, 12)]
+rrrryyyrrrryyy  G/G conflicts: 0 []   G/g (permissive, allowed): 0 []
+S1 part 2: PASS

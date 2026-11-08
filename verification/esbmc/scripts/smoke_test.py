@@ -164,6 +164,27 @@ def main() -> None:
         assert pd <= 60
 main()
 """, ["--k-induction", "--max-k-step", "20"], "PASS"),
+    # Correct verdict is PASS (ESBMC master 78e8e3a8 on Linux gives PASS). Homebrew 8.6.0 leaves
+    # c's fields unconstrained after the try because Clock() cannot raise (FAIL with d = 6).
+    # MISMATCH here means the bug is fixed. h_P1/h_R1 work around it with accepts().
+    ("object built in try, used after it (known Homebrew 8.6.0 bug: FAIL)", """
+class Clock:
+    def __init__(self, d: int) -> None:
+        self.d: int = d
+        self.t: int = 0
+    def tick(self) -> None:
+        self.t = self.t + self.d
+def main() -> None:
+    d: int = nondet_int()
+    __ESBMC_assume(d >= 1 and d <= 6)
+    try:
+        c: Clock = Clock(d)
+    except ValueError:
+        return
+    c.tick()
+    assert c.t >= 1
+main()
+""", [], "FAIL"),
 ]
 
 

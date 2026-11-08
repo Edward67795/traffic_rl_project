@@ -1,5 +1,6 @@
 # h_G2_param.py -- G2 for every configuration in range (the F5 experiment).
 # A configuration the constructor rejects (ValueError) is not a violation.
+# Run it only on versions whose constructor can raise (v1, v1naive): on v0 the try form gives spurious CEs (CLAUDE.md).
 K: int = 20
 D_LO: int = 1
 D_HI: int = 20               # wider than MAX_HI, so delta_time > max_green is explored
