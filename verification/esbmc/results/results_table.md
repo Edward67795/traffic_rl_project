@@ -1,0 +1,35 @@
+| ID | Property | Version | Config | Bound | Result | CE steps | Time (s) | Memory (MB) | As expected |
+|---|---|---|---|---|---|---|---|---|---|
+| S0-strings-str | S0 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 7.33 | 1142 | ok |
+| S1-v0 | S1 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 1.16 | 177 | ok |
+| T1-v0 | T1 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 1.17 | 181 | ok |
+| T1-v0-y0 | T1 | v0 | d5-y0-min10-max60 | K=16 | FAIL | 16 | 1.07 | 161 | ok |
+| T2-v0 | T2 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 1.26 | 186 | ok |
+| T2-v0-any | T2 | v0 | d5-y3-min10-max60;ANY_ACTION=True | K=16 | FAIL | 16 | 1.29 | 186 | ok |
+| G1-v0 | G1 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 1.24 | 186 | ok |
+| G2-v0 | G2 | v0 | d5-y3-min10-max60 | K=16 | FAIL | 16 | 1.32 | 194 | ok |
+| L1-v0 | L1 | v0 | d5-y3-min10-max60 | K=16 | FAIL | 12 | 1.39 | 203 | ok |
+| C1-v0 | C1 | v0 | d5-y3-min10-max60 | K=16 | PASS | — | 0.81 | 128 | ok |
+| C1-v0-any | C1 | v0 | d5-y3-min10-max60;ANY_ACTION=True | K=16 | FAIL | 4 | 0.81 | 129 | ok |
+| R1-v0 | R1 | v0 | d5-y3-min10-max60 | K=16 | FAIL | 0 | 0.75 | 163 | ok |
+| P1-v0 | P1 | v0 | d5-y3-min10-max60 | K=4 | FAIL | 1 | 0.70 | 112 | ok |
+| V0-cover-v0 | V0 | v0 | d5-y3-min10-max60 | K=16 | COVERED | — | 1.11 | 134 | ok |
+| C1-v0-L1 | C1 | v0 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | FAIL | 7 | 1.12 | 158 | ok |
+| G1-v0-L1 | G1 | v0 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | FAIL | 10 | 1.95 | 229 | ok |
+| T2-v0-L1 | T2 | v0 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | FAIL | 16 | 2.04 | 228 | ok |
+| G2-v0-L1 | G2 | v0 | d5-y3-min10-max60;STATIC_PROGRAM=True;K=20 | K=20 | FAIL | 13 | 2.58 | 273 | ok |
+| T1-v0-y0-L1 | T1 | v0 | d5-y0-min10-max60;STATIC_PROGRAM=True | K=16 | FAIL | 5 | 1.69 | 194 | ok |
+| L1-v0-L1 | L1 | v0 | d5-y3-min10-max60;STATIC_PROGRAM=True;K=20 | K=20 | FAIL | 15 | 2.85 | 298 | ok |
+| S1-v1 | S1 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.51 | 242 | ok |
+| T1-v1 | T1 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.55 | 249 | ok |
+| T2-v1 | T2 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.73 | 270 | ok |
+| G1-v1 | G1 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.71 | 261 | ok |
+| G2-v1 | G2 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.92 | 270 | ok |
+| L1-v1 | L1 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 2.83 | 372 | ok |
+| C1-v1 | C1 | v1 | d5-y3-min10-max60;STATIC_PROGRAM=True | K=16 | PASS | — | 1.13 | 178 | ok |
+| R1-v1 | R1 | v1 | d5-y3-min10-max60 | K=16 | PASS | — | 1.42 | 334 | ok |
+| P1-v1 | P1 | v1 | d5-y3-min10-max60 | K=4 | PASS | — | 1.05 | 174 | ok |
+| G2param-v1naive | G2 | v1naive | d5-y3-min10-max60 | K=20 | FAIL | 6 | 1.27 | 205 | ok |
+| G2param-v1 | G2 | v1 | d5-y3-min10-max60 | K=20 | PASS | — | 2.24 | 270 | ok |
+| G2ind-v0 | G2 | v0 | d5-y3-min10-max60 | K=16 | FAIL | 0 | 0.66 | 106 | ok |
+| G2ind-v1 | G2 | v1 | d5-y3-min10-max60 | K=16 | PASS | — | 0.70 | 109 | ok |
