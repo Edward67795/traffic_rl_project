@@ -47,14 +47,16 @@ pytest -q verification/esbmc/baselines/test_hypothesis.py
 ```
 
 ESBMC runs use the models in `esbmc/model/` and do not depend on `src/`. The replay and
-conformance scripts run the real environment in `src/environment.py` of the current checkout:
-the original code (v0) on `main`, or v1 after `git apply verification/esbmc/model/v1_fix.patch`.
+conformance scripts run the real environment through `common/sumo_env.py`: v0 is
+`src/environment.py` as checked out (`src/` is never edited, decision D1), and v1 is a temporary
+copy with `esbmc/model/v1_fix.patch` applied (`replay_in_sumo.py --src v1`,
+`conformance_test.py --model v1`).
 
 ## Main results
 
 | Version | Holds (K = 16) | Violated, with a counterexample replayed in SUMO |
 |---|---|---|
-| v0 | S1, T1, T2, G1, C1 with the default parameters and the L0 stub | G2, L1, R1, P1; T1 with `yellow_time=0`; T2 and C1 with out-of-range actions; T2, G1, C1, G2 with the L1 stub (SUMO's static program) |
+| v0 | S1, T1, T2, G1, C1 with the default parameters and the L0 stub | G2, L1, R1, P1; T1 with `yellow_time=0`; T2 and C1 with out-of-range actions; T2, G1, C1, G2, T1 (`yellow_time=0`) and L1 with the L1 stub (SUMO's static program) |
 | v1 | all nine properties with the L1 stub; G2 for all `delta_time` in 1..20, `min_green` in 0..12, `max_green` in 5..16; G2 and C1 for unbounded executions (one-step induction) | none |
 
 Defects: F1 max_green never enforced; F2 SUMO's static program runs until the first switch;

@@ -1,0 +1,2 @@
+replaying 13 actions: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]   (looking for G2)   [src v1]
+G2 NOT reproduced in SUMO
