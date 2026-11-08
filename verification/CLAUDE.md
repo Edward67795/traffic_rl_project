@@ -6,7 +6,11 @@ SPIN/Promela lives in `verification/spin/` (teammate).
 
 ## Ground rules
 - Branch `verification`; feature branches `esbmc/*` or `spin/*`; PR into `verification`. Never push to `main`.
-- Do not edit `src/` except to apply `verification/esbmc/model/v1_fix.patch` (decision D1).
+- Never edit `src/` (D1: v1 = `verification/esbmc/model/v1_fix.patch` applied at run time to a
+  temporary copy; see `verification/common/sumo_env.py`).
+- `verification/esbmc/model/traci_stub.py` and `env_core_v*.py` are also executed as reference
+  models by the teammate's SPIN scripts (`run_spin.py`, `check_traces.py`, `liveness.py`).
+  Stop and ask Edward before changing them; the PR must mention `@LOOK4869`.
 - Property IDs (S1 T1 T2 G1 G2 L1 L2 C1 R1 P1), default parameters and the results CSV
   schema are fixed in `verification/properties.md`. Do not invent new IDs.
 - Results go to `verification/<tool>/results/results.csv` using the shared schema;
