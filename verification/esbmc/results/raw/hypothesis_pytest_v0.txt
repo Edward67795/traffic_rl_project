@@ -1,0 +1,154 @@
+.FFFF                                                                    [100%]
+=================================== FAILURES ===================================
+____________________________ test_L1_no_starvation _____________________________
+
+    @settings(max_examples=MAX_EXAMPLES, deadline=None)
+>   @given(actions)
+                   ^
+
+verification/esbmc/baselines/test_hypothesis.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+verification/esbmc/baselines/test_hypothesis.py:59: in test_L1_no_starvation
+    run(load("L1"), acts)
+verification/esbmc/baselines/test_hypothesis.py:42: in run
+    env.step(a)
+model:327: in step
+    ???
+model:201: in simulationStep
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <TraciStub object at 0x106abfbf0>, kind = 0
+
+>   ???
+E   AssertionError: L1: EW waited too long for green
+E   Failing test case: test_L1_no_starvation(
+E       acts=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+E   )
+
+model:250: AssertionError
+____________________________ test_T2_static_program ____________________________
+
+    @settings(max_examples=MAX_EXAMPLES, deadline=None)
+>   @given(actions)
+                   ^
+
+verification/esbmc/baselines/test_hypothesis.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+verification/esbmc/baselines/test_hypothesis.py:65: in test_T2_static_program
+    run(load("T2", static=True), acts)
+verification/esbmc/baselines/test_hypothesis.py:42: in run
+    env.step(a)
+model:327: in step
+    ???
+model:201: in simulationStep
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <TraciStub object at 0x1069c76e0>, kind = 1
+
+>   ???
+E   AssertionError: T2: yellow not followed by the other direction
+E   Failing test case: test_T2_static_program(
+E       acts=[0, 0, 0, 0, 0, 0, 0, 0, 1],
+E   )
+
+model:219: AssertionError
+______________________________ test_C1_any_action ______________________________
+
+    @settings(max_examples=MAX_EXAMPLES, deadline=None)
+>   @given(st.lists(st.integers(-1, 2), min_size=1, max_size=30))
+                   ^^^
+
+verification/esbmc/baselines/test_hypothesis.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+verification/esbmc/baselines/test_hypothesis.py:75: in test_C1_any_action
+    run(load(), acts, check_c1=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'nondet_int': <function load.<locals>.<lambda> at 0x107c6bce0>, '__ESBMC_assume': <function load.<locals>.<lambda> at...PHASE_NS': <class 'str'>, 'YELLOW_NS': <class 'str'>, 'PHASE_EW': <class 'str'>, 'YELLOW_EW': <class 'str'>, ...}, ...}
+acts = [0, 0, -1], d = 5, y = 3, mn = 10, mx = 60, check_g2 = False
+check_c1 = True
+
+    def run(ns, acts, d=5, y=3, mn=10, mx=60, check_g2=False, check_c1=False):
+        # Each test checks only its own property: the stub monitor enabled by load(chk) and,
+        # if asked, the controller-level G2/C1 asserts. A failure then always names that property.
+        env = ns["SumoTrafficEnvCore"](d, y, mn, mx, 3600)
+        env.reset()
+        for a in acts:
+            env.step(a)
+            if check_g2:
+                assert env.phase_duration <= env.max_green, "G2: phase_duration exceeds max_green"
+            if check_c1:
+>               assert env.current_phase in (0, 1), "C1: current_phase out of range"
+E               AssertionError: C1: current_phase out of range
+E               assert -1 in (0, 1)
+E                +  where -1 = <SumoTrafficEnvCore object at 0x106f2d760>.current_phase
+E               Failing test case: test_C1_any_action(
+E                   acts=[0, 0, -1],
+E               )
+E               Explanation:
+E                   These lines were always and only run by failing test cases:
+E                       model:75
+E                       model:301
+
+verification/esbmc/baselines/test_hypothesis.py:46: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+Warning: invalid phase index, using phase 0
+______________________________ test_G2_parametric ______________________________
+
+    @settings(max_examples=MAX_EXAMPLES, deadline=None)
+>   @given(st.integers(1, 20), st.integers(0, 12), st.integers(5, 16), actions)
+                   ^^^
+
+verification/esbmc/baselines/test_hypothesis.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+verification/esbmc/baselines/test_hypothesis.py:86: in test_G2_parametric
+    run(ns, acts, d=d, mn=mn, mx=mx, check_g2=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'nondet_int': <function load.<locals>.<lambda> at 0x110ff8400>, '__ESBMC_assume': <function load.<locals>.<lambda> at...PHASE_NS': <class 'str'>, 'YELLOW_NS': <class 'str'>, 'PHASE_EW': <class 'str'>, 'YELLOW_EW': <class 'str'>, ...}, ...}
+acts = [0], d = 6, y = 3, mn = 0, mx = 5, check_g2 = True, check_c1 = False
+
+    def run(ns, acts, d=5, y=3, mn=10, mx=60, check_g2=False, check_c1=False):
+        # Each test checks only its own property: the stub monitor enabled by load(chk) and,
+        # if asked, the controller-level G2/C1 asserts. A failure then always names that property.
+        env = ns["SumoTrafficEnvCore"](d, y, mn, mx, 3600)
+        env.reset()
+        for a in acts:
+            env.step(a)
+            if check_g2:
+>               assert env.phase_duration <= env.max_green, "G2: phase_duration exceeds max_green"
+E               AssertionError: G2: phase_duration exceeds max_green
+E               assert 6 <= 5
+E                +  where 6 = <SumoTrafficEnvCore object at 0x110c45730>.phase_duration
+E                +  and   5 = <SumoTrafficEnvCore object at 0x110c45730>.max_green
+E               Failing test case: test_G2_parametric(
+E                   # The test always failed when commented parts were varied together.
+E                   d=6,
+E                   mn=0,  # or any other generated value
+E                   mx=5,
+E                   acts=[0],  # or any other generated value
+E               )
+
+verification/esbmc/baselines/test_hypothesis.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED verification/esbmc/baselines/test_hypothesis.py::test_L1_no_starvation
+FAILED verification/esbmc/baselines/test_hypothesis.py::test_T2_static_program
+FAILED verification/esbmc/baselines/test_hypothesis.py::test_C1_any_action - ...
+FAILED verification/esbmc/baselines/test_hypothesis.py::test_G2_parametric - ...
+4 failed, 1 passed in 1.62s
