@@ -230,6 +230,19 @@ def violated_property(out: str) -> str:
     return " ".join(m.group(0).split()) if m else ""
 
 
+def esbmc_version(out: str) -> str:
+    """Version from ESBMC's banner, e.g. 'ESBMC version 8.6.0 64-bit aarch64 macos' -> '8.6.0'."""
+    m = re.search(r"^ESBMC version (\S+)", out, re.M)
+    return m.group(1) if m else "n/a"
+
+
+def solvers_used(out: str) -> str:
+    """Solver(s) this run actually called, from 'Solving with solver Bitwuzla 0.9.1' lines.
+    'n/a' when ESBMC never reached the solver (timeout, frontend error, no VCCs left)."""
+    names = dict.fromkeys(re.findall(r"^Solving with solver (.+?)\s*$", out, re.M))
+    return " + ".join(names) or "n/a"
+
+
 def append_csv(row: list):
     RESULTS.mkdir(parents=True, exist_ok=True)
     new = not CSV_PATH.exists()
@@ -265,9 +278,15 @@ def run_entry(esbmc, entry, timeout):
         f"K={harness_param(path.read_text(), 'K', 16)}" if AUTO in extra else " ".join(extra))
     note = violated_property(out) if result == "FAIL" else ""
     ok = "adhoc" if expected == "?" else ("ok" if result == expected else f"EXPECTED {expected}")
+    # notes = "<tag>; <ok>[; <violated property>]; esbmc <version>; solver <solver>".
+    # results_table.py reads the first two fields. Only the property text is cut to stay
+    # within 300 characters, so the version and solver are always kept.
+    tool = f"esbmc {esbmc_version(out)}; solver {solvers_used(out)}"
+    head = "; ".join(x for x in (tag, ok, note) if x)
+    notes = head[:300 - len(tool) - 2] + "; " + tool
     append_csv(["esbmc", prop, version, config_string(sets), bound, result, ce_len,
                 f"{elapsed:.2f}", "" if meta.get("rss_mb") is None else f"{meta['rss_mb']:.0f}",
-                f"{tag}; {ok}; {note}"[:300]])
+                notes])
     print(f"{tag:18s} {result:8s} ({ok}) {elapsed:7.2f}s  ce_len={ce_len}  raw=results/raw/{tag}.txt")
     return result == expected
 
