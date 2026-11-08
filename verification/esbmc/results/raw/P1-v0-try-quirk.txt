@@ -1,0 +1,617 @@
+ESBMC version 8.6.0 64-bit aarch64 macos
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.562s
+GOTO program processing time: 0.003s
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 5   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 6   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 7   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 8   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 9   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 7 iteration 10   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function reset
+Unwinding loop 3 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Not unwinding loop 3 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 8 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 5   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 6   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Not unwinding loop 8 iteration 7   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 9 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 368 column 4 function main
+Unwinding loop 3 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Not unwinding loop 3 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 8 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 5   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 6   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Not unwinding loop 8 iteration 7   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 9 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 368 column 4 function main
+Unwinding loop 3 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Not unwinding loop 3 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 8 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 5   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 6   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Not unwinding loop 8 iteration 7   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 9 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 368 column 4 function main
+Unwinding loop 3 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 3 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Not unwinding loop 3 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function _apply_action
+Unwinding loop 8 iteration 1   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 2   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 3   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 5   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 8 iteration 6   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Not unwinding loop 8 iteration 7   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step
+Unwinding loop 9 iteration 4   file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 368 column 4 function main
+Symex completed in: 0.035s (2260 assignments)
+Caching time: 0.000s (removed 322 assertions)
+Slicing time: 0.002s (removed 1563 assignments)
+Generated 1791 VCC(s), 140 remaining after simplification (375 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.004s
+Solving with solver Bitwuzla 0.9.1
+Runtime decision procedure: 0.006s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 6 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000110)
+
+State 4 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 361 column 13 function main thread 0
+----------------------------------------------------
+  d = 6 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000110)
+
+State 6 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 279 column 8 function SumoTrafficEnvCore thread 0
+----------------------------------------------------
+  self->tls_id = { .num_seconds=3600, .delta_time=6, .yellow_time=3, .min_green=10,
+    .max_green=60, .tls_id=&{ 99, 101, 110, 116, 101, 114, 0 }[0], .num_phases=0,
+    .current_step=0, .current_phase=0, .phase_duration=0,
+    .last_action=0, .phase_states=0 }
+
+State 9 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 369 column 8 function main thread 0
+----------------------------------------------------
+  before = -9223372036854775807 - 1 (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 10 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 12 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 370 column 17 function main thread 0
+----------------------------------------------------
+  a = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 13 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 15 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 17 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 11 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001011)
+
+State 18 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 1 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
+
+State 20 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 22 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 12 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001100)
+
+State 23 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 2 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
+
+State 25 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 27 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 13 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001101)
+
+State 28 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 3 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000011)
+
+State 30 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 32 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 14 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001110)
+
+State 33 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 4 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000100)
+
+State 35 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 37 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 15 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001111)
+
+State 38 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 5 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000101)
+
+State 40 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 0
+
+State 42 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 16 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
+
+State 43 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 6 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000110)
+
+State 47 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 369 column 8 function main thread 0
+----------------------------------------------------
+  before = -9223372036854775807 - 1 (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 48 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 50 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 370 column 17 function main thread 0
+----------------------------------------------------
+  a = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 51 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 53 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 55 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 17 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010001)
+
+State 56 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 7 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000111)
+
+State 58 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 60 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 18 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010010)
+
+State 61 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 8 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001000)
+
+State 63 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 65 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 19 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010011)
+
+State 66 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 9 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001001)
+
+State 68 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 70 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 20 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010100)
+
+State 71 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 10 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001010)
+
+State 73 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 75 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 21 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010101)
+
+State 76 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 11 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001011)
+
+State 78 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 0
+
+State 80 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 22 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010110)
+
+State 81 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 12 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001100)
+
+State 85 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 369 column 8 function main thread 0
+----------------------------------------------------
+  before = -9223372036854775807 - 1 (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 86 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 88 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 370 column 17 function main thread 0
+----------------------------------------------------
+  a = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 89 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 91 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 93 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 23 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010111)
+
+State 94 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 13 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001101)
+
+State 96 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 98 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 24 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011000)
+
+State 99 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 14 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001110)
+
+State 101 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 103 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 25 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011001)
+
+State 104 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 15 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001111)
+
+State 106 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 108 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 26 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011010)
+
+State 109 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 16 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
+
+State 111 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 113 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 27 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011011)
+
+State 114 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 17 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010001)
+
+State 116 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 0
+
+State 118 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 332 column 12 function step thread 0
+----------------------------------------------------
+  self->current_step = 28 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011100)
+
+State 119 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 333 column 12 function step thread 0
+----------------------------------------------------
+  self->phase_duration = 18 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00010010)
+
+State 123 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 369 column 8 function main thread 0
+----------------------------------------------------
+  before = -2 (11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111110)
+
+State 124 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 126 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 370 column 17 function main thread 0
+----------------------------------------------------
+  a = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 127 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 129 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 132 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 135 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 138 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 141 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 1
+
+State 144 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py function step thread 0
+----------------------------------------------------
+  has_next_2 = 0
+
+State 147 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 372 column 8 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py line 372 column 8 function main
+  assertion env->current_step >= before + 1: P1: a decision step did not advance time
+  env->current_step >= before + 1
+
+
+** Results:
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py
+  PASSED       [global.assertion.1]                                line   0  uncaught exception
+  PASSED       [global.assertion.2]                                line   0  uncaught exception: IndexError
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function SumoTrafficEnvCore
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.1]    line 274  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.1]                    line 274  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.1]   line 274  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.2]    line 275  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.2]                    line 275  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.2]   line 275  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.3]    line 276  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.3]                    line 276  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.3]   line 276  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.4]    line 277  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.4]                    line 277  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.4]   line 277  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.5]    line 278  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.5]                    line 278  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.5]   line 278  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.6]    line 279  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.6]                    line 279  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.6]   line 279  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.7]    line 280  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.7]                    line 280  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.7]   line 280  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.8]    line 281  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.8]                    line 281  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.8]   line 281  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.9]    line 282  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.9]                    line 282  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.9]   line 282  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.10]   line 283  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.10]                   line 283  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.10]  line 283  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.11]   line 284  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.11]                   line 284  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.11]  line 284  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.12]   line 285  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.12]                   line 285  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.12]  line 285  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function TraciStub
+  PASSED       [TraciStub.heap-object-out-of-bounds.1]             line 156  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.1]                             line 156  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.1]            line 156  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.2]             line 158  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.2]                             line 158  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.2]            line 158  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.3]             line 159  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.3]                             line 159  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.3]            line 159  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.4]             line 161  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.4]                             line 161  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.4]            line 161  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.5]             line 162  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.5]                             line 162  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.5]            line 162  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.6]             line 163  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.6]                             line 163  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.6]            line 163  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.7]             line 164  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.7]                             line 164  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.7]            line 164  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.8]             line 165  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.8]                             line 165  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.8]            line 165  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.9]             line 166  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.9]                             line 166  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.9]            line 166  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function TrafficLightStub
+  PASSED       [TrafficLightStub.heap-object-out-of-bounds.1]      line 134  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TrafficLightStub.assertion.1]                      line 134  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TrafficLightStub.invalidated-dynamic-object.1]     line 134  dereference failure: invalidated dynamic object
+  PASSED       [TrafficLightStub.heap-object-out-of-bounds.2]      line 135  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TrafficLightStub.assertion.2]                      line 135  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TrafficLightStub.invalidated-dynamic-object.2]     line 135  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function _advance_static_program
+  PASSED       [_advance_static_program.assertion.1]               line 185  uncaught exception: ZeroDivisionError
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function _apply_action
+  PASSED       [_apply_action.assertion.1]                         line   0  assertion 1 != 0: range() arg 3 must not be zero
+  PASSED       [_apply_action.heap-object-out-of-bounds.1]         line   0  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.2]                         line   0  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.1]        line   0  dereference failure: invalidated dynamic object
+  NOT CHECKED  [_apply_action.assertion.3]                         line   0  unwinding assertion loop 3
+  PASSED       [_apply_action.heap-object-out-of-bounds.2]         line 290  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.4]                         line 290  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.2]        line 290  dereference failure: invalidated dynamic object
+  PASSED       [_apply_action.heap-object-out-of-bounds.3]         line 291  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.5]                         line 291  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.3]        line 291  dereference failure: invalidated dynamic object
+  PASSED       [_apply_action.heap-object-out-of-bounds.4]         line 296  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.6]                         line 296  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.4]        line 296  dereference failure: invalidated dynamic object
+  PASSED       [_apply_action.heap-object-out-of-bounds.5]         line 298  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.7]                         line 298  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.5]        line 298  dereference failure: invalidated dynamic object
+  PASSED       [_apply_action.heap-object-out-of-bounds.6]         line 299  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_apply_action.assertion.8]                         line 299  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_apply_action.invalidated-dynamic-object.6]        line 299  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function _set_phase
+  PASSED       [_set_phase.heap-object-out-of-bounds.1]            line 303  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_set_phase.assertion.1]                            line 303  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_set_phase.invalidated-dynamic-object.1]           line 303  dereference failure: invalidated dynamic object
+  PASSED       [_set_phase.heap-object-out-of-bounds.2]            line 306  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_set_phase.assertion.2]                            line 306  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_set_phase.invalidated-dynamic-object.2]           line 306  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function _set_yellow_phase
+  PASSED       [_set_yellow_phase.heap-object-out-of-bounds.1]     line 309  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_set_yellow_phase.assertion.1]                     line 309  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_set_yellow_phase.invalidated-dynamic-object.1]    line 309  dereference failure: invalidated dynamic object
+  PASSED       [_set_yellow_phase.heap-object-out-of-bounds.2]     line 311  dereference failure: Access to object out of bounds: heap object
+  PASSED       [_set_yellow_phase.assertion.2]                     line 311  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [_set_yellow_phase.invalidated-dynamic-object.2]    line 311  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function getCode
+  PASSED       [getCode.heap-object-out-of-bounds.1]               line 150  dereference failure: Access to object out of bounds: heap object
+  PASSED       [getCode.assertion.1]                               line 150  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [getCode.invalidated-dynamic-object.1]              line 150  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function main
+  PASSED       [main.assertion.1]                                  line 369  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [main.invalid-pointer-dereference.1]                line 369  dereference failure: invalid pointer
+  FAILED       [main.assertion.2]                                  line 372  assertion env->current_step >= before + 1: P1: a decision step did not advance time
+  PASSED       [main.assertion.3]                                  line 372  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [main.invalid-pointer-dereference.2]                line 372  dereference failure: invalid pointer
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function reset
+  PASSED       [reset.assertion.1]                                 line   0  assertion 1 != 0: range() arg 3 must not be zero
+  PASSED       [reset.heap-object-out-of-bounds.1]                 line 318  dereference failure: Access to object out of bounds: heap object
+  PASSED       [reset.assertion.2]                                 line 318  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [reset.invalidated-dynamic-object.1]                line 318  dereference failure: invalidated dynamic object
+  PASSED       [reset.heap-object-out-of-bounds.2]                 line 319  dereference failure: Access to object out of bounds: heap object
+  PASSED       [reset.assertion.3]                                 line 319  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [reset.invalidated-dynamic-object.2]                line 319  dereference failure: invalidated dynamic object
+  PASSED       [reset.heap-object-out-of-bounds.3]                 line 320  dereference failure: Access to object out of bounds: heap object
+  PASSED       [reset.assertion.4]                                 line 320  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [reset.invalidated-dynamic-object.3]                line 320  dereference failure: invalidated dynamic object
+  PASSED       [reset.heap-object-out-of-bounds.4]                 line 321  dereference failure: Access to object out of bounds: heap object
+  PASSED       [reset.assertion.5]                                 line 321  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [reset.invalidated-dynamic-object.4]                line 321  dereference failure: invalidated dynamic object
+  PASSED       [reset.heap-object-out-of-bounds.5]                 line 325  dereference failure: Access to object out of bounds: heap object
+  PASSED       [reset.assertion.6]                                 line 325  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [reset.invalidated-dynamic-object.5]                line 325  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function setCode
+  PASSED       [setCode.heap-object-out-of-bounds.1]               line 146  dereference failure: Access to object out of bounds: heap object
+  PASSED       [setCode.assertion.1]                               line 146  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [setCode.invalidated-dynamic-object.1]              line 146  dereference failure: invalidated dynamic object
+  PASSED       [setCode.heap-object-out-of-bounds.2]               line 147  dereference failure: Access to object out of bounds: heap object
+  PASSED       [setCode.assertion.2]                               line 147  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [setCode.invalidated-dynamic-object.2]              line 147  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function simulationStep
+  PASSED       [simulationStep.heap-object-out-of-bounds.1]        line 204  dereference failure: Access to object out of bounds: heap object
+  PASSED       [simulationStep.assertion.1]                        line 204  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [simulationStep.invalidated-dynamic-object.1]       line 204  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function start
+  PASSED       [start.heap-object-out-of-bounds.1]                 line 170  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.1]                                 line 170  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.1]                line 170  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.2]                 line 171  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.2]                                 line 171  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.2]                line 171  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.3]                 line 172  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.3]                                 line 172  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.3]                line 172  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.4]                 line 173  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.4]                                 line 173  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.4]                line 173  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.5]                 line 174  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.5]                                 line 174  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.5]                line 174  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.6]                 line 175  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.6]                                 line 175  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.6]                line 175  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.7]                 line 176  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.7]                                 line 176  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.7]                line 176  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.8]                 line 177  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.8]                                 line 177  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.8]                line 177  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.9]                 line 178  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.9]                                 line 178  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.9]                line 178  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.10]                line 179  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.10]                                line 179  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.10]               line 179  dereference failure: invalidated dynamic object
+  PASSED       [start.heap-object-out-of-bounds.11]                line 180  dereference failure: Access to object out of bounds: heap object
+  PASSED       [start.assertion.11]                                line 180  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [start.invalidated-dynamic-object.11]               line 180  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/P1-v0.py, function step
+  PASSED       [step.assertion.1]                                  line   0  assertion 1 != 0: range() arg 3 must not be zero
+  PASSED       [step.heap-object-out-of-bounds.1]                  line   0  dereference failure: Access to object out of bounds: heap object
+  PASSED       [step.assertion.2]                                  line   0  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [step.invalidated-dynamic-object.1]                 line   0  dereference failure: invalidated dynamic object
+  NOT CHECKED  [step.assertion.3]                                  line   0  unwinding assertion loop 8
+  PASSED       [step.heap-object-out-of-bounds.2]                  line 328  dereference failure: Access to object out of bounds: heap object
+  PASSED       [step.assertion.4]                                  line 328  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [step.invalidated-dynamic-object.2]                 line 328  dereference failure: invalidated dynamic object
+  PASSED       [step.heap-object-out-of-bounds.3]                  line 332  dereference failure: Access to object out of bounds: heap object
+  PASSED       [step.assertion.5]                                  line 332  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [step.invalidated-dynamic-object.3]                 line 332  dereference failure: invalidated dynamic object
+  PASSED       [step.heap-object-out-of-bounds.4]                  line 333  dereference failure: Access to object out of bounds: heap object
+  PASSED       [step.assertion.6]                                  line 333  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [step.invalidated-dynamic-object.4]                 line 333  dereference failure: invalidated dynamic object
+  PASSED       [step.heap-object-out-of-bounds.5]                  line 334  dereference failure: Access to object out of bounds: heap object
+  PASSED       [step.assertion.7]                                  line 334  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [step.invalidated-dynamic-object.5]                 line 334  dereference failure: invalidated dynamic object
+
+** 1 of 187 properties failed, 124 passed, 62 not checked
+   (this mode stops at the first violation; use --multi-property for a verdict on every property)
+
+VERIFICATION FAILED
+
+@@RUN {"rc": 1, "rss_mb": 112.03125}

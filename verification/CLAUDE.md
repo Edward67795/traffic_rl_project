@@ -34,6 +34,7 @@ SPIN/Promela lives in `verification/spin/` (teammate).
 - Pass a call's result through a typed local before handing it to a method (`k: int = f(x); self.m(k)`).
 - Do not edit the 7 model lines listed in `INT_REWRITES` (run_esbmc.py) without re-running `S0-strings-str`.
 - `--k-induction` disables its inductive step on this model; use `harnesses/h_G2_ind.py` instead.
+- Do not use an object after the `try` that built it when its constructor cannot raise (v0): Homebrew ESBMC 8.6.0 leaves its fields unconstrained (see `results/raw/P1-v0-try-quirk.txt`). Probe with `accepts()` and build the object outside `try`, as `h_P1`/`h_R1` do. `h_G2_param` keeps the `try` form: it only runs on v1/v1naive, and the probe form is ~6x slower there.
 
 ## Known v0 findings
 F1 max_green never enforced; F2 SUMO static program runs until the first switch;
