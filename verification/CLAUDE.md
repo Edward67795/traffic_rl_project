@@ -10,7 +10,9 @@ SPIN/Promela lives in `verification/spin/` (teammate).
   temporary copy; see `verification/common/sumo_env.py`).
 - `verification/esbmc/model/traci_stub.py` and `env_core_v*.py` are also executed as reference
   models by the teammate's SPIN scripts (`run_spin.py`, `check_traces.py`, `liveness.py`).
-  Stop and ask Edward before changing them; the PR must mention `@LOOK4869`.
+  Stop and ask Edward before changing them. The PR must mention `@LOOK4869` as plain text,
+  without backticks: GitHub does not notify a mention inside backticks. (It is in backticks
+  here only because a bare @name in CLAUDE.md is read as a file import.)
 - Property IDs (S1 T1 T2 G1 G2 L1 L2 C1 R1 P1), default parameters and the results CSV
   schema are fixed in `verification/properties.md`. Do not invent new IDs.
 - Results go to `verification/<tool>/results/results.csv` using the shared schema;
