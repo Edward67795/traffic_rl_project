@@ -1,2 +1,2 @@
 tool,property,version,config,bound,result,ce_length,time_s,memory_mb,notes
-esbmc,S0,v0,d5-y3-min10-max60,K=16,PASS,,7.33,1198,S0-strings-str; ok; 
+esbmc,S0,v0,d5-y3-min10-max60,K=16,PASS,,7.33,1142,S0-strings-str; ok; esbmc 8.6.0; solver Bitwuzla 0.9.1

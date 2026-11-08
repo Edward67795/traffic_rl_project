@@ -30,6 +30,8 @@ shared status doc first (tab "总览与约定", section 共享约定).
 | R1 | No runtime errors (division by zero, index errors) for any configuration in range | ESBMC built-in checks, nondet parameters | n/a | FAIL (`delta_time=0` or `max_green=0`) | PASS |
 | P1 | Every decision step advances simulated time by at least 1 s | harness assert | n/a | FAIL (`delta_time<=0`) | PASS |
 
+S0 (string equivalence lemma for ESBMC's int-code abstraction) and V0 (cover check that the harness assumptions are not vacuous) are ESBMC-internal auxiliary checks: they appear in the `property` column of `verification/esbmc/results/results.csv` but are not part of this shared catalogue.
+
 ## Results format
 
 Each tool writes `verification/<tool>/results/results.csv` with exactly these columns:

@@ -3,7 +3,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/S0-strings-str.py
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.563s
+GOTO program creation time: 0.554s
 GOTO program processing time: 0.003s
 Starting Bounded Model Checking
 Unwinding loop 11 iteration 1   file /private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/string.c line 19 column 3 function __python_strnlen_bounded
@@ -1899,16 +1899,16 @@ Unwinding loop 12 iteration 11   file /esbmc-vfs/libc/library/string.c line 114 
 Unwinding loop 12 iteration 12   file /esbmc-vfs/libc/library/string.c line 114 column 3 function strcmp
 Unwinding loop 12 iteration 13   file /esbmc-vfs/libc/library/string.c line 114 column 3 function strcmp
 Unwinding loop 12 iteration 14   file /esbmc-vfs/libc/library/string.c line 114 column 3 function strcmp
-Symex completed in: 0.981s (39118 assignments)
+Symex completed in: 1.004s (39118 assignments)
 Caching time: 0.025s (removed 355 assertions)
 Slicing time: 0.316s (removed 14382 assignments)
 Generated 22191 VCC(s), 13074 remaining after simplification (24385 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.729s
+Encoding to solver time: 0.787s
 Solving with solver Bitwuzla 0.9.1
-Runtime decision procedure: 4.409s
-BMC program time: 6.475s
+Runtime decision procedure: 4.360s
+BMC program time: 6.507s
 
 ** Results:
 /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/S0-strings-str.py
@@ -2126,4 +2126,4 @@ BMC program time: 6.475s
 
 VERIFICATION SUCCESSFUL
 
-@@RUN {"rc": 0, "rss_mb": 1198.203125}
+@@RUN {"rc": 0, "rss_mb": 1142.484375}
