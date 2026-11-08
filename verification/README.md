@@ -36,9 +36,9 @@ brew install esbmc
 ## Reproduce the ESBMC results (repo root, venv active)
 
 ```bash
-python verification/esbmc/scripts/smoke_test.py                 # expect: 13 of 13 cases ok
+python verification/esbmc/scripts/smoke_test.py                 # expect: 14 of 14 cases ok
 python verification/esbmc/scripts/check_phase_strings.py        # S1 part 2: no G/G conflict in the net file
-python verification/esbmc/scripts/run_esbmc.py --all            # 31 entries -> esbmc/results/results.csv
+python verification/esbmc/scripts/run_esbmc.py --all            # 33 entries -> esbmc/results/results.csv
 python verification/esbmc/scripts/results_table.py              # Markdown summary of results.csv
 python verification/esbmc/scripts/conformance_test.py --model v0 --level L1 --runs 30
 python verification/common/replay_in_sumo.py --ce verification/esbmc/results/raw/G2-v0-L1.txt
