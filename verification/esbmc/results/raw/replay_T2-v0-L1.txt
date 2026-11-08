@@ -1,0 +1,5 @@
+replaying 16 actions: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]   (looking for T2)
+  t=45s  C1: controller phase 0 but SUMO shows yyyyrrryyyyrrr after step 7
+  t=75s  G2: phase_duration=65 after step 13
+  t=88s  T2: yellow not followed by the other direction
+T2 REPRODUCED in SUMO

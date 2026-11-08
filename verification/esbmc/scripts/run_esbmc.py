@@ -71,6 +71,10 @@ SUITE = [
     ("G1-v0-L1", "G1", "h_G1", "v0", {"STATIC_PROGRAM": "True"}, [AUTO], "FAIL"),
     ("C1-v0-L1", "C1", "h_C1", "v0", {"STATIC_PROGRAM": "True"}, [AUTO], "FAIL"),
     ("G2-v0-L1", "G2", "h_G2", "v0", {"STATIC_PROGRAM": "True", "K": "20"}, [AUTO], "FAIL"),
+    # T1-v0-y0 and L1-v0 counterexamples did not reproduce in SUMO with the default solver
+    # (Bitwuzla on Homebrew ESBMC 8.6.0): the same checks with SUMO's static program modelled.
+    ("T1-v0-y0-L1", "T1", "h_T1", "v0", {"YELLOW_TIME": "0", "STATIC_PROGRAM": "True"}, [AUTO], "FAIL"),
+    ("L1-v0-L1", "L1", "h_L1", "v0", {"STATIC_PROGRAM": "True", "K": "20"}, [AUTO], "FAIL"),
     # ---- v1 (all four fixes), L1 stub: everything should hold ----
     ("S1-v1", "S1", "h_S1", "v1", {"STATIC_PROGRAM": "True"}, [AUTO], "PASS"),
     ("T1-v1", "T1", "h_T1", "v1", {"STATIC_PROGRAM": "True"}, [AUTO], "PASS"),
