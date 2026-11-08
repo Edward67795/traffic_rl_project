@@ -1,0 +1,5 @@
+replaying 10 actions: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]   (looking for G1)
+  t=45s  C1: controller phase 0 but SUMO shows yyyyrrryyyyrrr after step 7
+  t=55s  G1: green cut before min_green
+  t=58s  T2: yellow not followed by the other direction
+G1 REPRODUCED in SUMO
