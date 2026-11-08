@@ -2,7 +2,8 @@
 """Conformance test: does the verification model behave like the real environment?
 
 Feeds the same random action sequences to
-  (1) the real SumoTrafficEnv (src/environment.py of the current checkout, real SUMO), and
+  (1) the real SumoTrafficEnv of the same version on real SUMO (verification/common/sumo_env.py:
+      v0 = src/environment.py as checked out, v1 = a temporary copy with v1_fix.patch applied), and
   (2) the model: model/env_core_<version>.py on top of model/traci_stub.py (level L0 or L1),
 and compares, after every simulated second, the signal state SUMO shows with the stub's,
 and after every decision step (current_phase, phase_duration, current_step).
@@ -10,7 +11,9 @@ and after every decision step (current_phase, phase_duration, current_step).
 Usage (repo root, venv active, SUMO_HOME set):
     python verification/esbmc/scripts/conformance_test.py --model v0 --level L0 --runs 100
     python verification/esbmc/scripts/conformance_test.py --model v0 --level L1 --runs 100
+    python verification/esbmc/scripts/conformance_test.py --model v1 --level L1 --runs 30
 Expected for v0: L0 diverges on runs that keep phase 0 past t=42 s; L1 never diverges.
+Expected for v1: L1 never diverges.
 """
 import argparse
 import contextlib
@@ -23,11 +26,12 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[3]
 MODEL = REPO / "verification" / "esbmc" / "model"
 VERSIONS = {"v0": "env_core_v0.py", "v1": "env_core_v1.py"}
+sys.path.insert(0, str(REPO / "verification" / "common"))
+from sumo_env import load_sumo_env  # noqa: E402
 
 
-def run_real(actions, params):
+def run_real(SumoTrafficEnv, actions, params):
     import traci
-    from environment import SumoTrafficEnv
     seconds, decisions = [], []
     real_step = traci.simulationStep
 
@@ -84,7 +88,7 @@ def main():
     args = ap.parse_args()
 
     os.chdir(REPO)
-    sys.path.insert(0, str(REPO / "src"))
+    real_env = load_sumo_env(args.model)        # SUMO side runs the same version as the model
     params = dict(delta_time=5, yellow_time=3, min_green=10, max_green=60)
     rng = random.Random(args.seed)
     diverged = 0
@@ -94,7 +98,7 @@ def main():
         for _ in range(args.steps):
             cur = cur if rng.random() < p_keep else 1 - cur
             actions.append(cur)
-        rs, rd = run_real(actions, params)
+        rs, rd = run_real(real_env, actions, params)
         ms, md = run_model(actions, params, args.model, args.level)
         mismatch = next((i for i, (x, y) in enumerate(zip(rs, ms)) if x != y), None)
         if mismatch is None and len(rs) != len(ms):
