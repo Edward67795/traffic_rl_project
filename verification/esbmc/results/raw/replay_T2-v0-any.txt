@@ -1,0 +1,4 @@
+replaying 16 actions: [-1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0]   (looking for T2)
+  t=41s  C1: current_phase=-1 after step 5
+  t=94s  T2: yellow not followed by the other direction
+T2 REPRODUCED in SUMO

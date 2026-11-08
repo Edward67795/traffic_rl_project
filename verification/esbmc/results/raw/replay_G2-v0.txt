@@ -1,0 +1,4 @@
+replaying 16 actions: [0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]   (looking for G2)
+  t=88s  G2: observed green longer than max_green
+  t=91s  L1: NS waited too long for green
+G2 REPRODUCED in SUMO

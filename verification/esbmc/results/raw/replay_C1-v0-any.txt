@@ -1,0 +1,4 @@
+replaying 4 actions: [-1, -1, 0, -1]   (looking for C1)
+  t=28s  T2: yellow not followed by the other direction
+  t=33s  C1: current_phase=-1 after step 4
+C1 REPRODUCED in SUMO

@@ -1,0 +1,280 @@
+ESBMC version 8.6.0 64-bit aarch64 macos
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.558s
+GOTO program processing time: 0.003s
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   
+Unwinding loop 4 iteration 2   
+Unwinding loop 5 iteration 1   
+Unwinding loop 5 iteration 2   
+Unwinding loop 1 iteration 1   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 2   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 3   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 4   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 5   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 6   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 7   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 8   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 9   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 10   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 11   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 12   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 13   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 14   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 1 iteration 15   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Not unwinding loop 1 iteration 16   file /esbmc-vfs/libc/library/string.c line 330 column 3 function __memcpy_impl
+Unwinding loop 6 iteration 1   
+Symex completed in: 0.020s (1163 assignments)
+Caching time: 0.000s (removed 168 assertions)
+Slicing time: 0.001s (removed 737 assignments)
+Generated 798 VCC(s), 142 remaining after simplification (258 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.9.1
+Runtime decision procedure: 0.083s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 4 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 373 column 13 function main thread 0
+----------------------------------------------------
+  d = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 5 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 63 column 4 function choose_int thread 0
+----------------------------------------------------
+  x = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 7 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 374 column 14 function main thread 0
+----------------------------------------------------
+  mx = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 10 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 279 column 8 function SumoTrafficEnvCore thread 0
+----------------------------------------------------
+  self->tls_id = { .num_seconds=3600, .delta_time=0, .yellow_time=3, .min_green=0,
+    .max_green=0, .tls_id=&{ 99, 101, 110, 116, 101, 114, 0 }[0], .num_phases=0,
+    .current_step=0, .current_phase=0, .phase_duration=0,
+    .last_action=0, .phase_states=0 }
+
+State 20 file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 344 column 35 function phase_features thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py line 344 column 35 function phase_features
+  uncaught exception: ZeroDivisionError
+  !(c:@__ESBMC_exc_thrown && c:@__ESBMC_exc_typeid == 26 && c:@__ESBMC_exc_site == 2)
+
+
+** Results:
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py
+  NOT CHECKED  [global.assertion.1]                                          line   0  uncaught exception
+  NOT CHECKED  [global.assertion.2]                                          line   0  uncaught exception: ZeroDivisionError
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py, function SumoTrafficEnvCore
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.1]              line 274  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.1]                              line 274  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.1]             line 274  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.2]              line 275  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.2]                              line 275  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.2]             line 275  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.3]              line 276  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.3]                              line 276  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.3]             line 276  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.4]              line 277  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.4]                              line 277  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.4]             line 277  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.5]              line 278  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.5]                              line 278  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.5]             line 278  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.6]              line 279  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.6]                              line 279  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.6]             line 279  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.7]              line 280  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.7]                              line 280  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.7]             line 280  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.8]              line 281  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.8]                              line 281  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.8]             line 281  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.9]              line 282  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.9]                              line 282  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.9]             line 282  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.10]             line 283  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.10]                             line 283  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.10]            line 283  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.11]             line 284  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.11]                             line 284  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.11]            line 284  dereference failure: invalidated dynamic object
+  PASSED       [SumoTrafficEnvCore.heap-object-out-of-bounds.12]             line 285  dereference failure: Access to object out of bounds: heap object
+  PASSED       [SumoTrafficEnvCore.assertion.12]                             line 285  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [SumoTrafficEnvCore.invalidated-dynamic-object.12]            line 285  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py, function TraciStub
+  PASSED       [TraciStub.heap-object-out-of-bounds.1]                       line 156  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.1]                                       line 156  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.1]                      line 156  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.2]                       line 158  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.2]                                       line 158  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.2]                      line 158  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.3]                       line 159  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.3]                                       line 159  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.3]                      line 159  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.4]                       line 161  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.4]                                       line 161  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.4]                      line 161  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.5]                       line 162  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.5]                                       line 162  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.5]                      line 162  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.6]                       line 163  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.6]                                       line 163  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.6]                      line 163  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.7]                       line 164  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.7]                                       line 164  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.7]                      line 164  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.8]                       line 165  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.8]                                       line 165  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.8]                      line 165  dereference failure: invalidated dynamic object
+  PASSED       [TraciStub.heap-object-out-of-bounds.9]                       line 166  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TraciStub.assertion.9]                                       line 166  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TraciStub.invalidated-dynamic-object.9]                      line 166  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py, function TrafficLightStub
+  PASSED       [TrafficLightStub.heap-object-out-of-bounds.1]                line 134  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TrafficLightStub.assertion.1]                                line 134  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TrafficLightStub.invalidated-dynamic-object.1]               line 134  dereference failure: invalidated dynamic object
+  PASSED       [TrafficLightStub.heap-object-out-of-bounds.2]                line 135  dereference failure: Access to object out of bounds: heap object
+  PASSED       [TrafficLightStub.assertion.2]                                line 135  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [TrafficLightStub.invalidated-dynamic-object.2]               line 135  dereference failure: invalidated dynamic object
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py, function phase_features
+  PASSED       [phase_features.heap-object-out-of-bounds.1]                  line 341  dereference failure: Access to object out of bounds: heap object
+  PASSED       [phase_features.assertion.1]                                  line 341  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [phase_features.invalidated-dynamic-object.1]                 line 341  dereference failure: invalidated dynamic object
+  PASSED       [phase_features.heap-object-out-of-bounds.2]                  line 342  dereference failure: Access to object out of bounds: heap object
+  PASSED       [phase_features.assertion.2]                                  line 342  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [phase_features.invalidated-dynamic-object.2]                 line 342  dereference failure: invalidated dynamic object
+  PASSED       [phase_features.array-bounds-violated.1]                      line 343  array bounds violated: array `__ESBMC_float_buf' lower bound
+  PASSED       [phase_features.array-bounds-violated.2]                      line 343  array bounds violated: array `__ESBMC_float_buf' upper bound
+  PASSED       [phase_features.heap-object-out-of-bounds.3]                  line 343  dereference failure: Access to object out of bounds: heap object
+  PASSED       [phase_features.assertion.3]                                  line 343  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [phase_features.array-bounds-violated.3]                      line 343  dereference failure: array bounds violated
+  PASSED       [phase_features.invalid-pointer-dereference.1]                line 343  dereference failure: invalid pointer
+  PASSED       [phase_features.invalidated-dynamic-object.3]                 line 343  dereference failure: invalidated dynamic object
+  NOT CHECKED  [phase_features.assertion.4]                                  line 343  uncaught exception: IndexError
+  PASSED       [phase_features.heap-object-out-of-bounds.4]                  line 344  dereference failure: Access to object out of bounds: heap object
+  PASSED       [phase_features.assertion.5]                                  line 344  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [phase_features.invalidated-dynamic-object.4]                 line 344  dereference failure: invalidated dynamic object
+  PASSED       [phase_features.heap-object-out-of-bounds.5]                  line 344  dereference failure: Access to object out of bounds: heap object
+  PASSED       [phase_features.assertion.6]                                  line 344  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [phase_features.invalidated-dynamic-object.5]                 line 344  dereference failure: invalidated dynamic object
+  FAILED       [phase_features.assertion.7]                                  line 344  uncaught exception: ZeroDivisionError
+/Users/ppk280/Documents/GitHub/traffic_rl_project/verification/esbmc/build/R1-v0.py, function queue_derivative
+  PASSED       [queue_derivative.heap-object-out-of-bounds.1]                line 349  dereference failure: Access to object out of bounds: heap object
+  PASSED       [queue_derivative.assertion.1]                                line 349  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [queue_derivative.invalidated-dynamic-object.1]               line 349  dereference failure: invalidated dynamic object
+  PASSED       [queue_derivative.heap-object-out-of-bounds.2]                line 349  dereference failure: Access to object out of bounds: heap object
+  PASSED       [queue_derivative.assertion.2]                                line 349  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [queue_derivative.invalidated-dynamic-object.2]               line 349  dereference failure: invalidated dynamic object
+  NOT CHECKED  [queue_derivative.assertion.3]                                line 349  uncaught exception: ZeroDivisionError
+/esbmc-vfs/libc/library/string.c, function __memcpy_impl
+  NOT CHECKED  [__memcpy_impl.assertion.1]                                   line 330  unwinding assertion loop 1
+  PASSED       [__memcpy_impl.assertion.2]                                   line 332  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__memcpy_impl.array-bounds-violated.1]                       line 332  dereference failure: array bounds violated
+  NOT CHECKED  [__memcpy_impl.invalid-pointer-dereference.1]                 line 332  dereference failure: invalid pointer
+  NOT CHECKED  [__memcpy_impl.invalidated-dynamic-object.1]                  line 332  dereference failure: invalidated dynamic object
+/esbmc-vfs/libc/library/string.c, function memcpy
+  NOT CHECKED  [memcpy.invalidated-dynamic-object.1]                         line 343  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_copy_value
+  PASSED       [__ESBMC_copy_value.object-out-of-bounds.1]                   line 144  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_copy_value.assertion.1]                              line 144  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.array-bounds-violated.1]                  line 158  array bounds violated: array `__ESBMC_float_buf' lower bound
+  PASSED       [__ESBMC_copy_value.array-bounds-violated.2]                  line 158  array bounds violated: array `__ESBMC_float_buf' upper bound
+  PASSED       [__ESBMC_copy_value.object-out-of-bounds.2]                   line 158  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_copy_value.assertion.2]                              line 158  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.object-out-of-bounds.3]                   line 160  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_copy_value.assertion.3]                              line 160  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.assertion.4]                              line 185  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.array-bounds-violated.3]                  line 185  dereference failure: array bounds violated
+  NOT CHECKED  [__ESBMC_copy_value.invalid-pointer-dereference.1]            line 185  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_copy_value.invalidated-dynamic-object.1]             line 185  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_copy_value.assertion.5]                              line 188  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.array-bounds-violated.4]                  line 188  dereference failure: array bounds violated
+  NOT CHECKED  [__ESBMC_copy_value.invalid-pointer-dereference.2]            line 188  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_copy_value.invalidated-dynamic-object.2]             line 188  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_copy_value.assertion.6]                              line 189  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_copy_value.array-bounds-violated.5]                  line 189  dereference failure: array bounds violated
+  NOT CHECKED  [__ESBMC_copy_value.invalid-pointer-dereference.3]            line 189  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_copy_value.invalidated-dynamic-object.3]             line 189  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_at
+  PASSED       [__ESBMC_list_at.object-out-of-bounds.1]                      line 665  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_at.assertion.1]                                 line 665  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_at.invalidated-dynamic-object.1]                line 665  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_at.assertion.2]                                 line 665  out-of-bounds read in list
+  PASSED       [__ESBMC_list_at.object-out-of-bounds.2]                      line 666  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_at.assertion.3]                                 line 666  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_at.invalidated-dynamic-object.2]                line 666  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_create
+  PASSED       [__ESBMC_list_create.object-out-of-bounds.1]                  line  97  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_create.assertion.1]                             line  97  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_create.invalidated-dynamic-object.1]            line  97  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_create.object-out-of-bounds.2]                  line  98  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_create.assertion.2]                             line  98  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_create.invalidated-dynamic-object.2]            line  98  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_create.object-out-of-bounds.3]                  line  99  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_create.assertion.3]                             line  99  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_create.invalidated-dynamic-object.3]            line  99  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_push
+  PASSED       [__ESBMC_list_push.object-out-of-bounds.1]                    line 224  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_push.assertion.1]                               line 224  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.1]              line 224  dereference failure: invalidated dynamic object
+  NOT CHECKED  [__ESBMC_list_push.invalid-pointer-dereference.1]             line 225  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.2]              line 225  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push.assertion.2]                               line 226  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push.invalid-pointer-dereference.2]             line 226  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.3]              line 226  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push.assertion.3]                               line 227  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push.invalid-pointer-dereference.3]             line 227  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.4]              line 227  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push.assertion.4]                               line 228  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push.invalid-pointer-dereference.4]             line 228  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.5]              line 228  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push.object-out-of-bounds.2]                    line 229  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_push.assertion.5]                               line 229  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push.invalidated-dynamic-object.6]              line 229  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_push_object
+  PASSED       [__ESBMC_list_push_object.assertion.1]                        line 298  assertion l != 0
+  PASSED       [__ESBMC_list_push_object.assertion.2]                        line 299  assertion o != 0
+  PASSED       [__ESBMC_list_push_object.assertion.3]                        line 304  dereference failure: Incorrect alignment when accessing data object
+  PASSED       [__ESBMC_list_push_object.invalid-pointer-dereference.1]      line 304  dereference failure: invalid pointer
+  PASSED       [__ESBMC_list_push_object.invalidated-dynamic-object.1]       line 304  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push_object.assertion.4]                        line 310  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push_object.invalid-pointer-dereference.2]      line 310  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push_object.invalidated-dynamic-object.2]       line 310  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_push_shallow_sz
+  PASSED       [__ESBMC_list_push_shallow_sz.assertion.1]                    line 347  assertion l != 0
+  PASSED       [__ESBMC_list_push_shallow_sz.assertion.2]                    line 348  assertion o != 0
+  PASSED       [__ESBMC_list_push_shallow_sz.assertion.3]                    line 349  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.invalid-pointer-dereference.1]  line 349  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.invalidated-dynamic-object.1]   line 349  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push_shallow_sz.object-out-of-bounds.1]         line 351  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_push_shallow_sz.assertion.4]                    line 351  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.assertion.5]                    line 351  dereference failure: Object accessed with incompatible base type. Wanted legal dynamic offset but got illegal offset
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.invalid-pointer-dereference.2]  line 351  dereference failure: invalid pointer
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.invalidated-dynamic-object.2]   line 351  dereference failure: invalidated dynamic object
+  PASSED       [__ESBMC_list_push_shallow_sz.object-out-of-bounds.2]         line 352  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_push_shallow_sz.assertion.6]                    line 352  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_push_shallow_sz.invalidated-dynamic-object.3]   line 352  dereference failure: invalidated dynamic object
+/private/tmp/s-KzKMQBlV/esbmc-20261016-62051-rsin9y/esbmc-8.6/src/c2goto/library/python/list.c, function __ESBMC_list_size
+  PASSED       [__ESBMC_list_size.assertion.1]                               line 112  TypeError: object of this type has no len()
+  PASSED       [__ESBMC_list_size.object-out-of-bounds.1]                    line 118  dereference failure: Access to object out of bounds
+  PASSED       [__ESBMC_list_size.assertion.2]                               line 118  dereference failure: Incorrect alignment when accessing data object
+  NOT CHECKED  [__ESBMC_list_size.invalidated-dynamic-object.1]              line 118  dereference failure: invalidated dynamic object
+
+** 1 of 183 properties failed, 114 passed, 68 not checked
+   (this mode stops at the first violation; use --multi-property for a verdict on every property)
+
+VERIFICATION FAILED
+
+@@RUN {"rc": 1, "rss_mb": 162.921875}
