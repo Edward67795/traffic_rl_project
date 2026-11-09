@@ -1,7 +1,8 @@
-<!-- Snapshot of the "ESBMC · Edward" tab of the shared plan doc (rev 20, 2026-11-09).
+<!-- Snapshot of the "ESBMC · Edward" tab of the shared plan doc (rev 23, 2026-11-09).
      The live doc is the source of truth; progress boxes are ticked there, not here.
      Changed since the 11-06 snapshot: E10 rewritten after the TA's proposal feedback
-     (LLM-1 bug finding, LLM-2 repair loop, LLM-3 record of LLM use). -->
+     (LLM-1 bug finding, LLM-2 repair loop, LLM-3 record of LLM use); E10.1c now runs
+     reset() and step() for parameter-only claims (Codex review of PR #12). -->
 
 # ESBMC 计划（Edward）
 
@@ -611,7 +612,7 @@ Answer by reading the code; do not run it.
 
 - [ ] **E10.1c 核对每条声称（交给 Claude Code）**
 
-把每个回答里的反例抽成 `find/claims.csv`（模型、第几次、性质、参数、动作序列、声称的时间）。动作序列用 `replay_in_sumo.py` 在真 SUMO 里回放；只涉及参数的（例如 `delta_time=0`）直接在 CPython 里构造 `SumoTrafficEnv` 检查。复现了才算找到，再对应到 F1–F4 和 R1/P1。F5 是修复方法上的问题，v0 上不存在，留给 LLM-2。
+把每个回答里的反例抽成 `find/claims.csv`（模型、第几次、性质、参数、动作序列、声称的时间），再逐条用 `replay_in_sumo.py` 在真 SUMO 里回放，参数用它的 `--delta-time`、`--yellow-time`、`--min-green`、`--max-green` 传进去。只涉及参数的声称（例如 `delta_time=0`）也要真的跑 `reset()` 和几步 `step()`，光构造对象不够：v0 的构造函数不做任何检查，除零出现在之后计算状态时（`_get_state()`、`_get_temporal_derivatives()`），P1 要比较 `step()` 前后的 `current_step`。R1、P1 不在回放脚本的监控范围里，要另外判断有没有抛 `ZeroDivisionError`、时间有没有前进。复现了才算找到，再对应到 F1–F4 和 R1/P1。F5 是修复方法上的问题，v0 上不存在，留给 LLM-2。
 
 | 缺陷 | 模型 A（3 次里找到几次） | 模型 B | Hypothesis（10 个种子） | ESBMC |
 | --- | --- | --- | --- | --- |
@@ -661,7 +662,7 @@ file and a two-sentence explanation. Do not change the harness.
 | --- | --- | --- | --- |
 | Claude（claude.ai 对话） | 写计划，抽取模型，写 harness、stub 和脚本的初版 | 每个结论都在 SUMO 回放或 CPython 里复核；一致性测试检查模型和 SUMO 是否一致 | 本 doc；PR #1 |
 | Claude Code（VS Code） | 在 M4 上执行 E1–E12.1 并开 PR；从反例里不可能出现的数值发现 Homebrew ESBMC 的 try bug | Edward 看每个 PR，Codex 自动审查 | PR #3–#11 |
-| OpenAI Codex（PR 自动审查） | 审 PR #1 时指出 v1 没有拒绝 `delta_time > max_green`，而我们的参数化 harness 因为范围太窄没抓到 | 放宽范围后 ESBMC 在 7 s 内复现，加上检查后 PASS | PR #1 的审查评论；PR #2 |
+| OpenAI Codex（PR 自动审查） | 审 PR #1 时指出 v1 没有拒绝 `delta_time > max_green`，而我们的参数化 harness 因为范围太窄没抓到。PR #1 一共提了 3 条意见，PR #12 又提了 1 条（E10.1c 的核对方法会低估 LLM 的检出率），4 条都成立 | 放宽范围后 ESBMC 在 7 s 内复现，加上检查后 PASS | PR #1、#12 的审查评论；PR #2 |
 | OpenAI Codex（队友） | 写 Promela 模型和 SPIN 脚本 | `check_traces.py` 对照 Python 参考模型 | 队友补：哪些部分是生成的、手改了几处、对照时抓到几次模型错误 |
 
 完成标准：表填完，报告第 3 节加一段 LLM-assisted workflow。
