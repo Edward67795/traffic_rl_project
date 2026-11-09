@@ -1,5 +1,7 @@
-<!-- Snapshot of the "ESBMC · Edward" tab of the shared plan doc (rev 18, 2026-11-06).
-     The live doc is the source of truth; progress boxes are ticked there, not here. -->
+<!-- Snapshot of the "ESBMC · Edward" tab of the shared plan doc (rev 20, 2026-11-09).
+     The live doc is the source of truth; progress boxes are ticked there, not here.
+     Changed since the 11-06 snapshot: E10 rewritten after the TA's proposal feedback
+     (LLM-1 bug finding, LLM-2 repair loop, LLM-3 record of LLM use). -->
 
 # ESBMC 计划（Edward）
 
@@ -523,7 +525,7 @@ git push
 git switch verification && git pull && git tag v1-verified && git push origin v1-verified
 ```
 
-## E9–E10 对照组：静态分析、Hypothesis、LLM repair loop
+## E9–E10 对照组：静态分析、Hypothesis、LLM 工具
 
 静态分析在 `environment.py` 上报了 14 个 mypy 错误和若干 pylint 警告，但 F1–F5 一个都没找到。Hypothesis 用 200 个样例时，只在 10 个种子里的 1 个找到 G2。ESBMC 每次都能找到，并且能证明 v1 已经没有这个问题。
 
@@ -576,13 +578,57 @@ python verification/esbmc/baselines/hypothesis_stats.py --seeds 10 --max-example
 
 G2 需要连续约 11 步不请求切换，随机生成很难碰到；参数化和越界动作的 bug 很浅，每次都能找到。这张表直接放进报告的 FV vs testing 部分。
 
-### E10 LLM repair loop（按 D2，如果 LLM 这一项归 Edward）
+### E10 LLM 工具（TA 11/9 要求）
 
-这就是课件 Agentic Synthesis Loop 那页的第 4 步：反例交给 LLM 修复，ESBMC 复验，失败就把新反例再交回去。每一轮都存到 `verification/esbmc/baselines/llm_repair/round<N>/`。
+TA 对 proposal 的回复：“Lets add one more non-verification tool and some LLM tool use as well.”非验证工具由 E9 覆盖：mypy/pylint 静态分析和 Hypothesis property-based testing。LLM 分三部分：LLM-1 让 LLM 找 bug，填对比表的 LLM 列；LLM-2 让 LLM 修 bug，用 ESBMC 复验；LLM-3 记录项目里已经用到的 LLM。分工按 D2：LLM-1、LLM-2 和 LLM-3 的 ESBMC 部分归 Edward，LLM-3 的 SPIN 部分归队友。
 
-- [ ] **E10.1 第 1 轮：只给固定参数的反例**
+防泄漏规则，LLM-1 和 LLM-2 都适用：
 
-把 `env_core_v0.py`、`h_G2.py` 和 `results/raw/G2-v0.txt` 里的 `Violated property` 一段发给 LLM，用下面这段英文 prompt（不要提示它 look-ahead）：
+- 被测 LLM 只能看到下面列出的输入，不能接触 repo、CLAUDE.md、本 doc 或任何结果。repo 是公开的，所以要关掉联网搜索。
+- 不用 VS Code 里的 Claude Code（CLAUDE.md 里写着 F1–F5），也不用开着 memory 的 claude.ai 普通对话；用无痕对话、关掉 memory 的 ChatGPT 新会话，或 API。
+- 每个回答原样存档，并记下日期、模型名和版本。
+
+#### E10.1 LLM-1：让 LLM 找 bug
+
+- [ ] **E10.1a 准备输入（交给 Claude Code）**
+
+在 `verification/esbmc/baselines/llm/find/` 下放两个文件：`input_environment.py`，即 `git show main:src/environment.py` 的原样输出；`input_properties.md`，即 `properties.md` 里 10 条性质的英文描述，去掉 ESBMC、SPIN、v0、v1 这几列，因为 v0 那一列就是答案。
+
+- [ ] **E10.1b 跑 LLM（你手动）**
+
+2–3 个模型（例如 Claude、GPT、Gemini），每个开 3 个新会话，每次贴同一段 prompt 加两个输入文件，回答存成 `find/<model>-run<N>.md`。
+
+```text
+Below is the environment class of a reinforcement-learning traffic-signal controller that runs
+in the SUMO simulator (environment.py), and the properties it should satisfy (properties.md).
+Treat the RL agent as arbitrary: at every decision step it may choose any action.
+Default parameters: delta_time=5, yellow_time=3, min_green=10, max_green=60.
+For each property, decide whether it can be violated. If it can, give a concrete witness:
+the constructor parameters, the action sequence, and the simulated second at which the
+violation appears. If it cannot, explain why in one or two sentences.
+Answer by reading the code; do not run it.
+```
+
+- [ ] **E10.1c 核对每条声称（交给 Claude Code）**
+
+把每个回答里的反例抽成 `find/claims.csv`（模型、第几次、性质、参数、动作序列、声称的时间）。动作序列用 `replay_in_sumo.py` 在真 SUMO 里回放；只涉及参数的（例如 `delta_time=0`）直接在 CPython 里构造 `SumoTrafficEnv` 检查。复现了才算找到，再对应到 F1–F4 和 R1/P1。F5 是修复方法上的问题，v0 上不存在，留给 LLM-2。
+
+| 缺陷 | 模型 A（3 次里找到几次） | 模型 B | Hypothesis（10 个种子） | ESBMC |
+| --- | --- | --- | --- | --- |
+| F1 max\_green 不生效 |  |  | G2 1/10，L1 1/10 | 找到 |
+| F2 静态程序 |  |  | 4/10 | 找到（L1 替身） |
+| F3 越界动作 |  |  | 10/10 | 找到 |
+| F4 yellow\_time=0 |  |  | 没测 | 找到 |
+| R1/P1 参数非法 |  |  | 没测 | 找到 |
+| 误报（声称了但复现不了） |  |  | — | 3 个：L0 下 2 个，靠回放识别；Homebrew 前端 bug 1 个 |
+
+#### E10.2 LLM-2：让 LLM 修 bug，ESBMC 当裁判
+
+这就是课件 Agentic Synthesis Loop 那页的第 4 步。每一轮存到 `verification/esbmc/baselines/llm/repair/round<N>/`。
+
+- [ ] **E10.2a 第 1 轮：只给固定参数的反例（你手动）**
+
+把 `env_core_v0.py`、`h_G2.py`、`results/raw/G2-v0.txt` 里的 Violated property 一段和 `ce_to_actions.py` 的输出发给 LLM。防泄漏规则同上，也不要提示 look-ahead。
 
 ```text
 You are given a traffic-signal controller (env_core_v0.py), a verification harness (h_G2.py),
@@ -592,33 +638,39 @@ Propose the smallest change to env_core_v0.py that makes G2 hold. Return the ful
 file and a two-sentence explanation. Do not change the harness.
 ```
 
-把回答存成 `verification/esbmc/model/env_core_llm1.py`，然后复验：
+回答存成 `verification/esbmc/model/env_core_llm1.py`，再让 Claude Code 用 `h_G2`（L1 替身，K=16）和 `h_G2_param` 复验。`run_esbmc.py` 现在只认 v0/v1/v1naive，要先加一个指定模型文件的选项。
 
-```bash
-python verification/esbmc/scripts/run_esbmc.py --harness h_G2 --version env_core_llm1.py
-python verification/esbmc/scripts/run_esbmc.py --harness h_G2_param --version env_core_llm1.py
-```
+- [ ] **E10.2b 后续轮：把参数化反例交回去**
 
-- [ ] **E10.2 第 2 轮及以后：把参数化反例交回去**
+`h_G2_param` FAIL 时，把参数化反例（`d`/`mn`/`mx` 和动作序列）发回同一个会话，要求在所有合法参数下都成立，存成 `env_core_llm2.py`，重复，最多 5 轮。
 
-如果第二条是 FAIL，把 `ce_to_actions.py` 的输出（带 `d`/`mn`/`mx`）和 Violated property 发给 LLM，要求它在所有合法参数下都成立，存成 `env_core_llm2.py`，重复，最多 5 轮。
+- [ ] **E10.2c 回归和记录**
 
-- [ ] **E10.3 记录这几个数**
+最终版本跑 S1、T1、T2、G1、G2、L1、C1（L1 替身），记录：
 
 | 指标 | 记录什么 |
 | --- | --- |
 | 轮数 | 到 `h_G2_param` PASS 用了几轮 |
-| 第一版是不是 naive | 第 1 轮是否用了 `phase_duration >= max_green` |
-| 回归 | 用最终版本跑 S1 T1 T2 G1 G2 L1 C1，有没有打挂别的性质 |
-| 代码变化 | `diff` 的行数 |
+| 第一版是不是 naive | 第 1 轮是否用了 `phase_duration >= max_green`，也就是 F5 的写法 |
+| 回归 | 最终版本有没有打挂别的性质 |
+| 代码变化 | `diff` 行数 |
 
-官方工具 ESBMC-AI（`pip install esbmc-ai`）做的是同一个闭环，但它的论文和例子都是 C，Python 支持要先试。试不通就按上面的步骤手动跑。
+#### E10.3 LLM-3：记录项目里已经用到的 LLM
+
+| 工具 | 做了什么 | 人做的核对 | 证据 |
+| --- | --- | --- | --- |
+| Claude（claude.ai 对话） | 写计划，抽取模型，写 harness、stub 和脚本的初版 | 每个结论都在 SUMO 回放或 CPython 里复核；一致性测试检查模型和 SUMO 是否一致 | 本 doc；PR #1 |
+| Claude Code（VS Code） | 在 M4 上执行 E1–E12.1 并开 PR；从反例里不可能出现的数值发现 Homebrew ESBMC 的 try bug | Edward 看每个 PR，Codex 自动审查 | PR #3–#11 |
+| OpenAI Codex（PR 自动审查） | 审 PR #1 时指出 v1 没有拒绝 `delta_time > max_green`，而我们的参数化 harness 因为范围太窄没抓到 | 放宽范围后 ESBMC 在 7 s 内复现，加上检查后 PASS | PR #1 的审查评论；PR #2 |
+| OpenAI Codex（队友） | 写 Promela 模型和 SPIN 脚本 | `check_traces.py` 对照 Python 参考模型 | 队友补：哪些部分是生成的、手改了几处、对照时抓到几次模型错误 |
+
+完成标准：表填完，报告第 3 节加一段 LLM-assisted workflow。
 
 - [ ] **E10.4 提交**
 
 ```bash
-git add verification/esbmc/results verification/esbmc/baselines verification/esbmc/model/env_core_llm*.py
-git commit -m "esbmc: static analysis, Hypothesis baseline and LLM repair loop results"
+git add verification/esbmc/baselines/llm verification/esbmc/model/env_core_llm*.py verification/esbmc/results
+git commit -m "esbmc: LLM bug finding (LLM-1) and repair loop (LLM-2), E10"
 git push
 ```
 
