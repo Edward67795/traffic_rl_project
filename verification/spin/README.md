@@ -8,9 +8,10 @@ performance are outside this verification scope.
 
 ## Current status
 
-Coordination status (2026-11-06): on hold at the user's request while the
-teammate progresses. Human review is deferred, not completed. Resume on user
-instruction; technical results below remain unchanged.
+Coordination status (2026-11-24): preparing the progress report and short
+professor presentation. Human model review is deliberately deferred and remains
+pending; automated validation must not be presented as human approval. This
+checkpoint updates documentation only, with no new verification runs.
 
 **S6 technical validation is complete; human review and joint-report sign-off
 remain pending.** The formal dataset is unchanged:72 cases,46 PASS/26 FAIL.
@@ -29,6 +30,56 @@ No controller/ESBMC/shared patch was changed. Source-backed technical report:
 [SPIN_REPORT.md](SPIN_REPORT.md); human review: [checklist](REVIEW_CHECKLIST.md).
 The teammate's actual ESBMC results CSV is absent in this checkout, so numerical
 joint-tool comparisons remain pending supplied evidence.
+
+## Progress-report navigation for the teammate
+
+Instructor requirements and the proposed report outline are recorded in
+[report.md: instructor requirements](report.md#2026-11-24-instructor-requirements-for-the-status-report).
+Plan for about four pages, due November 30 at 2 PM under the later assignment
+notice. Current report preparation requires no RL training or model changes;
+human review and latest-patch alignment remain future work.
+
+Start with this README for scope, stage status and commands. Use the documents
+below according to the report question; there is no need to read the entire raw
+archive before drafting.
+
+| Report task | Reference | What it provides |
+|---|---|---|
+| Draft the SPIN methods/results section | [SPIN_REPORT.md](SPIN_REPORT.md) | English technical narrative, assumptions, results and limitations; a draft, not final sign-off |
+| Recover the experimental process and measurements | [report.md](report.md) | Chronological S0-S6 record, commands, successful/unsuccessful attempts, timing, memory, state metrics where recorded and evidence links; early checkpoint tables are historical |
+| Explain Python-to-Promela translation | [MODEL_MAPPING.md](MODEL_MAPPING.md) | Retained/abstracted state, source correspondence, discrete time and observation boundaries |
+| Choose findings and counterexamples | [FINDINGS.md](FINDINGS.md) | Property interpretations, v0/v1 findings and witness explanations |
+| Distinguish model results from real-source evidence | [SUMO_VALIDATION.md](SUMO_VALIDATION.md) | SUMO replay outcomes, L0 mismatches and the limits of finite L2 replay |
+| Build numerical result tables | [results/results.csv](results/results.csv) | 72 formal configuration rows in the shared schema; 46 PASS and 26 FAIL are not counts of distinct bugs |
+| Recover earlier stage results | [results/snapshots/](results/snapshots/) | Frozen stage tables and historical model/script copies |
+| Check actual replay outcomes | [results/sumo-replay.csv](results/sumo-replay.csv) | Supplementary live replay results, separate from formal verdicts |
+| Inspect primary evidence | [results/raw/](results/raw/) | Exact run metadata, tool output, source hashes and counterexamples; follow links from report.md |
+| Plan later human review | [REVIEW_CHECKLIST.md](REVIEW_CHECKLIST.md) | Pending review of source mapping, monitors, timing, fairness and claims; record reviewer, decision and corrections when performed |
+| Resume AI-assisted work | [node-spin.md](node-spin.md) | Persistent context, constraints, pipeline and execution history |
+
+### Version boundary and remaining work
+
+The retained dataset concerns the locally archived FIX-1..4 version, not an
+uninspected latest teammate version. The teammate's November 7 screenshot
+reports a later `delta_time <= max_green` admission check and a common replay
+`--src v1` option. Neither is present in this checkout at this documentation
+checkpoint. Treat that screenshot as coordination information, not executed
+verification evidence or an instruction to merge/change files.
+
+The historical v1 wide-delta counterexample remains valid for the measured
+patch. Do not present it as an unresolved defect of the teammate's later patch
+until that patch is inspected and tested. Conversely, do not mark the new patch
+verified from the screenshot alone.
+
+For the progress report, describe completed modeling, searches and source
+validation, explicitly disclose pending human review, and explain the intended
+review procedure. After the presentation, inspect the teammate's latest patch
+and shared decisions, align the SPIN model if needed, rerun affected cases and
+regressions, perform human review, then integrate actual ESBMC evidence for the
+final comparison. Preserve historical data and label superseding runs. No Git
+integration, raw-evidence deletion or code change is implied by this plan.
+LLM assistance may be described factually; development time saved or other
+unrecorded effort metrics must not be invented.
 
 ## Documents and layout
 

@@ -1,6 +1,6 @@
 # SPIN project context and execution pipeline
 
-Last updated: 2026-11-06 (Asia/Shanghai).
+Last updated: 2026-11-24 (America/New_York).
 
 ## Start here
 
@@ -735,3 +735,28 @@ implemented. See the next execution record for actual validation results.
   the teammate, create reminders, or perform Git operations. Resume when the
   user returns with further instructions or teammate evidence.
 - Suggested checkpoint commit: spin: validate models against real SUMO and document S6.
+
+### 2026-11-24: progress-report documentation authorized
+
+- User resumed documentation work only: prepare README navigation for joint
+  progress-report writing. Human review remains explicitly deferred. Do not
+  start model changes, new experiments or Git integration from this request.
+- README links report.md (experimental history/data), SPIN_REPORT.md (narrative
+  draft), mapping, findings, SUMO validation, CSVs, raw evidence and review plan.
+- Teammate screenshot reports later delta_time<=max_green admission and replay
+  --src v1 support. Local patch/common script lack these at this checkpoint.
+  Qualify old v1 findings by measured version; inspect latest files and reverify
+  later. Screenshot content is coordination evidence, not execution evidence.
+- No raw evidence was deleted, no model/source/ESBMC/shared files were changed,
+  no new runs or human sign-off claimed. Historical hold remains superseded
+  only for this requested documentation task.
+
+### 2026-11-24: instructor report requirements recorded
+
+- Added the screenshot-derived requirements, deadline/length discrepancy,
+  proposed outline and current-versus-later work boundary to report.md.
+  README links directly to this entry. Instructor material is a course source,
+  not authorization for code edits, Git operations or automatic submission.
+- Current report writing needs no RL training or model change. Human review
+  remains deferred; later latest-patch alignment and regressions are pending.
+- No experiments executed or metrics changed for this documentation update.

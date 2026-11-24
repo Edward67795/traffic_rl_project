@@ -4,6 +4,17 @@ Status: SPIN technical draft for the joint CSEE E6863 report. Automated checks
 and real-source validation are complete for the experiments below; human model
 review and the teammate's numerical ESBMC evidence remain pending.
 
+## Progress-report version qualification (2026-11-24)
+
+This draft describes the retained S0-S6 experiments and measured FIX-1..4 patch.
+Human review is planned after the progress presentation, not completed. A
+teammate screenshot reports a newer `delta_time <= max_green` admission check;
+that revision is not present in this checkout and has not been tested here.
+The wide-delta finding below applies to the measured patch, not necessarily the
+newer revision. Latest-version alignment and regression checks remain future
+work. For experiment data and evidence links, use [report.md](report.md); for
+joint-report navigation, use [README.md](README.md).
+
 ## Objective and scope
 
 We verify the phase-transition and timing logic of the existing SUMO traffic

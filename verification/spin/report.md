@@ -1,6 +1,6 @@
 # SPIN experimental record and report material
 
-Last updated: 2026-11-06 (Asia/Shanghai). Current milestone: **S6 technical validation complete; human review pending**.
+Last updated: 2026-11-24 (America/New_York). Current milestone: **S6 technical validation complete; human review pending**.
 This is a chronological research record for the final CSEE E6863 report, not a
 claim that all project stages are finished. Code/documentation remain in English.
 
@@ -1002,3 +1002,95 @@ S6 technical work is ready for review. Do not mark human sign-off completed on
 behalf of the user or imply complete-source/infinite SUMO proof. The open v1
 parameter-admission defect and C1/D4 interpretation require explicit final-report
 handling. No automatic commit/push/merge, source patch or network regeneration.
+
+## 2026-11-24: progress-report preparation and version qualification
+
+Documentation-only checkpoint; no model edits, new searches, source replay or
+human review were performed. User explicitly defers human review until after
+the progress presentation. README now provides teammate-facing report navigation.
+
+Local HEAD before this edit: aeae39d, branch feature/spin-verification, clean
+working tree. The retained formal CSV contains 72 configurations: 46 PASS and
+26 FAIL. These are configurations, not distinct bugs. Existing measurements
+and historical stage records remain unchanged.
+
+The supplied teammate screenshot reports a later v1 admission condition
+`delta_time <= max_green` and a common replay `--src v1` interface. The local
+patch and common replay script do not yet contain these additions. No remote
+fetch or integration was performed. Existing v1 results apply to the measured
+patch; the wide-delta finding must not be attributed to an untested newer patch.
+
+Next: draft the progress report with pending-review disclosure; later inspect
+updated teammate code, align/reverify affected SPIN cases, carry out human
+review and integrate actual ESBMC evidence. Missing effort/LLM metrics remain
+unrecorded. This entry records a plan, not completed future work.
+
+## 2026-11-24: instructor requirements for the status report
+
+### Source and authority
+
+The user supplied screenshots of the Project Status Report assignment and
+ProjectDescription. The following records course requirements from those
+attachments, rather than new instructions to change code or perform Git actions.
+ProjectDescription itself notes that lecture discussions contain additional
+expectations; these screenshots must not be described as the entire rubric.
+
+### Submission and content requirements
+
+- The assignment notice sets submission to November 30 at 2 PM, with a file
+  upload and 3-5 pages. Its availability until 2:30 PM is not the due time.
+  Most group discussions are in person on November 30; the exact group slot
+  still needs the course schedule.
+- ProjectDescription lists an older November 21 status deadline and about
+  3-4 pages. Use the later assignment notice for planning; targeting about
+  four pages satisfies both length descriptions.
+- ProjectDescription lists the final report as December 18, about 7-10 pages,
+  and describes deadlines as hard. Recheck later course announcements before
+  final submission; no submission or reminder was created here.
+- Start from the proposal, retain relevant material, explain changes, completed
+  work and remaining work. The assignment additionally requests encountered
+  problems, updated goals and understanding of FV capabilities and limitations.
+- Explain relation to course concepts. Disclose sources and prior work; clearly
+  identify the existing SUMO/RL system versus this project's verification work.
+- Use figures. Final-report evaluation explicitly includes explaining the
+  advantages and limits of the chosen FV techniques. Comparison with simulation
+  and, for software projects, a static-analysis tool is suggested. Comparing
+  SPIN with ESBMC alone does not constitute a static-analysis baseline. Do not
+  claim such an experiment exists without teammate evidence.
+
+### Proposed joint-report outline (planning, not an instructor template)
+
+1. Background, objectives, division of work and changes from the proposal.
+2. Completed ESBMC/SPIN methods: source abstraction, nondeterministic actions,
+   temporal semantics, assertions/LTL and a verification-pipeline figure.
+3. Actual results and a representative counterexample timeline; explain
+   encountered difficulties and their resolution or remaining qualification.
+4. Capabilities/limitations, revised goals and the remaining schedule.
+
+Select SPIN issues from recorded evidence: controller age versus displayed
+green age; SUMO's autonomous initial program; 12 of 21 finite prefixes
+reproducing the target and nine L0 prefixes not reproducing it; explicit
+fairness premises for L2; and the measured-versus-updated v1 patch boundary.
+The 72 formal rows (46 PASS, 26 FAIL) count configurations, not distinct bugs.
+Finite replay is not an infinite source-level liveness proof.
+
+### Work required now versus later
+
+For the status-report draft, no RL training, controller/model change or new
+verification run is currently required. The existing dataset can support the
+report when its version, assumptions and limitations are stated. DQN training
+is outside the SPIN scope: the model explores nondeterministic action inputs
+rather than measuring a trained policy's performance.
+
+Human review is explicitly deferred. Describe its future procedure: compare
+source and Promela transitions, check time/observation boundaries and monitor
+formulas, examine fairness assumptions, inspect representative counterexamples,
+record reviewer decisions and rerun after any corrections. Automated checks
+are supporting evidence and do not replace human sign-off.
+
+Later work remains: inspect the teammate's updated patch/shared decisions,
+align affected SPIN logic if needed, execute regression checks, perform human
+review and integrate actual ESBMC/baseline evidence. Do not silently update the
+model to an unseen patch or rewrite historical results. No model, source,
+ESBMC or shared-contract edits, training or experiments were performed for
+this documentation entry.
